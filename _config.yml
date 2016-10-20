@@ -1,0 +1,17 @@
+# Setup
+title:        Will Rowe
+tagline:      A test page for the bioinformatics workshop
+baseurl:      ""
+paginate:     1
+
+# About/contact
+author:
+  name:       Will Rowe
+  url:        https://wpmr2.github.io
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown
