@@ -1,2 +1,7 @@
 _site
+.bundle
+.sass-cache
+Gemfile.lock
 .DS_Store
+.ruby-gemset
+.ruby-version
