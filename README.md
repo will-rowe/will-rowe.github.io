@@ -1,16 +1,20 @@
-# Test Jekyll / GitHub Pages Project
+# Hinton Lab Wiki
 
-## currently just using stock template theme and example Jekyll project
+## Jekyll / GitHub Pages
+
+A site for microbial bioinformatics, blogs and tutorials
 
 
-====
 
 
-# License and Cayman theme
+# Footnote
 
-This work is licensed under a [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/) license.
+The Hinton Lab Wiki is maintained by [Will Rowe][1]. The site uses [Jekyll][2], [GitHub Pages][3] and the [Cayman theme][4].
 
-[1]: http://jekyllrb.com/
-[2]: https://github.com/jasonlong
+
+
+
+[1]: https://twitter.com/will__rowe
+[2]: http://jekyllrb.com/
 [3]: http://pages.github.com/
 [4]: https://github.com/jasonlong/cayman-theme

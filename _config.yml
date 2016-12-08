@@ -1,8 +1,9 @@
 # Setup
-title:        Will Rowe
-tagline:      A test page for the bioinformatics workshop
+title:        Hinton Lab Wiki
+tagline:      A site for microbial bioinformatics, blogs and tutorials
 baseurl:      ""
 paginate:     1
+future:       true
 
 # About/contact
 author:
