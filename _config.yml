@@ -1,18 +1,14 @@
 # Setup
-title:        Hinton Lab Wiki
-tagline:      A site for microbial bioinformatics, blogs and tutorials
-baseurl:      ""
-paginate:     1
-future:       true
-
-# About/contact
-author:
-  name:       Will Rowe
-  url:        https://wpmr2.github.io
+title:          tbc
+tagline:        A site for microbial bioinformatics, blogs and tutorials
+baseurl:        ""
+paginate:       1
+future:         true
+author:         Will Rowe
 
 # Gems
 gems:
-  - jekyll-paginate
+        - jekyll-paginate
 
-#Others
-markdown: kramdown
+# Markdown
+markdown:       kramdown
