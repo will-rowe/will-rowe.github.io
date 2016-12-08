@@ -4,7 +4,8 @@ tagline:        A site for microbial bioinformatics, blogs and tutorials
 baseurl:        ""
 paginate:       1
 future:         true
-author:         Will Rowe
+author:
+        name: Will Rowe
 
 # Gems
 gems:
