@@ -108,8 +108,6 @@ In various stages of the processing of an NGS dataset it can be useful to filter
 # Differential Gene Expression
 
 
-If gene expression differences exist among experimental conditions, it should be expected that biological replicates of the same condition will cluster together in a principal component analysis (PCA).
-
 
 ---
 
@@ -118,9 +116,6 @@ If gene expression differences exist among experimental conditions, it should be
 ## 1. identifying novel transcripts / de-novo transcript assembly
 
 ## 2. SNP calling from RNA-seq data
-
-SNP calling from RNA-seq data without a reference genome: identification, quantification, differential analysis and impact on the protein sequence -
-http://nar.oxfordjournals.org/content/44/19/e148.full
 
 ## 3. assembly
 
@@ -144,20 +139,6 @@ QC	-	quality check
 
 
 
-
-
-
-really good [paper][paper]:
-another 1: https://www.labome.com/method/RNA-seq-Using-Next-Generation-Sequencing.html#ref7
-
-
-
-transcipt quantification vs. differential gene expression analysis
-
-good blog post : http://michelebusby.tumblr.com/post/26913184737/thinking-about-designing-rna-seq-experiments-to
-
-Seqlopedia article - http://rnaseq.uoregon.edu/#analysis
-RNA-seq news - http://www.rna-seqblog.com/
 
 
 [paper]: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8

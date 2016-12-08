@@ -24,12 +24,8 @@ group: workshop
 Accuracy of reference genome: variant calling can yield big data sets - these cannot validated and they can contain large numbers of false-positives. **Errors in the reference assembly increase the number of false-positives**. Filtering techniques must be employed **but** these can exclude true-positives.
 
 
-
-
-
-
-
 ---
+
 # Workflow
 
 The basic workflow for variant calling a microbial genome is:
