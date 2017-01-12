@@ -1,15 +1,22 @@
 # Setup
-title:          tbc
-tagline:        A site for microbial bioinformatics, blogs and tutorials
-baseurl:        ""
-paginate:       1
-future:         true
-author:
-        name: Will Rowe
 
-# Gems
-gems:
-        - jekyll-paginate
+title: Will Rowe
+email: will.rowe@liverpool.ac.uk
 
-# Markdown
-markdown:       kramdown
+description: general blog site
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://will-rowe.github.io" # the base hostname & protocol for your site
+
+# Social links.
+# Replace the word 'example' with your username if you want to include the icon in the left sidebar
+# Delete the word 'example' if you don't want to include the icon in the left sidebar
+
+twitter_username:     will__rowe
+github_username:      will-rowe
+linkedin_username:    will-rowe-13219b136
+google_plus_username:
+facebook_username:
+dribbble_username:
+
+# Build settings
+markdown: kramdown

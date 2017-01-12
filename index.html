@@ -1,34 +1,83 @@
 ---
 layout: default
-title: {{ site.name }}
 ---
 
-<div id="home">
-  <h1>General Pages</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      {% if post.group == 'notes' %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-      {% endif %}
-    {% endfor %}
-  </ul>
 
-  <h1>RNA-seq</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      {% if post.group == 'RNA-seq' %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+<!-- Main -->
+<div id="main">
+    <section>
+            <header class="major">
+                <h2>About</h2>
+                <p class="post-meta">This site is still under development...</p>
+            </header>
 
-  <h1>Variant Calling</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      {% if post.group == 'workshop' %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+            <section>
+                <p>Visit the lab <a href="http://www.hintonlab.com" target="_blank">website</a> or <a href="https://github.com/will-rowe" target="_blank">GitHub</a> for more information on current projects.</p>
+            </section>
+
+    </section>
+
+
+
+    <section>
+        <div class="row">
+                <!-- BIOINFORMATICS -->
+                <article class="{% cycle '6u', '6u$' %} 12u(small)">
+                    <header>
+                        <h2>Bioinformatics</h2>
+                    </header>
+                    <section>
+                        <img src="/images/fulls/01.jpg" class="fit image">
+                        <p>A place for notes, tips and walkthroughs for all things microbial bioinformatics.</p>
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="{{ site.url }}/i-Bioinformatics" class="button">Go to content</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+                <!-- MATERIALS -->
+                <article class="{% cycle '6u', '6u$' %} 12u(small)">
+                    <header>
+                        <h2>Materials</h2>
+                    </header>
+                    <section>
+                        <img src="/images/fulls/02.jpg" class="fit image">
+                        <p>Course materials for bioinformatics masters students.</p>
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="{{ site.url }}/i-Materials" class="button">Go to content</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+        </div>
+    </section>
+
+
+<section id="contact-details">
+        <h2>Contact</h2>
+        <p>Please get in touch using the contact form below.</p>
+        <div class="row">
+                <div class="8u 12u$(small)">
+                <form method="post" action="http://formspree.io/{{ site.email }}">
+                        <div class="row uniform 50%">
+                                <div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
+                                <div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
+                                <div class="12u$"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+                        </div>
+                </div>
+                <div class="4u$ 12u$(small)">
+                        <ul class="actions">
+                                <li><input type="submit" value="Send!" /></li>
+                        </ul>
+                </div>
+                </form>
+        </div>
+</section>
+
+
 
 </div>

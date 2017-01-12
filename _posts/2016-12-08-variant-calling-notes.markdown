@@ -1,12 +1,9 @@
 ---
 layout: post
 title:  "Notes on variant calling"
-date:   2016-12-08 09:00:00
-author: will
+author: Will Rowe
 categories: main
-group: workshop
----
-
+group: bioinformatics
 ---
 
 This post was written for the weekly IIB microbial bioinformatics lunch and discusses how to *identify reference-relative variants in a microbial genome*.
@@ -42,6 +39,7 @@ Once we have sequenced a sample and quality checked the sequencing data, a basic
 3.	Variant call the alignment (SNPs, InDels, MNPs)
 4.	Filter and interpret the variant calls
 
+---
 
 ## 1. Align your reads to the reference genome
 
@@ -59,6 +57,7 @@ $ bowtie2 -x REFERENCE -1 r1.fastq -2 r2.fastq -U r0.fastq -p 40 | samtools view
 
 > Side Note:	the higher the MAPQ filter, the higher the reference bias. Too high a MAPQ filter could mask true positive variants.
 
+---
 
 ## 2. QC / visualise the alignment
 
@@ -177,6 +176,8 @@ dev.off()
 {% endhighlight %}
 </details>
 
+---
+
 ## 3. Variant call the alignment
 
 Next we use the aligned reads to calculate the genotype likelihoods. Here we will use [Freebayes][freebayes] - a program that finds SNPs/indels/MNPs **smaller** than the length of a short-read sequencing alignment.
@@ -214,6 +215,7 @@ $ tabix -p vcf isolate.vcf.gz
 $ samtools mpileup -uf ref.fa isolate.rmdup.bam | bcftools call -mv -Oz > isolate.vcf.gz
 {% endhighlight %}
 
+---
 
 ## 4. Filtering the variant calls
 
@@ -238,6 +240,7 @@ e		exclude the expression %QUAL<20 | MIN(DP)<10 (exclude SNPs with quality score
 {% endhighlight %}
 </details>
 
+<br/>
 
 ### Interpret filtered variants
 

@@ -1,0 +1,372 @@
+---
+layout: post
+title:  "Bioinformatics snippets"
+author: Will Rowe
+categories: main
+group: bioinformatics
+---
+
+This page covers some useful code snippets that I regularly use, as well as listing good resources for learning more about UNIX. In most cases, I've used actual file names and commands rather than pseudocode.
+
+*-- this page is constantly being updated as I find new / better ways of doing things --*
+
+---
+
+<h1>Contents</h1>
+
+* TOC
+{:toc}
+
+
+## UNIX
+
+Useful UNIX cheatsheets can be found [here][cheats-1] and [here][cheats-2].
+
+### Find and Grep
+
+recursively find files with an extension, then print file list to file
+
+{% highlight ruby %}
+$ find ./ -type f -name "*.bam" -printf "%f\n" > all_bam_files.txt
+{% endhighlight %}
+
+recursively find files with an extension, then print files + relative paths to file
+
+{% highlight ruby %}
+$ find ./ -type f -name "*.bam" -print > all_bam_files.txt
+{% endhighlight %}
+
+find files by name and then grep for string
+
+{% highlight ruby %}
+$ find ./ -type f -name krakenreport -exec grep "Streptococcus pneumoniae" {} \+
+{% endhighlight %}
+
+average file size in directory (recursively searches for files greater than 1 GB)
+
+{% highlight ruby %}
+$ find ./0001_RNA_SEQ/ -size +1G -ls | awk '{sum += $7; n++;} END {print sum/n;}'
+{% endhighlight %}
+
+find and move files
+
+{% highlight ruby %}
+find ../ -type f -name '*.all.txt' -exec mv -t ./ {} \+
+{% endhighlight %}
+
+multifasta to single fasta entry (for ACT etc.)
+
+{% highlight ruby %}
+$ grep -v "^>" multifasta.fasta | awk 'BEGIN { ORS=""; print ">Sequence_name\n" } { print }' > merged.fasta
+{% endhighlight %}
+
+### Loops
+
+loop over paired fastq files and run a command (e.g. SNIPPY)
+
+{% highlight ruby %}
+$ for i in ./seqdata/files*_1.fastq.gz
+> do
+> base=${i%_*.gz}
+> dirname=${base##*/}
+> snippy --cpus 24 --outdir ./mysnips_$dirname --ref RefSeq.gbf --R1 ${base}_1.fastq.gz --R2 ${base}_2.fastq.gz --unmapped
+> done
+{% endhighlight %}
+
+> Side note: to build tree using core SNPs from above:
+{% highlight ruby %}
+$ snippy-core --prefix core mysnps*
+$ FastTree -gtr -nt core.aln > tree
+{% endhighlight %}
+
+binning multiple flow cell runs into individual sample directories
+
+{% highlight ruby %}
+$ for i in $(seq -f "%02g" 1 21)
+> do
+> mkdir sample-$i
+> mv flowcell_sample_no_$i.qual.gz ./sample-$i
+> mv flowcell_sample_no_$i.csfasta.gz ./sample-$i
+> done
+{% endhighlight %}
+
+
+### Curl / Wget
+
+download all files of certain extension from an html page
+
+{% highlight ruby %}
+$ wget --accept fastq.gz --mirror --convert-links --no-parent http://website.com/dir/subdir/
+{% endhighlight %}
+
+
+### Cluster
+
+password-less SSH login (note --- may need to install `ssh-copy-id` on OSX)
+
+{% highlight ruby %}
+$ ssh-keygen -t rsa
+$ ssh-copy-id -i /Users/user/.ssh/id_rsa.pub user@server.ac.uk
+{% endhighlight %}
+
+submit multiple jobs from head node to worker nodes
+
+{% highlight ruby %}
+$ PARALLEL_HOSTS=server1,server2,server3
+$ ls /dir/subdir/inputfiles*.gz | parallel --progress --workdir $PWD -j 2% --delay 2.0 -S $PARALLEL_HOSTS “/dir/bin/program.py -i {} -o $PWD/RESULTS >> $PWD/{/.}.LOG"
+{% endhighlight %}
+
+> Side note on above command:
+
+{% highlight ruby %}
+--workdir           sets the working directory
+--progress          prints progress to stdout
+-j 50%              half loads the machine (i.e. half the cores used to run jobs)
+-S                  server list to use
+--filter-hosts      ignore nodes that are down (this option is currently broken on the server)
+{% endhighlight %}
+
+
+more advanced example of GNU parallel - spreads bowtie jobs over cluster (1 per node), each job has no intermediate files + fewer idle CPUs
+
+{% highlight ruby %}
+$ PARALLEL_HOSTS=server1,server2,server3
+$ CMD=/usr/local/share/bowtie2-2.2.5/bowtie2 -x ./01_REFERENCE/REFERENCE -1 {//}/*_1_* -2 {//}/*_2_* -U {//}/*_U1_* -U {//}/*_U2_* -p 40 | /pub46/willr/000_HOME/0003_SOFTWARE/bin/samtools view -@ 40 -m 1G -q 10 -bS - | /pub46/willr/000_HOME/0003_SOFTWARE/bin/samtools sort -@ 40 -m 1G -o - | /pub46/willr/000_HOME/0003_SOFTWARE/bin/samtools rmdup - {//}outfile.sorted.bam
+$ ls 00_RAW_DATA/*/*_1_trimmed.fastq.gz | parallel -S $PARALLEL_HOSTS --workdir $PWD -j 1 "$CMD"
+{% endhighlight %}
+
+
+use screen to run jobs independent of shell session
+
+{% highlight ruby %}
+$ screen (starts screen session)
+$ <ctrl+a> and then d (detach screen and leave it running)
+$ screen -ls (lists running screens)
+$ screen -x (enters recent screen)
+$ exit (terminates open screen)
+{% endhighlight %}
+
+use reptyr to attach a running process to a new terminal (i.e. if you forget to screen, start a new screen and migrate running job)
+
+{% highlight ruby %}
+$ reptyr <PID>
+{% endhighlight %}
+
+
+send an email with an attachment
+
+{% highlight ruby %}
+echo "Have some coverage plots" | mutt -a "./coverage-plots.png" -s "coverage-plots" -- user@liverpool.ac.uk
+{% endhighlight %}
+
+
+
+### GIT
+
+You can find a really good GIT guide [here][git_guide] but the following are some of the common and useful commands:
+
+create a new repo or clone an existing one
+
+{% highlight ruby %}
+$ git init
+$ git clone username@host:/path/to/repo
+{% endhighlight %}
+
+
+check, add, commit and push changes
+
+{% highlight ruby %}
+$ git status
+$ git add <filename>
+$ git add *
+$ git commit -m "commit message required here"
+$ git push origin master
+{% endhighlight %}
+
+add single remote or multiple remotes
+
+{% highlight ruby %}
+$ git remote add origin <server>
+$ git remote set-url origin --push --add <server>
+{% endhighlight %}
+
+replacing local changes (by retrieving last HEAD content or by pulling last history from server)
+
+{% highlight ruby %}
+$ git checkout -- <filename>
+$ git fetch origin
+{% endhighlight %}
+
+open git config in editor
+
+{% highlight ruby %}
+$ git config -e
+{% endhighlight %}
+
+For information on branching, merging and tagging - read [THIS][git_guide] guide!
+
+
+### IO
+
+send STDOUT and STDERR to file
+
+{% highlight ruby %}
+$ command >> filename 2>&1
+{% endhighlight %}
+
+
+### Python
+
+download, make and setup virtual environment for Python 3
+
+{% highlight ruby %}
+cd Python-3.x.x
+./configure && make
+mkdir -p ~/.virtualenvs
+./python -m venv --without-pip /pub46/willr/.virtualenvs/py3
+{% endhighlight %}
+
+activate Python 3 environment
+
+source ~/.virtualenvs/py3/bin/activate
+
+
+
+
+
+
+### Not sorted yet
+
+archive and compress directory using tar and pigz
+
+{% highlight ruby %}
+$ tar -cf - ../0002_GENOMES/ | pigz > 03.10.2016_0002_GENOMES.tar.gz
+{% endhighlight %}
+
+recursively change permissions on directory
+
+{% highlight ruby %}
+$ chmod -R u=rwx,g=r,o=r 0003_compressed_archives/
+{% endhighlight %}
+
+use vim to delete all lines under selected line (command used in vim)
+
+{% highlight ruby %}
+:+,$d
+{% endhighlight %}
+
+use cut to remove a column from a file (using tab as delimiter)
+
+{% highlight ruby %}
+$ cut -d$'\t' -f1-2,4- annotation.gff > annotation.edit.gff
+{% endhighlight %}
+
+----
+
+## Bioinformatics
+
+### Read alignment
+
+The main short read aligners used by the group are [Bowtie2][bowtie2] and [SMALT][smalt]. These aligners generate alignments in Sequence Alignment Map (SAM) format and [SAMtools][samtools] is a set of tools to process these files. SAMtools can work with binary SAM files (BAM files) without uncompressing the whole file. A really useful tool for understanding SAM flags (-f / -F) is found [here][picard_sam_flags]. The following code snippets are tested with Samtools v1.3.1 and Bowtie2 v2.2.5
+
+to quickly align reads using Bowtie2 and get a sorted BAM file use the following snippet (commands are piped to reduce disk I/O)
+
+{% highlight ruby %}
+$ bowtie2 -x REFERENCE -1 r1.fastq -2 r2.fastq -p 40 | samtools view -bS - | samtools sort - -o outfile.sorted.bam && samtools index outfile.sorted.bam
+{% endhighlight %}
+
+use flagstat to get alignment information
+
+{% highlight ruby %}
+$ samtools flagstat outfile.sorted.bam
+{% endhighlight %}
+
+count unmapped reads
+
+{% highlight ruby %}
+$ samtools view -f4 -c outfile.sorted.bam
+{% endhighlight %}
+
+remove unmapped reads from alignment file
+
+{% highlight ruby %}
+$ samtools view -F 0x04 -b outfile.sorted.bam > outfile.aligned_reads_only.sorted.bam
+{% endhighlight %}
+
+remove reads below minimum mapping quality (see [here][heng_blog] for MAPQ blog post)
+
+{% highlight ruby %}
+$ samtools view -q 20 -b outfile.sorted.bam > outfile.q20.sorted.bam
+{% endhighlight %}
+
+extract read pairs from alignment where both mapped, one mapped and one didn't
+
+{% highlight ruby %}
+$ samtools view -b -F 12 outfile.sorted.bam > both.mapped.bam
+$ samtools view -b -f 4 -F 8 outfile.sorted.bam > not.mapped.but.mate.did.bam
+$ samtools view -b -f 8 -F 4 outfile.sorted.bam > mapped.but.mate.didnt.bam
+$ bedtools bamtofastq -i both.mapped.bam -fq 1.fq -fq2 2.fq
+{% endhighlight %}
+
+extract reads that mapped to a particular regions
+
+{% highlight ruby %}
+$ samtools view -b 90.sorted.bam "D23580_liv_chro:368858-410494" -o pBT1.region.bam
+{% endhighlight %}
+
+
+### Variant calling
+
+A good guide to variant calling can be found [here][vcf] and [here][vcf2].
+
+call variants
+
+{% highlight ruby %}
+$ samtools mpileup -uf ref.fa aln.bam | bcftools call -mv -Oz > calls.vcf.gz
+{% endhighlight %}
+
+assess call set quality using transition:transversion ratio
+{% highlight ruby %}
+$ bcftools filter -i'%QUAL>20' calls.vcf.gz | bcftools stats | grep TSTV
+{% endhighlight %}
+
+filter variants (note --- the filtering parameters should be considered for each sample)
+{% highlight ruby %}
+$ bcftools filter -sLowQual -g3 -G10 -e '%QUAL<20' calls.vcf.gz > calls.filtered.vcf
+{% endhighlight %}
+
+
+### Assembly
+
+
+### QC
+
+use kraken to quickly bin reads according to taxa
+
+{% highlight ruby %}
+$ kraken --threads 10 --preload --fastq-input --gzip-compressed --db ~/000_HOME/0002_REF_DATA/0004_DBs/minikraken_20141208 input_file*.fastq.gz | kraken-report --db ~/000_HOME/0002_REF_DATA/0004_DBs/minikraken_20141208 > ./kraken_output.report
+{% endhighlight %}
+
+
+### File conversion
+
+gff to genbank
+
+{% highlight ruby %}
+$ seqret -sequence input.fasta -feature --fformat gff -fopenfile input.gff -osformat genbank -auto
+{% endhighlight %}
+
+
+---
+
+
+[cheats-1]: http://www.rain.org/~mkummel/unix.html
+[cheats-2]: http://cgr.liv.ac.uk/cinfo/guide.html
+[git_guide]: http://rogerdudler.github.io/git-guide/
+[bowtie2]: http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+[smalt]: http://www.sanger.ac.uk/science/tools/smalt-0
+[samtools]: http://www.htslib.org/doc/samtools.html
+[picard_sam_flags]: https://broadinstitute.github.io/picard/explain-flags.html
+[heng_blog]: http://lh3lh3.users.sourceforge.net/mapuniq.shtml
+[vcf]: https://github.com/samtools/bcftools/wiki/HOWTOs
+[vcf2]: https://github.com/ekg/alignment-and-variant-calling-tutorial
