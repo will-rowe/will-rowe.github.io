@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<div id="main">
+<!--- button navigation --->
+    <section align="center">
+        <ul class="actions">
+            <li><a href="javascript:history.back()" class="button" title="Back"><span class="icon fa-arrow-circle-left"></span></a></li>
+            <li><a href="{{ site.url }}" class="button" title="Home"><span class="icon fa-home"></span></a></li>
+            <li><a href="{{ site.url }}#contact-details" class="button" title="Contact"><span class="icon fa-envelope"></span></a></li>
+        </ul>
+        <hr/>
+    </section>
+
+<!--- post --->
+    <article>
+        <header class="major">
+            <h2 class="post-title">Publications</h2>
+                <p class="post-meta">coming soon...</p>
+        </header>
+
+        <section>
+
+          <ul class="posts">
+            {% for post in site.posts %}
+              {% if post.group == 'publication' %}
+              <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+
+
+
+        </section>
+
+    </article>
+
+</div>
