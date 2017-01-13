@@ -1,5 +1,18 @@
-README
+# Website
+This is the repo for [https://will-rowe.github.io](https://will-rowe.github.io)
 
+-----------
+
+
+## Contact
+### [Will Rowe](https://github.com/will-rowe)
+
+* Web: [hintonlab.com](http://www.hintonlab.com)
+* Email: [Will Rowe @ Liverpool](will.rowe@liverpool.ac.uk)
+* Twitter: [@will__rowe](https://twitter.com/will__rowe)
+
+
+## Notes
 
 Based on the Strata theme by HTML5 UP
 html5up.net | @n33co
