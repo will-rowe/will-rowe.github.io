@@ -15,15 +15,15 @@ layout: default
 <!--- post --->
     <article>
         <header class="major">
-            <h2 class="post-title">Materials</h2>
-                <p class="post-meta">Course materials for bioinformatics masters students.</p>
+            <h2 class="post-title">Teaching Materials</h2>
+                <p class="post-meta">Teaching materials for bioinformatics masters students.</p>
         </header>
 
         <section>
 
           <ul class="posts">
             {% for post in site.posts %}
-              {% if post.group == 'materials' %}
+              {% if post.group == 'teaching' %}
               <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
               {% endif %}
             {% endfor %}

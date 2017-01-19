@@ -18,5 +18,12 @@ google_plus_username:
 facebook_username:
 dribbble_username:
 
-# Build settings
+# Markdown settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Slides
+collections:
+  - slides

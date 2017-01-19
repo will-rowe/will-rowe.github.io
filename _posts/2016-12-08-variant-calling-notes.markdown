@@ -4,6 +4,7 @@ title:  "Notes on variant calling"
 author: Will Rowe
 categories: main
 group: bioinformatics
+permalink: /variant-calling-notes/
 ---
 
 This post was written for the weekly IIB microbial bioinformatics lunch and discusses how to *identify reference-relative variants in a microbial genome*.
@@ -48,7 +49,7 @@ The main short read aligners used by the group are [Bowtie2][bowtie2] and [SMALT
 * Align reads, apply a MAPQ filter and then sort and index the bam file
 
 {% highlight ruby %}
-$ bowtie2 -x REFERENCE -1 r1.fastq -2 r2.fastq -U r0.fastq -p 40 | samtools view -q 10 -bS - | samtools sort - -o isolate.outfile.sorted.bam && samtools index isolate.outfile.sorted.bam
+$ bowtie2 -x REFERENCE -1 r1.fastq -2 r2.fastq -U r0.fastq -p 40 | samtools view -@ {} 40 -q 10 -bS - | samtools sort  -@ {} 40 - -o isolate.outfile.sorted.bam && samtools index isolate.outfile.sorted.bam
 {% endhighlight %}
 
 > Side Note:	commands are piped to reduce disk I/O

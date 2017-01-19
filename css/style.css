@@ -128,36 +128,25 @@
 			margin: 3em 0;
 		}
 
+	pre {
+		-webkit-overflow-scrolling: touch;
+		margin: 0 0 2em 0;
+	}
+
+		pre code {
+			word-spacing: 1em;
+			display: block;
+			line-height: 1.75em;
+			padding: 1em 1.5em;
+			overflow-x: auto;
+		}
+
 	blockquote {
 		border-left: solid 6px #efefef;
 		font-style: italic;
 		margin: 0 0 2em 0;
 		padding: 0.5em 0 0.5em 1.5em;
 	}
-
-	code {
-		background: #f7f7f7;
-		border-radius: 0.35em;
-		border: solid 2px #efefef;
-		font-family: "Courier New", monospace;
-		font-size: 0.9em;
-		margin: 0 0.25em;
-		padding: 0.25em 0.65em;
-	}
-
-	pre {
-		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
-		font-size: 0.9em;
-		margin: 0 0 2em 0;
-	}
-
-		pre code {
-			display: block;
-			line-height: 1.75em;
-			padding: 1em 1.5em;
-			overflow-x: auto;
-		}
 
 	.align-left {
 		text-align: left;
@@ -550,6 +539,7 @@
 
 		.image.avatar {
 			border-radius: 100%;
+			border:2px solid #ffffff;
 		}
 
 			.image.avatar:before {
@@ -560,6 +550,11 @@
 				border-radius: 100%;
 				width: 100%;
 			}
+
+			.image.avatar:hover {
+				border:2px solid #ff8533;
+			}
+
 
 /* List */
 
