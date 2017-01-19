@@ -35,7 +35,7 @@ Useful Docker info can be found [here][docker-1] and [here][docker-2].
 
 ## What does all the terminology mean?
 
-container, image, pulling,
+container, image, pulling etc.
 
 ---
 
@@ -83,7 +83,7 @@ This command is doing quite a few things (which we don't need to worry too much 
 
 ## Working inside the container
 
-While inside our container, all files that we make in `/SCRATCH` will be available on the Desktop of our machines under `LIFE708-WORKSHOP`
+While inside our container, all files that we make in **/SCRATCH** will be available on the Desktop of our machines in the **LIFE708-WORKSHOP** directory.
 
 
 ---
@@ -93,14 +93,15 @@ While inside our container, all files that we make in `/SCRATCH` will be availab
 ## Running the workshops at home
 
 
-easiest way if to install Docker if you have Mac / Windows:
+The easiest way if to install Docker if you have Mac / Windows is to download the applications:
 
-https://docs.docker.com/docker-for-mac/
-https://docs.docker.com/docker-for-windows/
+* [docker-mac][for Mac]
+* [docker-windows][for Windows]
 
 
 ---
 
-
 [docker-1]: https://en.wikipedia.org/wiki/Docker_(software)
 [docker-2]: https://www.docker.com/what-docker
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
