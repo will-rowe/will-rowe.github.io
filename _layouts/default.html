@@ -73,11 +73,19 @@
                 </a>
               </li>
               {% endif %}
+
+              {% if site.alternate_site %}
+              <li>
+                <a href="{{ site.alternate_site }}" class="icon fa-globe">
+                  <span class="label">Site</span>
+                </a>
+              </li>
+              {% endif %}
+
             </ul>
             <ul class="copyright">
                 <li>&copy; Will Rowe</li>
                 <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                <li>Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li>
             </ul>
         </footer>
 

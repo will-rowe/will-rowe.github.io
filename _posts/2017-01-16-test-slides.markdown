@@ -4,32 +4,38 @@ title:  "Test slides"
 author: Will Rowe
 description: A test slide deck
 group: presentation
-theme: solarized
-#theme: will
+theme: ember
 transition: slide
-permalink: /test-slides/
+permalink: /test-jan2017/
 ---
+
 
 <section data-markdown data-separator="^\n----\n" data-separator-vertical="^\n---\n">
+#### test talk
 
-## Talk title
+***
 
-test slides
+# Trying out reveal.js
+
+***
+
+Will Rowe
 
 ---
 
-#### Test slide 2
+## About me
 
-some stuff here....
- * list item
+***
+
+ * List
+
+ * Things
 
 
 ----
 
-## Test slide 3
+### Today's talk
 
-A paragraph with some text and a [link](http://hakim.se).
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
 
 </section>

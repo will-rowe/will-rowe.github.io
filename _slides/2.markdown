@@ -1,5 +1,0 @@
----
-title: First Slide
----
-
-## Second slide heading
