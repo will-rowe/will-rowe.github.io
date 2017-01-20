@@ -1,5 +1,5 @@
 @import url(font-awesome.min.css);
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic");
+@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic");
 
 /*
 	Strata by HTML5 UP
@@ -134,7 +134,7 @@
 	}
 
 		pre code {
-			word-spacing: 1em;
+			word-spacing: 4px;
 			display: block;
 			line-height: 1.75em;
 			padding: 1em 1.5em;
@@ -539,7 +539,7 @@
 
 		.image.avatar {
 			border-radius: 100%;
-			border:2px solid #ffffff;
+			border:4px solid #ffffff;
 		}
 
 			.image.avatar:before {
@@ -549,10 +549,11 @@
 			.image.avatar img {
 				border-radius: 100%;
 				width: 100%;
+				border:1px solid #000000;
 			}
 
 			.image.avatar:hover {
-				border:2px solid #ff8533;
+				border:4px solid #ff8533;
 			}
 
 

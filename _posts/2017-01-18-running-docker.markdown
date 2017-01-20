@@ -4,7 +4,7 @@ title:  "Running the LIFE708 Docker container"
 author: Will Rowe
 categories: main
 group: teaching
-permalink: /Docker/
+permalink: /running-Docker/
 ---
 
 This is an *brief* overview of Docker for LIFE708 students. The aim of this page is to:
@@ -35,13 +35,29 @@ Useful Docker info can be found [here][docker-1] and [here][docker-2].
 
 ## What does all the terminology mean?
 
-container, image, pulling etc.
+Docker comes with it's own set of terminology - we'll list a few of these below:
+
+### image
+
+ * Docker images are the basis of containers. An Image is an ordered collection of root filesystem changes and the corresponding execution parameters for use within a container runtime. An image does not have state and it never changes.
+
+### container
+
+ * A container is a runtime instance of a docker image. It consists of: a Docker image, an Execution environment and a standard set of instructions
+
+### Docker Hub
+
+ * The Docker Hub is a centralized resource for working with Docker and its components.
+
+### pulling
+
+ * pulling
 
 ---
 
 # Getting started on the teaching computers
 
-## Pulling the Docker container image
+## Pulling the Docker image
 
 First, we need to pull the life708 container image from the Docker Hub:
 
@@ -55,13 +71,15 @@ Check that you can see the life708 container image:
 docker images
 ```
 
+Your output should look something like this:
+
 
 ## Starting the container
 
 Now we have our container image, we can start the container and enter it:
 
 ```terminal
-docker run -itP -m 2g --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/SCRATCH wpmr/life708:latest
+docker run -itP -m 2g --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
 ```
 
 This command is doing quite a few things (which we don't need to worry too much about now) but we have ended up inside a running container!
@@ -83,7 +101,7 @@ This command is doing quite a few things (which we don't need to worry too much 
 
 ## Working inside the container
 
-While inside our container, all files that we make in **/SCRATCH** will be available on the Desktop of our machines in the **LIFE708-WORKSHOP** directory.
+While inside our container, all files that we make in **/MOUNTED-VOLUME-LIFE708** will be available on the Desktop of our machines in the **LIFE708-WORKSHOP** directory.
 
 
 ---
@@ -95,8 +113,8 @@ While inside our container, all files that we make in **/SCRATCH** will be avail
 
 The easiest way if to install Docker if you have Mac / Windows is to download the applications:
 
-* [docker-mac][for Mac]
-* [docker-windows][for Windows]
+* [for Mac][docker-mac]
+* [for Windows][docker-windows]
 
 
 ---
