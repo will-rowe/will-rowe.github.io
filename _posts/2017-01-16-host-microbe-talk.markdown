@@ -96,7 +96,7 @@ What roles do the environment and human activities have in disseminating ARGs an
 * Command line, web and [BaseSpace](https://basespace.illumina.com/apps/2083081/SEAR-Antibiotic-Resistance) versions
 
 
->ROWE, W., BAKER, K. S., VERNER-JEFFREYS, D. et al. 2015. SEAR: A cloud compatible pipeline for... PLoS One
+>ROWE, W. et al. 2015. SEAR: A cloud compatible pipeline and Web Interface for Rapidly Detecting Antimicrobial Resistance Genes Directly from Sequence Data PLoS One
 {% endcapture %}
 
 {{ markdown-pt1 | markdownify }}
@@ -119,7 +119,7 @@ What roles do the environment and human activities have in disseminating ARGs an
 
  * ARGs are present in human and animal effluents
 
-> ROWE, W., VERNER-JEFFREYS, D., BAKER-AUSTIN, C. et al. 2016. Comparative metagenomics reveals... WaterSciTech
+> ROWE, W. et al. 2016. Comparative metagenomics reveals a diverse range of antimicrobial resistance genes in effluents entering a river catchment. WaterSciTech
 
 ---
 
@@ -138,15 +138,15 @@ Are we having an impact?
 
  * Over-expression of *blaOXA* and *blaGES* in hospital effluents
 
-> ROWE, W., VERNER-JEFFREYS, D., BAKER-AUSTIN, C. et al. In press. Over expression of... Journal Antimic. Chem.
-
----
-
-![jac-study-fig-1](/publications/slide-data/host-microbe-talk-jan2017/jac-1.png)
+> ROWE, W. et al. 2017 In press. Over-expression of antibiotic resistance genes in hospital effluents over time. Journal Antimic. Chem.
 
 ---
 
 ![jac-study-fig-3](/publications/slide-data/host-microbe-talk-jan2017/jac-3.png)
+
+---
+
+![jac-study-fig-1](/publications/slide-data/host-microbe-talk-jan2017/jac-1.png)
 
 ---
 
@@ -176,11 +176,11 @@ Sampling the river catchment, hospital and farm effluents and then enriching for
 
 ***
 
-Comparing global and African sequence types of Salmonella *typhimurium* using RNA-seq and infection relevant conditions
+Comparing global and African sequence types of Salmonella *typhimurium* using RNA-seq and infection-relevant conditions
 
 </section>
 <section>
-<iframe data-src="http://hinton-analysis.s3-website-eu-west-1.amazonaws.com/projects/rocio-07.10.2016/RNAseq-analysis.html" width="1200" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+<iframe data-src="//hinton-analysis.s3-website-eu-west-1.amazonaws.com/projects/rocio-07.10.2016/RNAseq-analysis.html" width="1200" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 </section>
 
 
@@ -218,7 +218,7 @@ Comparing global and African sequence types of Salmonella *typhimurium* using RN
 {% capture markdown %}
 Troubleshooting / learn to code / discussion / have lunch
 
-[will-rowe.github.io](https://will-rowe.github.io) / [MICROBIOINFO@liverpool.ac.uk](MICROBIOINFO@liverpool.ac.uk)
+[will-rowe.github.io](https://will-rowe.github.io) ||||| [MICROBIOINFO@liverpool.ac.uk](MICROBIOINFO@liverpool.ac.uk)
 {% endcapture %}
 
 <iframe data-src="https://will-rowe.github.io/bioinformatics/" width="1000" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
