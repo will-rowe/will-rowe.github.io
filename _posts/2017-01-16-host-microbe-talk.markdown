@@ -189,13 +189,7 @@ Comparing global and African sequence types of Salmonella *typhimurium* using RN
 
 <section>
 <section>
-<img data-src="/publications/slide-data/host-microbe-talk-jan2017/pipl.png">
-</section>
-<section>
-<iframe data-src="//hinton-analysis.s3-website-eu-west-1.amazonaws.com/projects/rocio-07.10.2016/data/degust/rocio-degust.html" width="1200" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-</section>
-<section>
-<img data-src="/publications/slide-data/host-microbe-talk-jan2017/jb-shot.png">
+<p>slides removed</p>
 </section>
 
 <section data-markdown>

@@ -25,7 +25,7 @@ Useful UNIX cheatsheets can be found [here][cheats-1] and [here][cheats-2].
 
 ### Find / Grep / Awk
 
-recursively find files with an extension, then print file list to file
+recursively find files with an extension, then print file list to file (use abs. path in find term to get abs. path in output)
 
 ```terminal
 find ./ -type f -name "*.bam" -printf "%f\n" > all_bam_files.txt
