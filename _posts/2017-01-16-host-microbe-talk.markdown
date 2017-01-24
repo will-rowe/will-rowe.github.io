@@ -67,9 +67,9 @@ Will Rowe
 
 ***
 
-Antibiotic resistance is a major public health issue
+ Antibiotic resistance is a major public health issue
 
-Acquisition of Antibiotic Resistance Genes (ARGs) by pathogens has serious implications for treatment and prevention of bacterial infections
+ Acquisition of Antibiotic Resistance Genes (ARGs) by pathogens has serious implications for treatment and prevention of bacterial infections
 
 ---
 
@@ -84,6 +84,7 @@ What roles do the environment and human activities have in disseminating ARGs an
 
 [//]: # (AMR and the environment - SEAR)
 <section>
+<section>
 {% capture markdown-pt1 %}
 ## Search Engine for Antimicrobial Resistance (SEAR)
 
@@ -95,7 +96,6 @@ What roles do the environment and human activities have in disseminating ARGs an
 
 * Command line, web and [BaseSpace](https://basespace.illumina.com/apps/2083081/SEAR-Antibiotic-Resistance) versions
 
-
 >ROWE, W. et al. 2015. SEAR: A cloud compatible pipeline and Web Interface for Rapidly Detecting Antimicrobial Resistance Genes Directly from Sequence Data PLoS One
 {% endcapture %}
 
@@ -104,9 +104,10 @@ What roles do the environment and human activities have in disseminating ARGs an
 {{ markdown-pt2 | markdownify }}
 </section>
 
-
-[//]: # (AMR and the environment - SEAR 2)
-<section data-background-video="/publications/slide-data/host-microbe-talk-jan2017/sear.mp4" data-background-video-loop data-background-video-muted data-background-color="#000"></section>
+<section>
+<img data-src="/publications/slide-data/host-microbe-talk-jan2017/sear.jpg">
+</section>
+</section>
 
 
 [//]: # (AMR and the environment - WST)
@@ -146,13 +147,13 @@ Are we having an impact?
 
 ---
 
-![jac-study-fig-1](/publications/slide-data/host-microbe-talk-jan2017/jac-1.png)
-
----
-
 Are pathogens using these ARGs?
 
 (How) are they persisting?
+
+---
+
+![jac-study-fig-1](/publications/slide-data/host-microbe-talk-jan2017/jac-1.png)
 
 ----
 
@@ -166,7 +167,13 @@ Sampling the river catchment, hospital and farm effluents and then enriching for
 </section>
 
 <section>
+<section>
 <img src="/publications/slide-data/host-microbe-talk-jan2017/tree-1.png" alt="Drawing" style="width: 500px;"/>
+</section>
+<section>
+<p><strong>ARGs are abundant in effluents, they can be over-expressed and also contained within stable endospores</strong></p>
+<p>What impact are these effluents having on the wider environment?</p>
+</section>
 </section>
 
 
@@ -179,8 +186,27 @@ Sampling the river catchment, hospital and farm effluents and then enriching for
 Comparing global and African sequence types of Salmonella *typhimurium* using RNA-seq and infection-relevant conditions
 
 </section>
+
 <section>
-<iframe data-src="//hinton-analysis.s3-website-eu-west-1.amazonaws.com/projects/rocio-07.10.2016/RNAseq-analysis.html" width="1200" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+<section>
+<img data-src="/publications/slide-data/host-microbe-talk-jan2017/pipl.png">
+</section>
+<section>
+<iframe data-src="//hinton-analysis.s3-website-eu-west-1.amazonaws.com/projects/rocio-07.10.2016/data/degust/rocio-degust.html" width="1200" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+</section>
+<section>
+<img data-src="/publications/slide-data/host-microbe-talk-jan2017/jb-shot.png">
+</section>
+
+<section data-markdown>
+![website-image](https://camo.githubusercontent.com/a2a9a06c1f18cbb4834aa287834c5f85a4384c76/68747470733a2f2f73332d65752d776573742d312e616d617a6f6e6177732e636f6d2f68696e746f6e2d6c61622f7374617469632f696d672f6d6973632f68696e746f6e6c61622d73637265656e73686f742e706e67 "website shot")
+
+New Hinton Lab website
+
+[www.hintonlab.com](http://www.hintonlab.com)
+
+</section>
+
 </section>
 
 
@@ -218,19 +244,9 @@ Comparing global and African sequence types of Salmonella *typhimurium* using RN
 {% capture markdown %}
 Troubleshooting / learn to code / discussion / have lunch
 
-[will-rowe.github.io](https://will-rowe.github.io) ||||| [MICROBIOINFO@liverpool.ac.uk](MICROBIOINFO@liverpool.ac.uk)
+site: [will-rowe.github.io](https://will-rowe.github.io) || mailing list: [MICROBIOINFO@liverpool.ac.uk](MICROBIOINFO@liverpool.ac.uk)
 {% endcapture %}
 
 <iframe data-src="https://will-rowe.github.io/bioinformatics/" width="1000" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:2px solid #000; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 {{ markdown | markdownify }}
-</section>
-
-
-<section data-markdown>
-![website-image](https://camo.githubusercontent.com/a2a9a06c1f18cbb4834aa287834c5f85a4384c76/68747470733a2f2f73332d65752d776573742d312e616d617a6f6e6177732e636f6d2f68696e746f6e2d6c61622f7374617469632f696d672f6d6973632f68696e746f6e6c61622d73637265656e73686f742e706e67 "website shot")
-
-New Hinton Lab website
-
-[www.hintonlab.com](http://www.hintonlab.com)
-
 </section>
