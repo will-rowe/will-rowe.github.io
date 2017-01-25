@@ -12,11 +12,11 @@ permalink: /host-microbe-talk-jan2017/
 
 [//]: # (First group of slides - talk title, about me and overview of talk)
 <section data-markdown data-separator="^\n----\n" data-separator-vertical="^\n---\n">
-#### Host-microbe theme talk
+#### Internal seminar series
 
 ***
 
-# From 'poo' scientist to bioinformatician
+# Host-microbe theme talk 2017
 
 ***
 
@@ -56,9 +56,9 @@ Will Rowe
 
 
 [//]: # (Second group of slides - Cam pics)
-<section data-background="/publications/slide-data/host-microbe-talk-jan2017/cam.jpg"></section>
+<section data-background="/slides/slide-data/host-microbe-talk-jan2017/cam.jpg"></section>
 <section data-background="http://exoplanets.phy.cam.ac.uk/Meetings/UKCambridgeRiverCamBanner.jpg"></section>
-<section data-background-video="/publications/slide-data/host-microbe-talk-jan2017/sewer.mp4" data-background-video-loop data-background-video-muted data-background-color="#000"></section>
+<section data-background-video="/slides/slide-data/host-microbe-talk-jan2017/sewer.mp4" data-background-video-loop data-background-video-muted data-background-color="#000"></section>
 
 
 [//]: # (AMR and the environment - intro)
@@ -79,7 +79,7 @@ What roles do the environment and human activities have in disseminating ARGs an
 
 
 [//]: # (AMR and the environment - approach)
-<section data-background="/publications/slide-data/host-microbe-talk-jan2017/exap.svg"></section>
+<section data-background="/slides/slide-data/host-microbe-talk-jan2017/exap.svg"></section>
 
 
 [//]: # (AMR and the environment - SEAR)
@@ -105,7 +105,7 @@ What roles do the environment and human activities have in disseminating ARGs an
 </section>
 
 <section>
-<img data-src="/publications/slide-data/host-microbe-talk-jan2017/sear.jpg">
+<img data-src="/slides/slide-data/host-microbe-talk-jan2017/sear.jpg">
 </section>
 </section>
 
@@ -135,7 +135,7 @@ Are we having an impact?
 
 ***
 
-![jac-study-fig-2](/publications/slide-data/host-microbe-talk-jan2017/jac-2.png)
+![jac-study-fig-2](/slides/slide-data/host-microbe-talk-jan2017/jac-2.png)
 
  * Over-expression of *blaOXA* and *blaGES* in hospital effluents
 
@@ -143,7 +143,7 @@ Are we having an impact?
 
 ---
 
-![jac-study-fig-3](/publications/slide-data/host-microbe-talk-jan2017/jac-3.png)
+![jac-study-fig-3](/slides/slide-data/host-microbe-talk-jan2017/jac-3.png)
 
 ---
 
@@ -153,7 +153,7 @@ Are pathogens using these ARGs?
 
 ---
 
-![jac-study-fig-1](/publications/slide-data/host-microbe-talk-jan2017/jac-1.png)
+![jac-study-fig-1](/slides/slide-data/host-microbe-talk-jan2017/jac-1.png)
 
 ----
 
@@ -168,7 +168,7 @@ Sampling the river catchment, hospital and farm effluents and then enriching for
 
 <section>
 <section>
-<img src="/publications/slide-data/host-microbe-talk-jan2017/tree-1.png" alt="Drawing" style="width: 500px;"/>
+<img src="/slides/slide-data/host-microbe-talk-jan2017/tree-1.png" alt="Drawing" style="width: 500px;"/>
 </section>
 <section>
 <p><strong>ARGs are abundant in effluents, they can be over-expressed and also contained within stable endospores</strong></p>

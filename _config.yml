@@ -22,5 +22,6 @@ kramdown:
   syntax_highlighter: rouge
 
 # Slides
+include: ['_slides']
 collections:
   - slides
