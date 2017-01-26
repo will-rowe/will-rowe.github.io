@@ -16,14 +16,11 @@ layout: default
     <article>
         <header class="major">
             <h2 class="post-title">Publications</h2>
-                <p class="post-meta">coming soon...</p>
         </header>
         <section>
           <ul class="posts">
-            {% for post in site.posts %}
-              {% if post.group == 'publication' %}
-              <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-              {% endif %}
+            {% for post in site.categories.publications %}
+              <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
             {% endfor %}
           </ul>
         </section>

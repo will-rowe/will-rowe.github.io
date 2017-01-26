@@ -2,8 +2,6 @@
 layout: post
 title:  "Notes on variant calling"
 author: Will Rowe
-categories: main
-group: bioinformatics
 permalink: /variant-calling-notes/
 ---
 

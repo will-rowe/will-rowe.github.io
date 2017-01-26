@@ -2,8 +2,6 @@
 layout: post
 title:  "Bioinformatics snippets"
 author: Will Rowe
-categories: main
-group: bioinformatics
 permalink: /bioinformatics-snippets/
 ---
 

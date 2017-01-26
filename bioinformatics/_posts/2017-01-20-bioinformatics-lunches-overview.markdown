@@ -2,8 +2,6 @@
 layout: post
 title:  "Bioinformatics lunches - overview"
 author: Will Rowe
-categories: main
-group: bioinformatics
 permalink: /calendar-for-bioinformatics-lunches/
 ---
 
