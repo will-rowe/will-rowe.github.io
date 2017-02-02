@@ -71,8 +71,8 @@ In terms of reproducibility and assessing the quality of an RNA-seq experiment, 
 
 # Quantifying transcripts
 
-
-In various stages of the processing of an NGS dataset it can be useful to filter the data to remove poor quality reads.  At an early stage this could be reads with poor quality base calls, but after aligning to a reference genome you may want to filter out alignments which show a poor match to the reference, or which could have aligned to a number of different places in the genome. These ambiguously aligned reads can add a lot of noise to an analysis and will tend to accumulate over repetitive regions.  In the example below you can see the comparison of the reads from a standard bowtie2 aligning of a genomic dataset, and the result of applying a MAPQ filter to the data.  The peaks over repetitive elements are largely suppressed in the filtered data.
+Throughout the analysis of sequencing data, it is often useful to filter the data and remove low quality reads. This could begin with removing reads with low-quality base calls etc. and then, once we have aligned the reads to a reference, we can filter out low-quality alignments etc. that could be adding noise to an analysis.
+...
 
 ---
 
