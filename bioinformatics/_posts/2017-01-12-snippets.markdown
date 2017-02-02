@@ -65,6 +65,11 @@ extract subset from fasta file (using headers.txt file)
 awk 'BEGIN{while((getline<"headers.txt")>0)l[">"$1]=1}/^>/{f=l[$1]?1:0}f' input.fasta > subset.fasta
 ```
 
+remove duplicates in file
+
+```terminal
+awk '!seen[$0]++' filename
+```
 
 ### Loops
 
@@ -262,10 +267,22 @@ use vim to delete all lines under selected line (command used in vim)
 :+,$d
 ```
 
+use vim to delete everything from current line to top of file
+
+```terminal
+dgg
+```
+
 use cut to remove a column from a file (using tab as delimiter)
 
 ```terminal
 cut -d$'\t' -f1-2,4- annotation.gff > annotation.edit.gff
+```
+
+find differences between two sorted files
+
+```terminal
+comm -3 acc.sorted down.sorted
 ```
 
 ----

@@ -28,7 +28,7 @@ At the moment we are alternating each week between learning Python and giving ta
 |----------+----------------------+-------------|
 | 08.12.2016 | [Notes on variant calling]({{ site.url }}/variant-calling-notes) | Will |
 | 12.01.2017 | [Tips + Snippets for using UNIX servers]({{ site.url }}/bioinformatics-snippets)  | Will |
-| 26.01.2017 | Python for biologists and bioinformaticians - introduction | Will |
+| 26.01.2017 | [Python for biologists and bioinformaticians - introduction]({{site.url}}/learning-python-week1) | Will |
 | 02.02.2017 | Quality control / assessment of sequencing data | Will |
 | 09.02.2017 | Python for biologists and bioinformaticians - week 2 | Will |
 | 16.02.2017 | Introduction to phylogenetics | Kate |
