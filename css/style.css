@@ -26,7 +26,7 @@
 		}
 
 	body, input, select, textarea {
-		color: #a2a2a2;
+		color: #292f33;
 		font-family: 'Ubuntu', sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -39,8 +39,8 @@
 		-o-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-		/* border-bottom: dotted 1px; */
-		color: #004d99;
+		border-bottom: dotted 1px;
+		color: #009F93;
 		text-decoration: none;
 	}
 
@@ -51,8 +51,8 @@
 		}
 
 	strong, b {
-		color: #787878;
-		font-weight: 400;
+		color: #004d99;
+		font-weight: bold;
 	}
 
 	em, i {
@@ -170,7 +170,7 @@
 	}
 
 	header p {
-		color: #b2b2b2;
+		color: #292f33;
 		position: relative;
 		margin: 0 0 1.5em 0;
 	}
@@ -247,7 +247,7 @@
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #004d99;
+			border-color: #009F93;
 		}
 
 	.select-wrapper {
@@ -358,7 +358,7 @@
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #004d99;
+			border-color: #009F93;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -817,8 +817,8 @@
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		.button:hover {
-			border-color: #004d99;
-			color: #004d99 !important;
+			border-color: #009F93;
+			color: #009F93 !important;
 		}
 
 		input[type="submit"]:active,
@@ -826,8 +826,8 @@
 		input[type="button"]:active,
 		.button:active {
 			background-color: rgba(73, 191, 157, 0.1);
-			border-color: #004d99;
-			color: #004d99 !important;
+			border-color: #009F93;
+			color: #009F93 !important;
 		}
 
 		input[type="submit"].icon,
@@ -872,8 +872,8 @@
 		input[type="reset"].special,
 		input[type="button"].special,
 		.button.special {
-			background-color: #004d99;
-			border-color: #004d99;
+			background-color: #009F93;
+			border-color: #009F93;
 			color: #ffffff !important;
 		}
 
@@ -931,11 +931,11 @@
 
 	#header {
 		background-color: #1f1815;
-		background-attachment: scroll,								fixed;
+		background-attachment: scroll, fixed;
 		background-image: url("images/overlay.png"), url("../images/bg-will.jpg");
-		background-position: top left,							top left;
-		background-repeat: repeat,								no-repeat;
-		background-size: auto,								auto 100%;
+		background-position: top left, top left;
+		background-repeat: repeat, no-repeat;
+		background-size: auto, auto 100%;
 		color: rgba(255, 255, 255, 0.5);
 		height: 100%;
 		left: 0;

@@ -5,9 +5,9 @@ author: Will Rowe
 permalink: /bioinformatics-snippets/
 ---
 
-This page covers some useful code snippets that I regularly use, as well as listing good resources for learning more about UNIX. In most cases, I've used actual file names and commands rather than pseudocode.
+This page covers some useful code snippets that I regularly use, as well as listing good resources for learning more about UNIX.
 
-*-- this page is constantly being updated as I find new / better ways of doing things --*
+*-- this page was written for the bioinformatics lunch so we could walk through some server tips. The content is constantly being updated as I find new / better ways of doing things --*
 
 ---
 
@@ -85,10 +85,18 @@ for i in ./seqdata/files*_1.fastq.gz
 ```
 
 > Side note: to build tree using core SNPs from above:
-```terminal
+
+
 snippy-core --prefix core mysnps*
 FastTree -gtr -nt core.aln > tree
-```
+
+
+> Side note: use parallel to run Snippy:
+
+
+ls ../00_RAW_DATA/ERR-files/*.gz | parallel -j 20% "snippy --cpus 4 --outdir ./snippy/{/.}-results --ref ../01_REFS/D23580.chromosome.fasta --se {}"
+
+
 
 binning multiple flow cell runs into individual sample directories
 
