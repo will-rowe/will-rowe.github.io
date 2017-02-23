@@ -418,13 +418,10 @@ TCAATGCATGCGGGTCTATATGCAT
 
 fasta = ">Rosalind_24\nTCAATGCATGCGGGTCTATATGCATA\n"
 
-fasta = ">Rosalind_3499\nATATCAGTTAGTTTGATCGTTCTTAACGAGTTAGTAATTCGACGACTGTGCATGGACCAGCTACGGCACACACTCTCTCAAGGGCGACAGTGTGGTTTCATCAGGAGCTCACGTATATGCAACAGCGGCAAAGCCATATTACGGGGTAGTTAGTGTCGTCGGTTATATAGAATTCAAAACGTGTGTAGTCACATATGGGTCAACACAACGGTTGCTTTGCTAGCAACTACGCTCGACGGCGTCGGTTACGGGAATACGACGTAAGATTTGGGTCTTCAGCGGCAGCTCTACTCCACTGTTTCCCCCTACCACGGATTTGGTGGTGGCGTTGCAACATCTGATAACCAGCCCAATTCGCCAATCAGTCTAGATATGCCGAGGCTAACCAGGGCTCAAACTGGGGGTTTATGCAGGTTATAAAGGGGCATATCGCACACATCATGTAGCCCCAATTCCCGAAGAAGGCTAGTTAACGGCAAAACCATGACTTGTACAAGTGGAGTCAGTTGAAGCCAGCTACGCGTTTACTCTGCCAGTACTGTCACGCCGGTCCATGTAAGAGGCTCATTAAATTTTCTCCTGGAGCGTCAGTATCGCTTCCGAGGCGTAATACCAGCTGTATCGCGGCTCAAGTAGCGACTGTTACCTCAATGTGCTAGGAAATCATCCTTTGCCAAGGACTATAAGAGGGGCGTTAGGGCACAATCCTAGTGGACTGACGGGAAACTGAGATCACGGCGCACATTAACGGTGCTCAAAACGTAGAAACAAGGTGTTCGTTTACATGTTGCGAAAGTTGTCGCGACTTAACTAGAGTTGGTGAGAGACGATAGACAGGACAGAACATGTAGCAAGCCGGTTACCACACAAGTATCGTCCATCTTCTTGTTAACTTCGTCGTTATACGGCGGTTATCTCTCACCTGTCGCCAACCGCGATTGGTGCCAAACCTCAAGAGGTCCCTTACGAAATCCGAAAGGATAT"
-
 # define a reverse complement function
 def reverseComplement(sequence):
   reverse_comp = sequence.replace("A", "t").replace("T", "a").replace("C", "g").replace("G", "c").upper()[::-1]
   return reverse_comp
-
 
 # get just the sequence from the fasta string
 sequence = ""
@@ -432,28 +429,17 @@ for line in fasta.split("\n"):
   if line.startswith(">") != True:
     sequence += line
 
-# starting at position 0 of the sequence, test for palindromes of 4 bases
-# increment through to 12 palindromic bases
-# once exhausting 4-12, increment one position through the sequence
-for i in xrange(0, len(sequence)):
-  # decrease palindrome length and move on when one is found
-  for palindrome_len in reversed(xrange(4, 13)):
-    if palindrome_len <= len(sequence[i:i+palindrome_len]):
-      if sequence[i:i+palindrome_len] == reverseComplement(sequence[i:i+palindrome_len]) and (i+1 + len(sequence[i:i+palindrome_len]) <= len(sequence)):
-        print( "{} {}" .format(i+1, len(sequence[i:i+palindrome_len])) )
-
-
+# loop through the palindrome sizes. for each loop iteration, loop through the sequence
+for length in range(4,13):
+  for index in range(len(sequence)-length+1):
+    # for each loop, take a slice of the sequence (size = palindrome) and compare it to its reverse complement
+    if sequence[index:index+length] == reverseComplement(sequence[index:index+length]):
+      print( "{} {}" .format(index+1, length))
 ```
 
 ----
 
 </section>
-
-
-
-
-
-
 
 
 
