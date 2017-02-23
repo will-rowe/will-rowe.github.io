@@ -371,7 +371,7 @@ print( " ".join(start_pos))
 # allowing us to move along ss by index position
 ###
 start_pos = []
-for i in xrange(0, len(ss)-1):
+for i in xrange(0, len(ss)):
   if (ss[i:i+len(tt)] == tt):
     start_pos.append(str(i+1))
 
@@ -416,8 +416,9 @@ TCAATGCATGCGGGTCTATATGCAT
 ```python
 #!/usr/bin/env python
 
-fasta = ">Rosalind_24\nTCAATGCATGCGGGTCTATATGCAT\n"
+fasta = ">Rosalind_24\nTCAATGCATGCGGGTCTATATGCATA\n"
 
+fasta = ">Rosalind_3499\nATATCAGTTAGTTTGATCGTTCTTAACGAGTTAGTAATTCGACGACTGTGCATGGACCAGCTACGGCACACACTCTCTCAAGGGCGACAGTGTGGTTTCATCAGGAGCTCACGTATATGCAACAGCGGCAAAGCCATATTACGGGGTAGTTAGTGTCGTCGGTTATATAGAATTCAAAACGTGTGTAGTCACATATGGGTCAACACAACGGTTGCTTTGCTAGCAACTACGCTCGACGGCGTCGGTTACGGGAATACGACGTAAGATTTGGGTCTTCAGCGGCAGCTCTACTCCACTGTTTCCCCCTACCACGGATTTGGTGGTGGCGTTGCAACATCTGATAACCAGCCCAATTCGCCAATCAGTCTAGATATGCCGAGGCTAACCAGGGCTCAAACTGGGGGTTTATGCAGGTTATAAAGGGGCATATCGCACACATCATGTAGCCCCAATTCCCGAAGAAGGCTAGTTAACGGCAAAACCATGACTTGTACAAGTGGAGTCAGTTGAAGCCAGCTACGCGTTTACTCTGCCAGTACTGTCACGCCGGTCCATGTAAGAGGCTCATTAAATTTTCTCCTGGAGCGTCAGTATCGCTTCCGAGGCGTAATACCAGCTGTATCGCGGCTCAAGTAGCGACTGTTACCTCAATGTGCTAGGAAATCATCCTTTGCCAAGGACTATAAGAGGGGCGTTAGGGCACAATCCTAGTGGACTGACGGGAAACTGAGATCACGGCGCACATTAACGGTGCTCAAAACGTAGAAACAAGGTGTTCGTTTACATGTTGCGAAAGTTGTCGCGACTTAACTAGAGTTGGTGAGAGACGATAGACAGGACAGAACATGTAGCAAGCCGGTTACCACACAAGTATCGTCCATCTTCTTGTTAACTTCGTCGTTATACGGCGGTTATCTCTCACCTGTCGCCAACCGCGATTGGTGCCAAACCTCAAGAGGTCCCTTACGAAATCCGAAAGGATAT"
 
 # define a reverse complement function
 def reverseComplement(sequence):
@@ -434,16 +435,12 @@ for line in fasta.split("\n"):
 # starting at position 0 of the sequence, test for palindromes of 4 bases
 # increment through to 12 palindromic bases
 # once exhausting 4-12, increment one position through the sequence
-for i in xrange(0, len(sequence)-1):
+for i in xrange(0, len(sequence)):
   # decrease palindrome length and move on when one is found
   for palindrome_len in reversed(xrange(4, 13)):
-    if palindrome_len > len(sequence[i:]):
-      continue
-    if sequence[i:palindrome_len] == reverseComplement(sequence[i:palindrome_len]):
-      print( "{} {}" .format(i+1, len(sequence[i:palindrome_len])) )
-      print("\n\n")
-      break
-
+    if palindrome_len <= len(sequence[i:i+palindrome_len]):
+      if sequence[i:i+palindrome_len] == reverseComplement(sequence[i:i+palindrome_len]) and (i+1 + len(sequence[i:i+palindrome_len]) <= len(sequence)):
+        print( "{} {}" .format(i+1, len(sequence[i:i+palindrome_len])) )
 
 
 ```
@@ -451,6 +448,13 @@ for i in xrange(0, len(sequence)-1):
 ----
 
 </section>
+
+
+
+
+
+
+
 
 
 
