@@ -14,9 +14,8 @@ body {
 
 .reveal {
   font-family: "Open Sans", sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 300;
-  letter-spacing: -0.02em;
   color: black; }
 
 ::selection {
@@ -155,7 +154,7 @@ body {
  *********************************************/
 .reveal p {
   margin: 20px 0;
-  line-height: 1.3; }
+  line-height: 1.4; }
 
 /* Ensure certain elements are never larger than the slide itself */
 .reveal img,
@@ -185,7 +184,9 @@ body {
   list-style-type: disc; }
 
 .reveal ul ul {
-  list-style-type: square; }
+  list-style-type: disc;
+  font-size: 0.6em;
+  line-height: 1.4em; }
 
 .reveal ul ul ul {
   list-style-type: circle; }
@@ -251,7 +252,7 @@ body {
   margin: auto;
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: 0.6em; }
+  font-size: 0.8em; }
 
 .reveal table th {
   font-weight: bold; }
@@ -259,7 +260,7 @@ body {
 .reveal table th,
 .reveal table td {
   text-align: left;
-  padding: 0.2em 0.5em 0.2em 0.5em; }
+  padding: 0.4em 0.5em 0.4em 0.5em; }
 
 .reveal table th[align="center"],
 .reveal table td[align="center"] {
@@ -281,7 +282,7 @@ body {
 
 .reveal small {
   display: inline-block;
-  font-size: 0.6em;
+  font-size: 0.4em;
   line-height: 1.2em;
   vertical-align: top; }
 

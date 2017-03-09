@@ -1,10 +1,6 @@
 /* global module:false */
 module.exports = function(grunt) {
 	var port = grunt.option('port') || 8000;
-	var root = grunt.option('root') || '.';
-
-	if (!Array.isArray(root)) root = [root];
-
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -15,7 +11,7 @@ module.exports = function(grunt) {
 				' * http://lab.hakim.se/reveal-js\n' +
 				' * MIT licensed\n' +
 				' *\n' +
-				' * Copyright (C) 2016 Hakim El Hattab, http://hakim.se\n' +
+				' * Copyright (C) 2015 Hakim El Hattab, http://hakim.se\n' +
 				' */'
 		},
 
@@ -40,15 +36,19 @@ module.exports = function(grunt) {
 				}
 			},
 			themes: {
-				files: [
-					{
-						expand: true,
-						cwd: 'css/theme/source',
-						src: ['*.scss'],
-						dest: 'css/theme',
-						ext: '.css'
-					}
-				]
+				files: {
+					'css/theme/black.css': 'css/theme/source/black.scss',
+					'css/theme/white.css': 'css/theme/source/white.scss',
+					'css/theme/league.css': 'css/theme/source/league.scss',
+					'css/theme/beige.css': 'css/theme/source/beige.scss',
+					'css/theme/night.css': 'css/theme/source/night.scss',
+					'css/theme/serif.css': 'css/theme/source/serif.scss',
+					'css/theme/simple.css': 'css/theme/source/simple.scss',
+					'css/theme/sky.css': 'css/theme/source/sky.scss',
+					'css/theme/moon.css': 'css/theme/source/moon.scss',
+					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
+					'css/theme/blood.css': 'css/theme/source/blood.scss'
+				}
 			}
 		},
 
@@ -71,7 +71,6 @@ module.exports = function(grunt) {
 				curly: false,
 				eqeqeq: true,
 				immed: true,
-				esnext: true,
 				latedef: true,
 				newcap: true,
 				noarg: true,
@@ -96,12 +95,11 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: port,
-					base: root,
-					livereload: true,
-					open: true
+					base: '.',
+                    livereload: true,
+                    open: true
 				}
-			},
-
+			}
 		},
 
 		zip: {
@@ -111,12 +109,14 @@ module.exports = function(grunt) {
 				'js/**',
 				'lib/**',
 				'images/**',
-				'plugin/**',
-				'**.md'
+				'plugin/**'
 			]
 		},
 
 		watch: {
+            options: {
+                livereload: true
+            },
 			js: {
 				files: [ 'Gruntfile.js', 'js/reveal.js' ],
 				tasks: 'js'
@@ -129,21 +129,9 @@ module.exports = function(grunt) {
 				files: [ 'css/reveal.scss' ],
 				tasks: 'css-core'
 			},
-			html: {
-				files: root.map(path => path + '/*.html')
-			},
-			markdown: {
-				files: root.map(path => path + '/*.md')
-			},
-			options: {
-				livereload: true
-			}
-		},
-
-		retire: {
-			js: ['js/reveal.js', 'lib/js/*.js', 'plugin/**/*.js'],
-			node: ['.'],
-			options: {}
+            html: {
+                files: [ 'index.html']
+            }
 		}
 
 	});
@@ -158,7 +146,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
-	grunt.loadNpmTasks( 'grunt-retire' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );

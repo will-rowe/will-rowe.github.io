@@ -17,9 +17,7 @@ dribbble_username:
 
 # Markdown settings
 markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+highlighter: rouge
 
 # Slides
 include: ['_slides']

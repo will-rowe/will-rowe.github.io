@@ -7,6 +7,9 @@
 */
 
 /* Basic */
+	html {
+		visibility:hidden;
+	}
 
 	body {
 		background: #ffffff;
