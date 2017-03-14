@@ -26,16 +26,16 @@ At the moment we are alternating each week between learning Python and giving ta
 |----------+----------------------+-------------|
 | **Date** | **What's Happening** | **Speaker** |
 |----------+----------------------+-------------|
-| 08.12.2016 | [Notes on variant calling]({{ site.url }}/variant-calling-notes) | Will |
-| 12.01.2017 | [Tips + Snippets for using UNIX servers]({{ site.url }}/bioinformatics-snippets)  | Will |
+| 08.12.2016 | [Notes on variant calling]({{site.url}}/variant-calling-notes) | Will |
+| 12.01.2017 | [Tips + Snippets for using UNIX servers]({{site.url}}/bioinformatics-snippets)  | Will |
 | 26.01.2017 | [Python for biologists and bioinformaticians - introduction]({{site.url}}/learning-python-week1) | Will |
-| 02.02.2017 | Quality control / assessment of sequencing data | Will |
-| 09.02.2017 | Python for biologists and bioinformaticians - week 2 | Will |
+| 02.02.2017 | [Quality control / assessment of sequencing data](({{site.url}}/notes-on-QC)) | Will |
+| 09.02.2017 | [Python for biologists and bioinformaticians - week 2]({{site.url}}/learning-python-week2) | Will |
 | 16.02.2017 | Introduction to phylogenetics | Kate |
-| 23.02.2017 | Python for biologists and bioinformaticians - week 3 | Will |
-| 02.03.2017 | A guide for assembling microbial genomes | Will |
-| 09.03.2017 | Python for biologists and bioinformaticians - week 4 | Will |
-| 16.03.2017 | Overview of 16S sequencing | Jen |
-| 23.03.2017 | Python for biologists and bioinformaticians - week 5 | Will |
-| 30.03.2017 | An RNA-seq workflow | Will |
+| 23.02.2017 | [Python for biologists and bioinformaticians - week 3]({{site.url}}/learning-python-week3) | Will |
+| 16.03.2017 | Python for biologists and bioinformaticians - week 4 | Will |
+| 23.03.2017 | A guide for assembling microbial genomes | Will |
+| 30.03.2017 | Python for biologists and bioinformaticians - week 5 | Will |
+| 06.04.2017 | An RNA-seq workflow | Will |
+| 13.04.2017 | Overview of 16S sequencing | Jen |
 |----------+----------------------+-------------|
