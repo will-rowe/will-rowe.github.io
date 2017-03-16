@@ -46,9 +46,9 @@ The main short read aligners used by the group are [Bowtie2][bowtie2] and [SMALT
 
 * Align reads, apply a MAPQ filter and then sort and index the bam file
 
-{% highlight ruby %}
+```
 $ bowtie2 -x REFERENCE -1 r1.fastq -2 r2.fastq -U r0.fastq -p 40 | samtools view -@ 40 -q 10 -bS - | samtools sort  -@ 40 - -o isolate.outfile.sorted.bam && samtools index isolate.outfile.sorted.bam
-{% endhighlight %}
+```
 
 > Side Note:	commands are piped to reduce disk I/O
 
@@ -64,22 +64,22 @@ We already applied a quality filter in the previous step (the MAPQ score) but th
 
 * If duplicates are present (e.g. if PCR was used in library prep), remove them using Samtools. Duplicates will bias variant calls or propogate PCR errors (false positives).
 
-{% highlight ruby %}
+```
 $ samtools rmdup isolate.outfile.sorted.bam isolate.rmdup.bam
 $ samtools index isolate.rmdup.bam
-{% endhighlight %}
+```
 
 * Check the number of aligned reads and the genome coverage of the alignment using bedtools/R or visualise with Artemis etc. to see if we have any suspect regions in our sample (was an appropriate reference used?)
 
-{% highlight ruby %}
+```
 $ samtools flagstat isolate.outfile.sorted.bam
 $ bedtools genomecov -ibam isolate.rmdup.bam
 $ bedtools genomecov -bg -ibam isolate.rmdup.bam | gzip > isolate.bedGraph.gz
-{% endhighlight %}
+```
 
 <details>
 <summary>Click to see example snippets and R code for exploring coverage stats</summary>
-{% highlight ruby %}
+```
 
 ###
 # PER BASE GENOME COVERAGE
@@ -172,7 +172,7 @@ legend("topright", legend=labels, col=cols, lty=1, lwd=4)
 dev.off()
 
 
-{% endhighlight %}
+```
 </details>
 
 ---
@@ -187,32 +187,32 @@ Freebayes uses the literal sequences of reads aligned to a particular target, no
 
 * Call putative variants with Freebayes
 
-{% highlight ruby %}
+```
 $ freebayes -f ../D23580_liv_2016_chrom_4plasmids.fasta --ploidy 1 -F 0.1 isolate.rmdup.bam > isolate.vcf
-{% endhighlight %}
+```
 
 <details>
 <summary>Click to see command explanation</summary>
-{% highlight ruby %}
+```
 ploidy = 1	Indicates that the sample should be genotyped as haploid
 F = 0.1 	Require at least this fraction of observations supporting an alternate allele within a single individual in the in order to evaluate the position.
-{% endhighlight %}
+```
 </details>
 
 > Side Note:	Bayesian inference is a method of statistical inference in which Bayes' theorem is used to update the probability for a hypothesis as more evidence or information becomes available
 
 * compress and index the VCF file
 
-{% highlight ruby %}
+```
 $ bgzip isolate.vcf
 $ tabix -p vcf isolate.vcf.gz
-{% endhighlight %}
+```
 
 * alternatively, we could have used samtools / bcftools to generate VCF file
 
-{% highlight ruby %}
+```
 $ samtools mpileup -uf ref.fa isolate.rmdup.bam | bcftools call -mv -Oz > isolate.vcf.gz
-{% endhighlight %}
+```
 
 ---
 
@@ -226,17 +226,17 @@ The DP of the VCF file is the sequencing depth for that position. A DP greater t
 
 * filter using report quality, proximity to indels, clusters of indels and depth
 
-{% highlight ruby %}
+```
 $ bcftools filter -sLowQual -g3 -G10 -e '%QUAL<20 | MIN(DP)<10' isolate.vcf.gz > isolate.SNPs.filtered.vcf
-{% endhighlight %}
+```
 
 <details>
 <summary>Click to see command explanation</summary>
-{% highlight ruby %}
+```
 g = 3		filter SNPs within 3 base pairs of an indel
 G = 10		filter clusters of indels separated by 10 or fewer base pairs allowing only one to pass
 e		exclude the expression %QUAL<20 | MIN(DP)<10 (exclude SNPs with quality score <10 and site coverage depth <10)
-{% endhighlight %}
+```
 </details>
 
 <br/>
@@ -247,10 +247,10 @@ Now that we have applied a filter to the VCF file, we need to assess the variant
 
 * check the transition/transversion ratio (a value ~0.5 could indicate a flase positive)
 
-{% highlight ruby %}
+```
 $ bcftools stats isolate.SNPs.filtered.vcf > isolate.SNPs.filtered.stats
 $ bcftools stats isolate.SNPs.filtered.vcf | grep TSTV
-{% endhighlight %}
+```
 
 > Side Note: transitions are more likely than transversions, so a ts:tv ratio is not usually expected to equal 0.5. TS:TV ratios are species specific so some consideration should be given to the value used here.
 

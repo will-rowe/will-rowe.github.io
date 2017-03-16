@@ -8,6 +8,8 @@ transition: slide
 ---
 
 <section>
+<pre><code data-trim data-noescape>
+
 #### Python for biologists and bioinformaticians
 
 ***
@@ -277,31 +279,23 @@ with open("genes.fasta", "r") as file_handle:
 
 ----
 
-## Rosalind problem
-
-***
-
-"Rosalind is a platform for learning bioinformatics and programming through problem solving"
-
----
-
-### Finding a motif in DNA
+### Counting point mutations
 
 ***
 
 **Given:**
-Two DNA strings ss and tt (length <= 1 kbp).
+Two DNA strings ss and tt of equal length (not exceeding 1 kbp).
 
 **Return:**
-All locations of tt as a substring of ss.
+The Hamming distance dH(s,t)dH(s,t).
 
 ```
 # sample dataset:
-GATATATGCATATACTT
-ATAT
+GAGCCTACTAACGGGAT
+CATCGTAATGACGGCCT
 
 # sample output:
-2 4 10
+7
 ```
 
 ---
@@ -313,50 +307,31 @@ ATAT
 ```python
 #!/usr/bin/env python
 
-ss = "GATATATGCATATACTT"
-tt = "ATAT"
+# the name of our file to read in
+my_file = "data.txt"
 
+# a list to hold our two sequences
+seqs = []
 
-# using what we learned about lists today:
+# a variable to hold our hamming distance value
+hamming_distance = 0
 
-# make a list to save our positions
-start_pos = []
+# open our file and add each sequence to our list
+with open(my_file, "r") as fh:
+  for line in fh:
+    seqs.append(line.rstrip("\n"))
 
-# turn ss into a list and create an index variable
-ss_list = list(ss)
-index = 0
+# create an iterator to move over each position in both our sequences
+for i in range(len(seqs[0])):
+  # compare bases in each index position, update hamming distance if they differ
+  if seqs[0][i] != seqs[1][i]:
+    hamming_distance += 1
 
-# move along the elements in the list
-for i in ss_list:
-
-  # use slice notation to grab four bases from the current position in ss
-  # and then compare it to tt (we need to convert the ss slice back to a string)
-  if ( "".join(ss_list[index:index+len(tt)]) == tt ):
-
-    # if they match, save the current index position in ss + 1
-    # (the numbering in the output uses 1-based indexing)
-    start_pos.append(str(index+1))
-
-  # increment the index by one
-  index += 1
-
-# print the answer
-print( " ".join(start_pos))
-
-
-###
-# However, a better way is to use the xrange function
-# allowing us to move along ss by index position
-###
-start_pos = []
-for i in xrange(0, len(ss)):
-  if (ss[i:i+len(tt)] == tt):
-    start_pos.append(str(i+1))
-
-print( " ".join(start_pos))
-
+# print our output
+print(hamming_distance)
 ```
 
 ----
 
+</code></pre>
 </section>

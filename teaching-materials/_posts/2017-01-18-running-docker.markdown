@@ -61,13 +61,13 @@ Docker comes with it's own set of terminology - we'll list a few of the importan
 
 First, we need to pull the life708 container image from the Docker Hub:
 
-```terminal
+```
 docker pull wpmr/life708:latest
 ```
 
 Check that you can see the life708 container image:
 
-```terminal
+```
 docker images
 ```
 
@@ -82,7 +82,7 @@ wpmr/life708        latest              4a5e668fbc60        3 minutes ago       
 
 Now we have our container image, we can start the container and enter it:
 
-```terminal
+```
 docker run -itP -m 2g --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
 ```
 
@@ -126,7 +126,7 @@ While inside our container, all files that we make in **/MOUNTED-VOLUME-LIFE708*
 
 Just type **exit** to leave the container. We can re-enter the container if needed by typing:
 
-```terminal
+```
 docker start life708-$USER
 
 docker exec -it life708-$USER bash
@@ -136,13 +136,13 @@ Some other useful commands (particularly if running Docker yourself later):
 
  * View all containers (both running and stopped) using:
 
-```terminal
+```
 docker ps -a
 ```
 
  * Stop or remove all containers:
 
-```terminal
+```
 docker stop $(docker ps -aq)
 
 docker rm $(docker ps -aq)
@@ -150,7 +150,7 @@ docker rm $(docker ps -aq)
 
  * Delete the Docker image:
 
-```terminal
+```
 docker rmi [IMAGE ID]
 ```
 

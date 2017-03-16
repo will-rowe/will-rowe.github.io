@@ -46,7 +46,7 @@ body {
 
 .reveal h2 {
   font-weight: 600;
-  font-size: 1em;
+  font-size: 1.4em;
   color: rgb(242, 56, 24); }
 
 .reveal h3 {
@@ -185,8 +185,9 @@ body {
 
 .reveal ul ul {
   list-style-type: disc;
-  font-size: 0.6em;
-  line-height: 1.4em; }
+  font-size: 0.7em;
+  line-height: 1.4em;
+  color: #666666; }
 
 .reveal ul ul ul {
   list-style-type: circle; }

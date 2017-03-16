@@ -38,4 +38,7 @@ At the moment we are alternating each week between learning Python and giving ta
 | 30.03.2017 | Python for biologists and bioinformaticians - week 5 | Will |
 | 06.04.2017 | An RNA-seq workflow | Will |
 | 13.04.2017 | Overview of 16S sequencing | Jen |
+| 20.04.2017 | Python for biologists and bioinformaticians - week 6 | Will |
+| 27.04.2017 | Approaching large-scale genomics projects | Kate |
+| 04.05.2017 | Genome annotation | Evelien |
 |----------+----------------------+-------------|
