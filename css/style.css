@@ -29,7 +29,7 @@
 		}
 
 	body, input, select, textarea {
-		color: #292f33;
+		color: #141823;
 		font-family: 'Ubuntu', sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -1284,7 +1284,6 @@
 
 .snip1566 {
   position: relative;
-  display: inline-block;
   color: #bbb;
   font-size: 16px;
   box-shadow: none !important;
@@ -1300,14 +1299,19 @@
 .snip1566:before,
 .snip1566:after {
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transform: all 0.3s linear;
   transition: all 0.3s linear;
 }
 
 .snip1566:before,
 .snip1566:after {
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 50%;
   content: '';
@@ -1347,6 +1351,8 @@
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 5em;
   z-index: 1;
@@ -1373,12 +1379,16 @@
 .snip1566:hover:before,
 .snip1566.hover:before {
   -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
 .snip1566:hover:after,
 .snip1566.hover:after {
   -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 
@@ -1386,6 +1396,8 @@
 .snip1566.hover figcaption {
   opacity: 1;
   -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
   transform: translateX(0);
   background-color: #ff8533;
   cursor: pointer;
