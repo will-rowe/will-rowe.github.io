@@ -1,6 +1,6 @@
 ---
 layout: publication
-title:  "<strong>ROWE, W. P. M.</strong>, VERNER-JEFFREYS, D., BAKER-AUSTIN, C., RYAN, J. J., MICALLEF, C., MASKELL, D. & PEARCE, G. 2017. Over-expression of antibiotic resistance genes in hospital effluents over time. Journal of Antimicrobial Chemotherapy (In press)"
+title:  "<strong>ROWE, W. P. M.</strong>, VERNER-JEFFREYS, D., BAKER-AUSTIN, C., RYAN, J. J., MICALLEF, C., MASKELL, D. & PEARCE, G. 2017. Over-expression of antibiotic resistance genes in hospital effluents over time. Journal of Antimicrobial Chemotherapy dkx017"
 author: Will Rowe
 group: publication
 permalink: /over-expression-of-ARGs-in-hospital-effluents/
