@@ -2,7 +2,7 @@
 layout: post
 title:  "Running the LIFE708 Docker container"
 author: Will Rowe
-group: teaching-life708
+group: life708-workshop
 permalink: /running-Docker/
 ---
 

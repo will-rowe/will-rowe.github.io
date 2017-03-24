@@ -1,0 +1,54 @@
+[2017-03-17 08:50:58,193] multiqc                                            [DEBUG  ]  No MultiQC config found: /pub46/willr/miniconda3/envs/python2/lib/python2.7/site-packages/multiqc_config.yaml
+[2017-03-17 08:50:58,194] multiqc                                            [DEBUG  ]  No MultiQC config found: /pub46/willr/.multiqc_config.yaml
+[2017-03-17 08:50:58,194] multiqc                                            [DEBUG  ]  No MultiQC config found: multiqc_config.yaml
+[2017-03-17 08:50:58,195] multiqc                                            [DEBUG  ]  No MultiQC config found: /pub46/willr/miniconda3/envs/python2/lib/python2.7/site-packages/multiqc_config.yaml
+[2017-03-17 08:50:58,195] multiqc                                            [DEBUG  ]  No MultiQC config found: /pub46/willr/.multiqc_config.yaml
+[2017-03-17 08:50:58,195] multiqc                                            [DEBUG  ]  No MultiQC config found: multiqc_config.yaml
+[2017-03-17 08:50:58,195] multiqc                                            [DEBUG  ]  Command used: /pub46/willr/miniconda3/envs/python2/bin/multiqc ./
+[2017-03-17 08:50:58,195] multiqc                                            [DEBUG  ]  Could not connect to multiqc.info for version check
+[2017-03-17 08:50:58,195] multiqc                                            [INFO   ]  This is MultiQC v0.8
+[2017-03-17 08:50:58,195] multiqc                                            [DEBUG  ]  Command     : /pub46/willr/miniconda3/envs/python2/bin/multiqc ./
+[2017-03-17 08:50:58,196] multiqc                                            [DEBUG  ]  Working dir : /pub46/willr/000_HOME/0004_PROJECTS/ST313-plasmid-hunting/QC
+[2017-03-17 08:50:58,196] multiqc                                            [INFO   ]  Template    : default
+[2017-03-17 08:50:58,196] multiqc                                            [INFO   ]  Searching './'
+[2017-03-17 08:50:58,196] multiqc                                            [DEBUG  ]  Analysing modules: gatk, quast, snpeff, qualimap, bcftools, featureCounts, methylQA, rseqc, picard, preseq, samblaster, samtools, bamtools, bismark, hicup, salmon, kallisto, star, tophat, bowtie2, bowtie1, cutadapt, trimmomatic, skewer, fastq_screen, fastqc
+[2017-03-17 08:50:58,197] multiqc                                            [DEBUG  ]  Using temporary directory for creating report: /tmp/tmpMyN8c9
+[2017-03-17 08:51:00,791] multiqc.modules.gatk.gatk                          [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:00,857] multiqc.modules.quast.quast                        [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:02,365] multiqc.modules.snpeff.snpeff                      [DEBUG  ]  Could not find any data in ('./',)
+[2017-03-17 08:51:02,581] multiqc.modules.qualimap.qualimap                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:03,956] multiqc.modules.bcftools.bcftools                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:04,007] multiqc.modules.featureCounts.feature_counts       [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:04,060] multiqc.modules.methylQA.methylQA                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:09,370] multiqc.modules.rseqc.rseqc                        [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:19,510] multiqc.modules.picard.picard                      [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:20,868] multiqc.modules.preseq.preseq                      [DEBUG  ]  Could not find any preseq data in ('./',)
+[2017-03-17 08:51:21,875] multiqc.modules.samblaster.samblaster              [DEBUG  ]  Could not find any data in ('./',)
+[2017-03-17 08:51:24,525] multiqc.modules.samtools.samtools                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:25,811] multiqc.modules.bamtools.bamtools                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:25,990] multiqc.modules.bismark.bismark                    [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:26,020] multiqc.modules.hicup.hicup                        [DEBUG  ]  Could not find any HiCUP data in ('./',)
+[2017-03-17 08:51:26,111] multiqc.modules.salmon.salmon                      [DEBUG  ]  Could not find any Salmon data in ('./',)
+[2017-03-17 08:51:27,315] multiqc.modules.kallisto.kallisto                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:27,370] multiqc.modules.star.star                          [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:27,414] multiqc.modules.tophat.tophat                      [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:28,626] multiqc.modules.bowtie2.bowtie2                    [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:29,977] multiqc.modules.bowtie1.bowtie1                    [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:31,263] multiqc.modules.cutadapt.cutadapt                  [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:32,474] multiqc.modules.trimmomatic.trimmomatic            [DEBUG  ]  Could not find any Trimmomatic data in ('./',)
+[2017-03-17 08:51:33,751] multiqc.modules.skewer.skewer                      [DEBUG  ]  Could not find any data in ('./',)
+[2017-03-17 08:51:33,802] multiqc.modules.fastq_screen.fastq_screen          [DEBUG  ]  Could not find any reports in ('./',)
+[2017-03-17 08:51:56,259] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 329 reports
+[2017-03-17 08:51:56,547] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:51:56,606] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:51:57,207] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:51:57,415] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:51:57,446] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:51:57,479] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:52:10,501] multiqc.plots.linegraph                            [ERROR  ]  ############### Error making MatPlotLib figure! Falling back to HighCharts.
+[2017-03-17 08:52:10,555] multiqc                                            [INFO   ]  Report      : multiqc_report.html
+[2017-03-17 08:52:10,556] multiqc                                            [INFO   ]  Data        : multiqc_data
+[2017-03-17 08:52:10,557] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpMyN8c9/multiqc_data/multiqc_fastqc.txt' to '/pub46/willr/000_HOME/0004_PROJECTS/ST313-plasmid-hunting/QC/multiqc_data'
+[2017-03-17 08:52:10,560] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpMyN8c9/multiqc_data/multiqc_general_stats.txt' to '/pub46/willr/000_HOME/0004_PROJECTS/ST313-plasmid-hunting/QC/multiqc_data'
+[2017-03-17 08:52:10,562] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpMyN8c9/multiqc_data/multiqc_sources.txt' to '/pub46/willr/000_HOME/0004_PROJECTS/ST313-plasmid-hunting/QC/multiqc_data'
+[2017-03-17 08:52:10,931] multiqc                                            [INFO   ]  MultiQC complete
