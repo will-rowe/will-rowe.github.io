@@ -55,7 +55,7 @@ View the presentation online at:
   - *de novo*
   - re-sequencing (reference-guided)
 
-* we'll focus on de novo assembly of bacterial genomes {% fragment %}
+* we'll focus on de novo assembly of bacterial genomes
 
 ---
 
@@ -221,7 +221,7 @@ View the presentation online at:
 
 ![bridges](https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png)
 
-* can we visit each part of the city by crossing each bridge once? {% fragment %}
+* can we visit each part of the city by crossing each bridge once?
 
 ---
 
@@ -235,7 +235,7 @@ View the presentation online at:
 
 * Eulerian path = visit every edge of a graph exactly once
 
-* it's not possible in this case! {% fragment %}
+* it's not possible in this case!
 
 ---
 
@@ -245,9 +245,9 @@ View the presentation online at:
 
 ![eulerian paths](http://math.nmsu.edu/~pmorandi/CourseMaterials/graphics/EulerPath2.gif)
 
-* graphs with Eulerian paths are termed Eulerian {% fragment %}
+* graphs with Eulerian paths are termed Eulerian
 
-* traversing a Eulerian path takes linear time {% fragment %}
+* traversing a Eulerian path takes linear time
 
 ---
 
@@ -257,9 +257,9 @@ View the presentation online at:
 
 ![hamiltonian paths](http://www3.cs.stonybrook.edu/~algorith/files/hamiltonian-cycle-L.gif)
 
-* Hamiltonian path = visit every node of a graph exactly once {% fragment %}
+* Hamiltonian path = visit every node of a graph exactly once
 
-* traversing a Hamiltonian path is NP-complete (hard to implement an algorithm for) {% fragment %}
+* traversing a Hamiltonian path is NP-complete (hard to implement an algorithm for)
 
 ---
 
@@ -494,19 +494,19 @@ We assess quality by looking at assembly **contiguity**, **completeness** and **
 ***
 
 * experimental design
-  - genome size? repetitive regions? plasmids? {% fragment %}
+  - genome size? repetitive regions? plasmids?
 
 * DNA extraction
-  - how much DNA? quality? {% fragment %}
+  - how much DNA? quality?
 
 * library preparation & sequencing
-  - library design (paired-end/mate-pair, insert size)? how much data needed? {% fragment %}
+  - library design (paired-end/mate-pair, insert size)? how much data needed?
 
 * quality assessment of sequence libraries
-  - how to we assess quality before/after sequencing? {% fragment %}
+  - how to we assess quality before/after sequencing?
 
 * genome assembly
-  - how to validate / compare / improve / annotate? {% fragment %}
+  - how to validate / compare / improve / annotate?
 
 ---
 
@@ -546,7 +546,7 @@ How many reads do I need to get a good assembly?
 
 * the Lander/Waterman equation is a method to compute expected coverage
 
-## coverage = (no. reads * length of read) / genome size {% fragment %}
+## coverage = (no. reads * length of read) / genome size
 
 ---
 
