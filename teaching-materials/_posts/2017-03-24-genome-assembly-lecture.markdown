@@ -85,7 +85,7 @@ View the presentation online at:
 
 ---
 
-![seq technologies](https://flxlexblog.files.wordpress.com/2016/07/developments_in_high_throughput_sequencing.jpg) {% background %}
+![seq technologies](https://flxlexblog.files.wordpress.com/2016/07/developments_in_high_throughput_sequencing.jpg)
 
 ---
 
@@ -134,7 +134,7 @@ View the presentation online at:
 
 ---
 
-![genome assembly overview](https://www.k.u-tokyo.ac.jp/pros-e/person/shinichi_morishita/genome-assembly.jpg) {% background %}
+![genome assembly overview](https://www.k.u-tokyo.ac.jp/pros-e/person/shinichi_morishita/genome-assembly.jpg)
 
 
 ----
