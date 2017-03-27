@@ -6,6 +6,7 @@ group: life708-workshop
 permalink: /LIFE708-workshop-2/
 ---
 
+
 ***
 
 <h1>Contents</h1>
@@ -148,11 +149,14 @@ Quality trimming is a process by which we remove sequencing adapters and low qua
 ```
 for file in SEQUENCE_READS/*.fastq.gz
 do
-fastq_quality_trimmer -t 30 -l 125 -i <(zcat $file) -o ${file%.fastq.gz}.trimmed.fastq
+fastq_quality_trimmer -t 30 -l 120 -i <(zcat $file) -o ${file%.fastq.gz}.all-data.trimmed.fastq
+seqtk sample -s100 ${file%.fastq.gz}.all-data.trimmed.fastq 0.7 > ${file%.fastq.gz}.trimmed.fastq
 done
 ```
 
-> the fastq_quality_trimmer command takes the input file, trims bases that have a QUAL < 30 and also removes the read if it is less than 125 bases long (after it has been trimmed). Ordinarily we would set -l lower than 125, but we have done this to reduce our dataset size so that the assembly will run on our machines!
+> the fastq_quality_trimmer command takes the input file, trims bases that have a QUAL < 30 and also removes the read if it is less than 120 bases long (after it has been trimmed)
+
+> UPDATE 27/03/2017: I have just added a step to this loop in order to down-sample the sequence data as your computers are running very slow today - the assembly would take all day! We are using **seqtk** to use randomly select 70% of the sequence data. You don't need to include this step if you are running this tutorial yourselves!
 
 Now that we have downloaded, quality checked and trimmed our data, it is time to try assembling it!
 
@@ -368,7 +372,7 @@ You have now finished the practical - you have performed a genome assembly exper
  * to quickly annotate a genome, use **Prokka** (a tool for the rapid annotation of prokaryotic genomes)
 
 ```
-prokka --cpus 1 --genus Shigella --species flexneri --centre X --compliant /MOUNTED-VOLUME-LIFE708/spades_assembly.fa
+prokka --cpus 1 --genus Shigella --species flexneri --centre X --compliant /MOUNTED-VOLUME-LIFE708/abacas/spades_assembly.fa_NC_004741.fasta.fasta
 ```
 
 As a final step, you can compare our assembled *Shigella flexneri* 2a strain 2457T against the NCTC1 (NZ_LM651928) genome that we looked at in workshop 1. Use **abacas** and **ACT** to perfrom a comparative genomic analysis and see if you can find any significant differences / additional gene content that show how Shigella has been changing over the years to remain a significant human pathogen.

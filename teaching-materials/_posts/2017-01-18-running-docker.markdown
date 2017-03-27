@@ -83,7 +83,7 @@ wpmr/life708        latest              4a5e668fbc60        3 minutes ago       
 Now we have our container image, we can start the container and enter it:
 
 ```
-docker run -itP -m 2g --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
+docker run -itP --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
 ```
 
 This command is doing quite a few things (which we don't need to worry too much about now) but we have ended up inside a running container!
