@@ -77,43 +77,54 @@ $ bedtools genomecov -ibam isolate.rmdup.bam
 $ bedtools genomecov -bg -ibam isolate.rmdup.bam | gzip > isolate.bedGraph.gz
 ```
 
-<details>
-<summary>Click to see example snippets and R code for exploring coverage stats</summary>
+{% capture plot %}
+### PER BASE GENOME COVERAGE
+
+samtools flagstat for quick stats on alignment
+```
+$ samtools flagstat alignment.sorted.bam
 ```
 
-###
-# PER BASE GENOME COVERAGE
-###
-
-# samtools flagstat for quick stats on alignment
-$ samtools flagstat alignment.sorted.bam
-
-# create a bed file for your region of interest (e.g. the chromosome)
+create a bed file for your region of interest (e.g. the chromosome)
+```
 $ printf 'D23580_liv_chro\t1\t4879402\tD23580.chrom\t0\n' > D23580.chrom.bed
+```
 
-# calculate coverage stats with bedtools
+calculate coverage stats with bedtools
+```
 $ bedtools coverage -a D23580.chrom.bed -b alignment.sorted.bam -d | gzip > alignment.coverage.tsv.gz
+```
 
-# number of bases in region of interest (CP002487.fasta)
+number of bases in region of interest (CP002487.fasta)
+```
 $ BaseNo=`gunzip -c alignment.coverage.tsv.gz | wc -l`
+```
 
-# find number of bases with coverage > 30 and calculate percentage
+find number of bases with coverage > 30 and calculate percentage
+```
 $ Cov=`gunzip -c alignment.coverage.tsv.gz | awk '$7>30 {print}' | wc -l`
 $ bc -l<<<$Cov/$BaseNo*100
+```
 
+***
 
-###
-# PLOT COVERAGE INFO FROM BAM FILE
-###
+### PLOT COVERAGE INFO FROM BAM FILE
 
-## A. If you have a target/suspect region, you could try something like this:
-# calculate coverage stats per base with bedtools
+#### A. If you have a target/suspect region, you could try something like this:
+
+calculate coverage stats per base with bedtools
+```
 $ bedtools coverage -a suspect_region.bed -b alignment.sorted.bam -d | gzip > alignment.coverage.tsv.gz
+```
 
-# grab Chr, Locus and Depth
+grab Chr, Locus and Depth
+```
 $ gunzip -c alignment.coverage.tsv.gz | cut -f 1,6,7 - > alignment.cov_4_R.tsv
+```
 
-# example R script:
+run example R script:
+
+```
 library(reshape)
 library(lattice, pos=10)
 chrom <- read.table("alignment.cov_4_R.tsv", header=FALSE, sep="\t", na.strings="NA", dec=".", strip.white=TRUE)
@@ -122,22 +133,32 @@ trellis.device(device='png', filename='file.png')
 my.plot <- xyplot(Depth ~ Locus, type="p", pch=16, auto.key=list(border=TRUE), par.settings=simpleTheme(pch=16), scales=list(x=list(relation='same'), y=list(relation='same')), data=chrom, main="coverage by locus - region of interest")
 print(my.plot)
 dev.off()
+```
 
-## B. For whole genomes, you could smooth the results by taking averages from windows of 1k bases
+#### B. For whole genomes, you could smooth the results by taking averages from windows of 1k bases
+
+```
 $ bedtools makewindows -b D23580.chrom.bed -w 1000 > D23.1k.bed
 $ bedtools coverage -hist -a D23.1k.bed -b alignment.sorted.bam | grep ^all > alignment.hist.all.txt
+```
 
-## C. Another option is to calculate the cumulative distribution describing the fraction of targeted bases that were covered by >x reads
-# use the bedtools coverage histogram
+#### C. Another option is to calculate the cumulative distribution describing the fraction of targeted bases that were covered by >x reads
+
+use the bedtools coverage histogram
+```
 $ bedtools coverage -hist -a suspect_region.bed -b alignment.sorted.bam | grep ^all > alignment.hist.txt
+```
 
-# use GNU parallel for multiple samples
+use GNU parallel for multiple samples
+```
 $ find ./ -type f -name '*bam' | parallel 'bedtools coverage -hist -a D23.1k.bed -b {} | grep ^all > {}.hist.all.txt'
+```
 
-# use an R script to visualise coverage over regions of interst / whole genome
-## this example is by Stephen Turner
-## http://www.gettinggeneticsdone.com/2014/03/visualize-coverage-exome-targeted-ngs-bedtools.html
+use an R script to visualise coverage over regions of interst / whole genome
 
+this example is by [Stephen Turner](http://www.gettinggeneticsdone.com/2014/03/visualize-coverage-exome-targeted-ngs-bedtools.html)
+
+```
 # Get a list of the bedtools output files you'd like to read in
 print(files <- list.files(pattern="all.txt$"))
 print(labels <- paste("Sample-", gsub("\\.sorted.bam.hist.all.txt", "", files, perl=TRUE), sep=""))
@@ -170,9 +191,16 @@ for (i in 1:length(cov)) points(cov[[i]][2:401, 2], cov_cumul[[i]][1:400], type=
 par(xpd=TRUE)
 legend("topright", legend=labels, col=cols, lty=1, lwd=4)
 dev.off()
-
-
 ```
+{% endcapture %}
+
+
+
+<details>
+<summary>Click to see example snippets and R code for exploring coverage stats</summary>
+
+{{ plot | markdownify }}
+
 </details>
 
 ---
@@ -193,11 +221,10 @@ $ freebayes -f ../D23580_liv_2016_chrom_4plasmids.fasta --ploidy 1 -F 0.1 isolat
 
 <details>
 <summary>Click to see command explanation</summary>
-```
-ploidy = 1	Indicates that the sample should be genotyped as haploid
-F = 0.1 	Require at least this fraction of observations supporting an alternate allele within a single individual in the in order to evaluate the position.
-```
-</details>
+ploidy = 1	--> Indicates that the sample should be genotyped as haploid
+<br/>
+F = 0.1 	--> Require at least this fraction of observations supporting an alternate allele within a single individual in the in order to evaluate the position.
+</details><br/>
 
 > Side Note:	Bayesian inference is a method of statistical inference in which Bayes' theorem is used to update the probability for a hypothesis as more evidence or information becomes available
 
@@ -232,14 +259,10 @@ $ bcftools filter -sLowQual -g3 -G10 -e '%QUAL<20 | MIN(DP)<10' isolate.vcf.gz >
 
 <details>
 <summary>Click to see command explanation</summary>
-```
-g = 3		filter SNPs within 3 base pairs of an indel
-G = 10		filter clusters of indels separated by 10 or fewer base pairs allowing only one to pass
-e		exclude the expression %QUAL<20 | MIN(DP)<10 (exclude SNPs with quality score <10 and site coverage depth <10)
-```
-</details>
-
-<br/>
+g = 3		--> filter SNPs within 3 base pairs of an indel<br/>
+G = 10		--> filter clusters of indels separated by 10 or fewer base pairs allowing only one to pass<br/>
+e		--> exclude the expression %QUAL<20 | MIN(DP)<10 (exclude SNPs with quality score <10 and site coverage depth <10)
+</details><br/>
 
 ### Interpret filtered variants
 
