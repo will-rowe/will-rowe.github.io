@@ -254,7 +254,7 @@ The DP of the VCF file is the sequencing depth for that position. A DP greater t
 * filter using report quality, proximity to indels, clusters of indels and depth
 
 ```
-$ bcftools filter -sLowQual -g3 -G10 -e '%QUAL<20 | MIN(DP)<10' isolate.vcf.gz > isolate.SNPs.filtered.vcf
+$ bcftools filter -g3 -G10 -e '%QUAL<20 | MIN(DP)<10' isolate.vcf.gz > isolate.SNPs.filtered.vcf
 ```
 
 <details>

@@ -1,14 +1,14 @@
 ---
 layout: slide-deck
-title:  "Genome assembly 2017"
+title:  "Genome Assembly"
 author: Will Rowe
 permalink: /genome-assembly-2017/
 group: life708-lecture
 theme: ember
 transition: slide
 ---
-<script type="text/template">
 <section>
+<pre><code data-trim data-noescape>
 <br/>
 <br/>
 ### Life 708
@@ -652,5 +652,5 @@ https://pmelsted.wordpress.com/
 https://www.slideshare.net/torstenseemann/de-novo-genome-assembly-tseemann-imb-winter-school-2016-brisbane-au-4-july-2016
 https://genomics.ed.ac.uk/
 
+</code></pre>
 </section>
-</script>

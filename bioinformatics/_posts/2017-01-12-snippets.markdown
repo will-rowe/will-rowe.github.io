@@ -71,6 +71,13 @@ remove duplicates in file
 awk '!seen[$0]++' filename
 ```
 
+append read pair info to a fastq file
+
+```
+gunzip -c SRR2352233_pass_1.fastq.gz |  awk '{if(NR%4==1) $0=sprintf("%s_1",($0)); print;}' | gzip -c > SRR2352233_pass_1.r1.fastq.gz
+```
+
+
 ### Loops
 
 loop over paired fastq files and run a command (e.g. SNIPPY)
