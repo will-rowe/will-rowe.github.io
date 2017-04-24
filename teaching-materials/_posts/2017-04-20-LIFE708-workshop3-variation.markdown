@@ -186,13 +186,19 @@ If you want some extra information on the SAM format and samtools, [this](https:
 
 ## Check alignment
 
-* Now that the alignment has run, we can get some basic stats using samtools:
+* Now that the alignment has run, we can get some basic stats using samtools
 
 ```
 samtools flagstat alignment.bam
 ```
 
 > Using what you have learned from the SAM format specification, can you interpret the output of flagstat?
+
+* Index the alignment file
+
+```
+samtools index alignment.bam
+```
 
 * **Use the GUI** to visualise the alignment - open up Artemis, load the reference genome and annotation and then read in the BAM alignment file
 

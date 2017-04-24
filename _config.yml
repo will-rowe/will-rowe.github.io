@@ -7,7 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://will-rowe.github.io" # the base hostname & protocol for your site
 
 # Social links
-twitter_username:     will__rowe
+twitter_username:     wil_rowe
 github_username:      will-rowe
 linkedin_username:    will-rowe-13219b136
 alternate_site:       http://www.hintonlab.com
