@@ -162,6 +162,8 @@ bwa mem -t 2 -R '@RG\tID:foo\tSM:bar\tLB:library1' RefSeq/NC_007384.fasta SEQUEN
 
 > The above command is actually several commands piped into one another - we have done this to reduce unnecessary disk I/O and also to keep the data in binary format as it is being processed (rather than performing BAM/SAM conversions)
 
+> The above commands basically follow this workflow: Align Reads | Keep high-quality reads | Ensure paired-end information intact | sort the alignment and save
+
 Here is a breakdown of the above commands:
 
 | COMMAND | OPTION | EXPLANATION |
@@ -172,12 +174,6 @@ Here is a breakdown of the above commands:
 | samtools view | -q | mapping quality (MAPQ) quality threshold
 | samtools fixmate | -O | output format
 | samtools sort | -o | output filename
-
-The above commands are essentially following this workflow:
-
-```
-ALIGN READS >>> KEEP HIGH QUALITY ALIGNMENTS >>> ENSURE PAIRED-END INFORMATION INTACT >>> SORT THE ALIGNMENT AND SAVE
-```
 
 As this takes a while to run (~10mins), let's look into the SAM file format - check the specification document [here](https://samtools.github.io/hts-specs/SAMv1.pdf)
 
