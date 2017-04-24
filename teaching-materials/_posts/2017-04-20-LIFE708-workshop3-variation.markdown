@@ -162,7 +162,7 @@ bwa mem -t 2 -R '@RG\tID:foo\tSM:bar\tLB:library1' RefSeq/NC_007384.fasta SEQUEN
 
 > The above command is actually several commands piped into one another - we have done this to reduce unnecessary disk I/O and also to keep the data in binary format as it is being processed (rather than performing BAM/SAM conversions)
 
-> The above commands basically follow this workflow: Align Reads | Keep high-quality reads | Ensure paired-end information intact | sort the alignment and save
+> The above commands basically follow this workflow: Align Reads - Keep high-quality reads - Ensure paired-end information intact - Sort the alignment and save
 
 Here is a breakdown of the above commands:
 
