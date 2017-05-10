@@ -1,0 +1,346 @@
+---
+layout: slide-deck
+title:  "Lab Talk 2017"
+author: Will Rowe
+permalink: /lab-talk-2017/
+group: presentation
+theme: ember
+transition: slide
+---
+<section>
+<pre><code data-trim data-noescape>
+<br/>
+<br/>
+### Lab Talk - May 2017
+
+***
+
+# Pipelines, algorithms and other projects
+
+***
+
+
+<br/>
+Slides online at:
+
+[will-rowe.github.io/lab-talk-2017](https://will-rowe.github.io/lab-talk-2017)
+
+----
+
+## Pipelines
+
+***
+
+* a pipeline is *a set of data processing elements connected in series*
+
+* they are great for reproducibility and automation
+
+* typically consist of published software, wrappers and parsing code
+
+----
+
+### Pipeline 1: RNA-seq
+
+***
+
+When processing RNA-seq data for our projects, we have 3 main aims . . .
+
+---
+
+1. **QC**: we want to know if we have high-quality data, if it derives from what we are expecting and if we have enough of it
+
+2. **Within-sample quantification**: we want some information on how many transcripts we have and how abundant they are
+
+3. **Between-sample quantification**: we want to compare a sample from one condition to another and identify differential gene expression (DGE)
+
+---
+
+We use published software to do the heavy lifting for each of these aims
+
+---
+
+1. QC
+
+  - **FastQC**: assess read quality/length, adapters etc.
+  - **Kraken**: do we have our typical taxonomic signature?
+  - **Trimmomatic**: remove adapters and improve read quality
+  - **DupRadar**: do we have any PCR artifacts?
+
+2. Alignment
+
+  - **Bowtie2**: align reads to a reference genome
+  - **Samtools**: alignment post-processing
+  - **Bedtools**: are the usual transcripts covered? (QC)
+  - **FastQC**: repeat initial QC and get alignment stats (QC)
+
+3. Quantify
+
+  - **FeatureCounts**: count reads per feature
+
+---
+
+* The pipeline knits all these pieces of software together
+
+  - checks input files
+  - runs software
+  - parses information
+  - computes TPM values, outliers, signatures
+  - writes sample reports
+
+* Once complete, downstream analysis begins
+
+  - R pipelines for differential expression testing (limma-voom / edgeR)
+  - Bash pipeline for JBrowse visualisation
+  - Degust for DGE visualisation
+
+* Examples
+
+  - [installing](https://github.com/will-rowe/rnaseq)
+  - [multiQC report]({{site.url}}/_slides/lab-talk-folder-DELETE/00_multiqc_report.html)
+  - [error-log]({{site.url}}/_slides/lab-talk-folder-DELETE/log-fail-eg.txt)
+  - [full-log]({{site.url}}/_slides/lab-talk-folder-DELETE/log-eg.txt)
+
+----
+
+### Pipeline 2: whole genome phylogenies & heatmaps
+
+***
+
+We want to explore relationships between isolates and visualise marker gene presence/absence . . .
+
+---
+
+### Whole Genome Phylogenies
+
+***
+
+* phylogenies based on whole genome SNPs allow for the best resolution of short/long branches
+
+* SNPs are used to measure divergence between species
+
+* repetitive genome regions are masked
+
+* consideration is given for recombination and horizontally-transferred elements
+
+---
+
+1. QC the data
+
+  - similar workflow to the previous pipeline
+
+2. Align the data
+
+  - align with BWA-MEM
+  - post-process & QC the alignment
+  - InDel correction, base recalibration, mark duplicates etc.
+
+3. Variant call
+
+  - call & filter SNPs
+  - create pseudogenome
+  - MSA, mask & make tree (manual atm.)
+
+4. Feature coverage
+
+  - calculate feature coverage for targets
+  - R for heatmaps
+  - [example-output]({{site.url}}/_slides/lab-talk-folder-DELETE/plot.png)
+  - [install](https://github.com/will-rowe/gopherseq)
+
+----
+
+## Algorithms
+
+***
+
+* quick summary of a few ideas I've been working on
+
+* some problems I've encountered
+
+----
+
+We have 0.5 TB of RNA-seq data (435 libraries), what other questions can we ask?
+
+---
+
+* how can we quickly identify contamination?
+
+  - many of our samples have unknown signatures
+  - should we catalogue & extract these or exclude samples?
+
+* can we identify novel transcripts?
+
+  - transcript assembly results in un-annotated transcripts
+  - assemblies & annotation are resource intensive
+
+* how can we efficiently bin reads from (composite) samples?
+
+  - contaminant removal
+  - characterising meta*omes & quantifying transcripts
+
+---
+
+These questions are typically addressed with dynamic programming solutions (e.g. sequence alignment).
+
+However, these are expensive (in time & memory terms) - can we simplify the problem by first binning reads based on a certain characteristic?
+
+---
+
+**K-mers** (sequence substrings of length K) can be searched and compared quickly for **exact** matches.
+
+We can also use distance measures to efficiently compare **similarities** between k-mers
+
+---
+
+### Similarity Distance Measures
+
+***
+
+* **Euclidean distance**: the length of the path connecting to points
+
+* **Manhattan distance**: the absolute sum of the difference between x+y-coordinates
+
+* **Hamming distance**: the number of point differences between strings
+
+* **Jaccard distance**: the similarities between **sets**
+
+---
+
+### Jaccard Index
+
+***
+
+* a statistic for comparing similarity between sets
+
+* set = an (unordered) collection of objects
+
+* Jaccard Index is defined as the size of the intersection divided by the size of the union between sets
+
+![jaccard](https://wikimedia.org/api/rest_v1/media/math/render/svg/eaef5aa86949f49e7dc6b9c8c3dd8b233332c9e7)
+
+* e.g. how similar is our DVD collection: we both have 100 DVDs, 50 are the same, therefore Jaccard Index = 0.33 (50/150)
+
+* Jaccard Index can describe how similar k-mer profiles of sequences A & B are
+
+---
+
+Computing similarity (using the Jaccard Index) for large numbers of sequences is not efficient!
+
+---
+
+**Hashing** is the transformation of a string of characters into a shorter fixed-length value or key that represents the original string
+
+---
+
+### MinHash
+
+***
+
+* MinHash is a probabilistic hashing algorithm for fast approximation of Jaccard Index between two sets
+
+* extremely low memory and CPU requirements
+
+* applied in the 90's to natural language processing
+
+* implementations are now found in long-read assemblers, taxonomic profilers & some concept aligners
+
+---
+
+### MinHash algorithm
+
+***
+
+1. split sequence into k-mers
+
+2. hash each k-kmer
+
+3. store minimum hash value
+
+4. repeat steps 2 & 3 with different hash algorithms n times
+
+5. the MinHash **signature** (of length n) for a sequence is the stored minimum hash values derived from the sequence
+
+6. if 2 sets have a high Jaccard similarity, the probability of the MinHash functions hashing them together (similar signatures) is high - therefore, Jaccard Index between MinHash signatures is equal to Jaccard Index between sets
+
+---
+
+Pair-wise estimations of Jaccard Index based on MinHash signatures is still time-consuming (even with parallelisation), we need to speed it up
+
+---
+
+### Locality Sensitive Hashing (LSH)
+
+***
+
+* LSH reduces the dimensionality of a data set
+
+* MinHash is a form of LSH, but we can use other LSH algorithms to gain further benefits
+
+* additional LSH improves the efficiency of comparing our MinHash signatures to estimate the Jaccard Index
+
+* each MinHash signature is divided into buckets (substrings of the signature)
+
+* the buckets are used to narrow down the number of pairwise comparisons we need to make
+
+---
+
+### Workflow: identifying small RNAs from composite samples
+
+***
+
+1. index a set of reference genes
+
+  - MinHash signatures for Q-grams within reference
+  - consolidate reference genes with shared signatures
+
+2. streaming QC and binning of reads
+
+  - locality sensitive hashing to reduce number of MinHash lookups
+  - estimate Jaccard Index with candidate reference sequences
+  - bin reads by closest reference similarity
+
+3. assembly and annotation
+
+  - assemble each cluster
+  - annotate
+
+4. quantification
+
+----
+
+With the availability of thousands of *Salmonella* genomes, how can we quickly mine these for things we are interested in?
+
+---
+
+Example: can we use a well-curated list of psuedogenes to predict pseudogene occurrence in newly sequenced isolates?
+
+---
+
+### Machine Learning: neural networks
+
+***
+
+* one-hot vector encoding of sequences
+
+* training models based on pseudogenised vs. non-pseudogenised sequenced
+
+* classify new sequences based-on the model
+
+* so far - 80% accuracy with a crude implementation
+
+----
+
+## Other projects
+
+***
+
+* RNA-seq collaborations
+
+* Dragons den
+
+* [Bioinformatics lunch and teaching](https://will-rowe.github.io)
+
+* [HiPy](http://www.hipy.uk/)
+
+</code></pre>
+</section>
