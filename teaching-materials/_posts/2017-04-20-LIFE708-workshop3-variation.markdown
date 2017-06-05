@@ -346,6 +346,13 @@ NC_007384.1	2410773	.	C	T	225
 
 So we have found a variant in a gene that is known to confer nalidixic acid resistance if mutated. We are fairly sure this is responsible for the observed phenotype in our isolate of *S. sonnei* but we need to perform some more checks before reporting this variant. Write the bases of our suspect gyrA gene to a fasta file (we did this last workshop) and let's do some checks.
 
+> Make sure you save the fasta file with a sensible name (eg. gyrAvariant.fasta) and save it do your **desktop** (the docker file permissions mean you can't save it to your MOUNTED-VOLUME-LIFE708...)
+
+
+REFERENCE SEQUENCE
+SELECT BASE RANGE OF VCF AND WRITE TO PSEUDO (right click - write to fasta)
+
+
 * Use the CARD [resistance gene identifier](https://card.mcmaster.ca/analyze/rgi) (RGI) to see if our *gyrA* variant is known to cause resistance
 
 > What else could you do to check the effect of the variant we have found?
