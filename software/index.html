@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<div id="main">
+<!--- button navigation --->
+    <section align="center">
+        <ul class="actions">
+            <li><a href="javascript:history.back()" class="button" title="Back"><span class="icon fa-arrow-circle-left"></span></a></li>
+            <li><a href="{{ site.url }}" class="button" title="Home"><span class="icon fa-home"></span></a></li>
+            <li><a href="{{ site.url }}#contact-details" class="button" title="Contact"><span class="icon fa-envelope"></span></a></li>
+        </ul>
+        <hr/>
+    </section>
+
+<!--- post --->
+<!--- post --->
+    <article>
+        <header class="major">
+            <h2 class="post-title">Software</h2>
+                <p class="post-meta">I'm just updating this, check back later! Go to my <a href="https://github.com/will-rowe" target="_blank">GitHub</a> if you can't wait...</p>
+        </header>
+        <section>
+          <h3 class="post-title">Microbiome analytics</h3>
+          <ul class="posts">
+            {% for post in site.categories.software %}
+              {% if post.group == 'software-microbiome' %}
+              <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+      </section>
+  </article>
+</div>

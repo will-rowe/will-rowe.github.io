@@ -3,7 +3,7 @@ layout: publication
 title:  "<strong>ROWE, W. P. M.</strong>, WINN, M. D. 2018. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics bty387"
 author: Will Rowe
 group: publication
-permalink: /groot/
+permalink: /groot-paper/
 ---
 
 # Indexed variation graphs for efficient and accurate resistome profiling

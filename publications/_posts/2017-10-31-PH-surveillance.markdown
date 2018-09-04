@@ -1,6 +1,6 @@
 ---
 layout: publication
-title:  "VASHTON PM, OWEN SV, KAINDAMA L, <strong>ROWE WPM</strong>, LANE CR, LARKIN L, NAIR S, JENKINS C, DE PINNA EM, FEASEY NA, HINTON JCD, DALLMAN TJ. 2017. Public health surveillance in the UK revolutionises our understanding of the invasive Salmonella Typhimurium epidemic... Genome Medicine"
+title:  "ASHTON PM, OWEN SV, KAINDAMA L, <strong>ROWE WPM</strong>, LANE CR, LARKIN L, NAIR S, JENKINS C, DE PINNA EM, FEASEY NA, HINTON JCD, DALLMAN TJ. 2017. Public health surveillance in the UK revolutionises our understanding of the invasive Salmonella Typhimurium epidemic... Genome Medicine"
 
 
 
