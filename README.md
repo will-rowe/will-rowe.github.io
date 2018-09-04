@@ -7,8 +7,8 @@ This is the repo for [https://will-rowe.github.io](https://will-rowe.github.io)
 ## Contact
 ### [Will Rowe](https://github.com/will-rowe)
 
-* Email: [Will Rowe @ Liverpool](will.rowe@stfc.ac.uk)
-* Twitter: [@will__rowe](https://twitter.com/wil_rowe)
+* Email: [Will Rowe @ stfc](will.rowe@stfc.ac.uk)
+* Twitter: [@wil_rowe](https://twitter.com/wil_rowe)
 
 
 ## Notes
