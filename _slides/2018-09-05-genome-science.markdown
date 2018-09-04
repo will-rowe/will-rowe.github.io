@@ -37,8 +37,7 @@ Will Rowe PhD
 
 * Sketching microbiomes
  - histosketching for fast indexing, clustering and ML
- - indexing variation graphs
- - resistome profiling
+ - indexing variation graphs and resistome profiling
 
 * Software and a case study
  - HULK, BANNER, GROOT & DRAX!
@@ -63,7 +62,7 @@ Will Rowe PhD
 * Rather than bigger computers, what can we do?
  - reduce the data
  - approximate the data
- - refine our questions
+ - streamline workflows
 
 ---
 
@@ -79,7 +78,7 @@ Will Rowe PhD
 * Recent sketching tools using MinHash ( e.g. [mash](), [sourmash]()) are great!
  - find similar genomes
  - find what's in your microbiome sample
- - build quick trees
+ - get distances to build quick trees
 
 * There are some drawbacks, especially for microbiome analytics
  - MinHash doesn't include k-mer frequency information
@@ -96,27 +95,23 @@ Will Rowe PhD
 
 ---
 
-***
-
-### Histosketching: [an overview]()
-
-***
-
-<img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/figures/pngs/figure-1.png" width="50%">
+<img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/figures/pngs/figure-1.png" width="60%">
 
 > [Rowe, WPM et al. Streaming histogram sketching for rapid microbiome analytics. BioRxiv 2018](https://doi.org/10.1101/408070)
+<br/>
+> [twitter: @wil_rowe]()
 
 ---
 
-* [histosketch]() algorithm
+* [Histosketch]() algorithm
   - designed for similarity comparisons of customer activity information
   - implemented here to process streaming k-mer spectra
 
-* uses [consistent weighted sampling]()
+* Uses [consistent weighted sampling]()
  - keeps track of k-mer frequency information
  - accounts for differences in relative set size
 
-* several applications
+* Several applications
   - sample dissimilarity estimation
   - rapid microbiome catalogue searching
   - classification of microbiome samples in near real-time.
@@ -125,19 +120,15 @@ Will Rowe PhD
 
 <img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/figures/pngs/figure-2.png" width="50%">
 
-* microbiome samples from the CAMI project
+* Microbiome samples from different body sites (CAMI project)
 
-* histosketched in 1m30s
+* Histosketched 48 samples in [1m30s]()
 
-* histosketches cluster by body site using Jaccard similarity
+* Histosketches cluster by body site using Jaccard similarity
 
 ---
 
-<img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/figures/pngs/figure-4.png" width="50%">
-
-* indexed the sketches using LSH Forest scheme
-
-* searches predominantly return samples from same body site
+Histosketch collections can also be indexed and searched, or as features for ML classifiers. More on this later!
 
 ---
 
@@ -146,8 +137,6 @@ Will Rowe PhD
 [H]()istosketching [U]()sing [L]()ittle [K]()mers
 
 > $ conda install hulk || [github.com/will-rowe/hulk](https://github.com/will-rowe/hulk)
-<br/>
-> [Rowe, WPM et al. Streaming histogram sketching for rapid microbiome analytics. BioRxiv 2018](https://doi.org/10.1101/408070)
 
 ---
 
@@ -155,9 +144,29 @@ Will Rowe PhD
 
 > $ conda install hulk || [github.com/will-rowe/banner](https://github.com/will-rowe/banner)
 
+---
+
+<img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/figures/pngs/figure-4.png" width="50%">
+
+* Index the sketches using LSH Forest scheme
+
+* Indexes are updatable
+
+* Index searches predominantly return samples from same body site
+
 ----
 
 Once we have identified microbiomes of interest, how can we quickly check for genes of interest?
+
+---
+
+<img src="https://raw.githubusercontent.com/will-rowe/groot/master/paper/img/misc/groot-logo-with-text.png" width="30%">
+
+[G]()raphing [R]()esistance [O]()ut [O]()f me[T]()agenomes
+
+> $ conda install groot || [github.com/will-rowe/groot](https://github.com/will-rowe/groot)
+<br/>
+> [Rowe, WPM et al. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics 2018](https://doi.org/10.1093/bioinformatics/bty387)
 
 ---
 
@@ -208,43 +217,64 @@ Once we have identified microbiomes of interest, how can we quickly check for ge
 
 ![groot-figure-1c]({{site.url}}/slides/slide-data/iror/figure-1c.png)
 
----
-
-<img src="https://raw.githubusercontent.com/will-rowe/groot/master/paper/img/misc/groot-logo-with-text.png" width="30%">
-
-[G]()raphing [R]()esistance [O]()ut [O]()f me[T]()agenomes
-
-> $ conda install groot || [github.com/will-rowe/groot](https://github.com/will-rowe/groot)
-<br/>
-> [Rowe, WPM et al. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics 2018](https://doi.org/10.1093/bioinformatics/bty387)
-
 ----
 
-Here comes an example....
+A case study: designing an analysis workflow for profiling the neonatal microbiome
+
+<br/>
+<div align="right">
+<i>collaboration with Lindsay Hall (Quadram)<i/>
+<div/>
 
 ---
 
-Change this:
+* A clinically relevant dataset
+  - gut microbiome profiles from a cohort of healthy pre-term neonates
+  - from a single hospital
 
-* some babies are given antibiotics from birth (e.g. to treat sepsis)
+* Profiling the gut microbiota of preterm infants
+  - correlating this to health data
+  - investigate impact of antibiotics
 
-* do the babies have bacteria that are resistant to these drugs?
+* Workflow aims
+  - quickly identify microbiomes exhibiting dysbiosis
+  - identify Antibiotic Resistance Genes (ARGs)
+  - determine ARG carriage
+  - detect changes in longitudinal samples
+  - work on a laptop
 
-* if so, when does this happen?
+---
 
-* we have timecourse samples from these babies guts
- - we can extract the collective DNA
- - from this, we can get composite samples of the bacteria genomes
+![img]({{site.url}}/slides/slide-data/genome-science/tools-logos.png)
+
+---
+
+![img]({{site.url}}/slides/slide-data/genome-science/tools-workflow.png)
+
+---
+
+* Histosketching with [HULK]()
+  - clusters the samples
+
+* Classification with [BANNER]()
+  - predicts dysbiosis in ~10 seconds / sample
+
+* Gene detection with [GROOT]()
+ - ARGs identified in ~30 seconds / sample
+
+* Automate with [DRAX]() (in development)
+ - reproducible pipeline
+ - adds Metacherchant for identifying gene carriage
 
 ---
 
 ![img]({{site.url}}/slides/slide-data/iror/tmp.jpg)
 
-Fig 1A: Sankey visualisation of the taxonomic composition of a pre-term infant gut microbiome, sampled 18 days post initial antibiotic treatment. 1B. Subgraph single blaSHV (blaSHV-11) gene present at day 7 post initial antibiotic treatment. 1C. Subgraph of multiple blaSHV variants present at day 18 post initial antibiotic treatment. Bubbles correspond to variant nodes that bring additional extended-spectrum beta-lactamase activity to blaSHV (e.g. blaSHV-40). Node width corresponds to read coverage.
+* Single blaSHV (blaSHV-11) gene present at day 7 post initial antibiotic treatment
 
-----
+*  Multiple blaSHV variants present at day 18 post initial antibiotic treatment
 
-![img]({{site.url}}/slides/slide-data/genome-science/tool-logos.png)
+* Graph bubbles correspond to variant nodes that bring additional extended-spectrum beta-lactamase activity to blaSHV (e.g. blaSHV-40)
 
 ----
 
