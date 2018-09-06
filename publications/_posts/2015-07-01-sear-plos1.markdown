@@ -4,13 +4,14 @@ title:  "<strong>ROWE, W. P. M.</strong>, BAKER, K. S., VERNER-JEFFREYS, D., BAK
 author: Will Rowe
 group: publication
 permalink: /plos1-sear-2015/
+doi: https://doi.org/10.1371/journal.pone.0133492
 ---
 
 # Search Engine for Antimicrobial Resistance: A Cloud Compatible Pipeline and Web Interface for Rapidly Detecting Antimicrobial Resistance Genes Directly from Sequence Data
 
 Will P. M. Rowe , Kate S. Baker, David Verner-Jeffreys, Craig Baker-Austin, Jim J. Ryan, Duncan Maskell, Gareth Pearce
 
-[PLoS One](http://dx.doi.org/10.1371/journal.pone.0133492)
+***
 
 ## Abstract
 

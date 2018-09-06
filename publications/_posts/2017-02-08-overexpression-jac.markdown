@@ -4,12 +4,14 @@ title:  "<strong>ROWE, W. P. M.</strong>, VERNER-JEFFREYS, D., BAKER-AUSTIN, C.,
 author: Will Rowe
 group: publication
 permalink: /over-expression-of-ARGs-in-hospital-effluents/
+doi: https://doi.org/10.1093/jac/dkx017
 ---
 
 # Over-expression of antibiotic resistance genes in hospital effluents over time
 
 Will P. M. Rowe, David Verner-Jeffreys, Craig Baker-Austin, Christianne Micallef, Jim J. Ryan, Duncan Maskell, Gareth Pearce
 
+***
 
 ## Abstract
 

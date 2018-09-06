@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "GROOT"
+author: Will Rowe
+group: software-microbiome
+permalink: /groot/
+logolink: https://raw.githubusercontent.com/will-rowe/groot/master/paper/img/misc/groot-logo.png
+github: https://github.com/will-rowe/groot
+---
+
+
+***

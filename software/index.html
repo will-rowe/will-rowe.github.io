@@ -11,23 +11,24 @@ layout: default
         </ul>
         <hr/>
     </section>
-
-<!--- post --->
 <!--- post --->
     <article>
         <header class="major">
             <h2 class="post-title">Software</h2>
-                <p class="post-meta">I'm just updating this, check back later! Go to my <a href="https://github.com/will-rowe" target="_blank">GitHub</a> if you can't wait...</p>
+                <p class="post-meta">Click on the logos to get some more information on what the software does and get links to the repositories!</p>
         </header>
-        <section>
-          <h3 class="post-title">Microbiome analytics</h3>
-          <ul class="posts">
-            {% for post in site.categories.software %}
-              {% if post.group == 'software-microbiome' %}
-              <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-      </section>
   </article>
 </div>
+
+<!--- hex grid --->
+<ul id="hexGrid">
+{% for post in site.categories.software %}
+              <li class="hex hvr-grow">
+                <div class="hexIn">
+                  <a class="hexLink" href="{{ site.baseurl }}{{ post.url }}">
+                    <img src="{{ post.logolink }}" alt="" />
+                  </a>
+                </div>
+              </li>
+{% endfor %}
+</ul>

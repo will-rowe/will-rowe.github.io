@@ -1,14 +1,17 @@
 ---
 layout: publication
-title:  "<strong>ROWE, W. P. M.</strong>, WINN, M. D. 2018. Streaming histogram sketching for rapid microbiome analytics. bioRxiv"
+title:  "<strong>ROWE, W. P. M.</strong>, CARRIERI, A., ALCON-GINER, C., CAIM, S., SHAW, A., SIM, K., KROLL, J.S., HALL, L. J., PYZER-KNAPP, E. O., WINN, M. D. 2018. Streaming histogram sketching for rapid microbiome analytics. bioRxiv"
 author: Will Rowe
 group: publication
 permalink: /hulk-paper/
+doi: https://doi.org/10.1101/408070
 ---
 
 # Streaming histogram sketching for rapid microbiome analytics
 
 Will P. M. Rowe, Anna Paola Carrieri, Cristina Alcon-Giner, Shabhonam Caim, Alex Shaw, Kathleen Sim, J Simon Kroll, Lindsay J. Hall, Edward O. Pyzer-Knapp, Martyn D. Winn
+
+***
 
 ## Abstract
 

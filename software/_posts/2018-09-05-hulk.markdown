@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "HULK"
+author: Will Rowe
+group: software-microbiome
+permalink: /hulk/
+logolink: https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/misc/hulk-logo.png
+github: https://github.com/will-rowe/hulk
+---
+
+
+***
