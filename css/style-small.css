@@ -5,7 +5,6 @@
 */
 
 /* Basic */
-
 	h1 {
 		font-size: 1.5em;
 	}
@@ -20,9 +19,9 @@
 
 /* Section/Article */
 
-	section.special, article.special {
-		text-align: center;
-	}
+section.special, article.special {
+	text-align: center;
+}
 
 	header.major h2 {
 		font-size: 1.35em;
@@ -44,9 +43,9 @@
 		padding: 2.25em 1.5em;
 	}
 
-		#header h1 {
-			font-size: 1.35em;
-		}
+	#header h1 {
+		font-size: 1.35em;
+	}
 
 /* Footer */
 
@@ -66,12 +65,11 @@
 		}
 
 /* Poptrox */
-
 	.poptrox-popup {
 		border-radius: 0;
 	}
 
-		.poptrox-popup .nav-next:before,
-		.poptrox-popup .nav-previous:before {
-			margin-top: -1em;
-		}
+	.poptrox-popup .nav-next:before,
+	.poptrox-popup .nav-previous:before {
+		margin-top: -1em;
+	}

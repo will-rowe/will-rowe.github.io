@@ -39,14 +39,13 @@
 			}
 
 /* Header */
-
 	#header {
 		padding: 4.5em 1.5em;
 	}
 
-		#header h1 br {
-			display: none;
-		}
+	#header h1 br {
+		display: none;
+	}
 
 /* Footer */
 

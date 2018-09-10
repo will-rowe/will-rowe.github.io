@@ -1349,10 +1349,10 @@ body.is-touch .poptrox-popup .closer {
 
 #post {
     position: absolute;
-    margin-left: 20%;
+    margin-left: 10%;
     max-width: 50em;
-    padding: 8em 4em 4em 4em;
-    width: calc(100% - 20%);
+    padding: 4em 1em 4em 1em;
+    width: calc(100% - 10%);
 }
 
 #post>section {
@@ -1378,10 +1378,10 @@ body.is-touch .poptrox-popup .closer {
 
 #software {
     position: absolute;
-    margin-left: 20%;
+    margin-left: 10%;
     max-width: 50em;
-    padding: 8em 4em 4em 4em;
-    width: calc(100% - 20%);
+    padding: 4em 1em 4em 1em;
+    width: calc(100% - 10%);
 }
 
 #software .header .img {
