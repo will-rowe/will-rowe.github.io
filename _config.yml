@@ -15,9 +15,11 @@ google_plus_username:
 facebook_username:
 dribbble_username:
 
-# Markdown settings
+# Markdown
 markdown: kramdown
-highlighter: rouge
+kramdown:
+   syntax_highlighter_opts:
+      disable : true
 
 # Slides
 include: ['_slides']

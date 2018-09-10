@@ -43,19 +43,19 @@ We will be working inside the LIFE708 Docker container again - if you need to re
 
 * To start with - let's clean up all unused containers
 
-```
+```bash
 docker rm $(docker ps -aq)
 ```
 
 * Pull the newest version of the LIFE708 container image
 
-```
+```bash
 docker pull wpmr/life708:latest
 ```
 
 * Now start up the LIFE708 Docker container
 
-```
+```bash
 docker run -itP --rm --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
 ```
 
@@ -63,7 +63,7 @@ docker run -itP --rm --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTE
 
 * Once you are inside the running container, let's make all the directories we will need for the workshop:
 
-```
+```bash
 cd /MOUNTED-VOLUME-LIFE708
 mkdir RefSeq
 mkdir SEQUENCE_READS
@@ -79,7 +79,7 @@ For this workshop we need a reference genome to align our sequencing reads to. L
 
 * download the reference genome sequence
 
-```
+```bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Shigella_sonnei/latest_assembly_versions/GCF_000092525.1_ASM9252v1/GCF_000092525.1_ASM9252v1_genomic.fna.gz -O /MOUNTED-VOLUME-LIFE708/RefSeq/NC_007384.fasta.gz
 ```
 
@@ -87,13 +87,13 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Shigella_sonnei/latest_a
 
 * download the reference genome annotation
 
-```
+```bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Shigella_sonnei/latest_assembly_versions/GCF_000092525.1_ASM9252v1/GCF_000092525.1_ASM9252v1_genomic.gff.gz -O /MOUNTED-VOLUME-LIFE708/RefSeq/NC_007384.gff.gz
 ```
 
 * uncompress the downloaded files
 
-```
+```bash
 gunzip /MOUNTED-VOLUME-LIFE708/RefSeq/*.gz
 ```
 
@@ -110,7 +110,7 @@ Navigate to the sequencing run on the ENA website [here](http://www.ebi.ac.uk/en
 
 * download the sequence reads from the **ERR200544** sequencing run
 
-```
+```bash
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR200/ERR200544/ERR200544_1.fastq.gz -O /MOUNTED-VOLUME-LIFE708/SEQUENCE_READS/ERR200544_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR200/ERR200544/ERR200544_2.fastq.gz -O /MOUNTED-VOLUME-LIFE708/SEQUENCE_READS/ERR200544_2.fastq.gz
 ```
@@ -150,13 +150,13 @@ We are going to use BWA short read aligner to align the sequencing reads from ou
 
 * Construct the FM-Index
 
-```
+```bash
 bwa index RefSeq/NC_007384.fasta
 ```
 
 * Run the alignment algorithm and perform basic post-processing
 
-```
+```bash
 bwa mem -t 2 -R '@RG\tID:foo\tSM:bar\tLB:library1' RefSeq/NC_007384.fasta SEQUENCE_READS/ERR200544_1.fastq.gz SEQUENCE_READS/ERR200544_2.fastq.gz | samtools view -@ 2 -q 10 -bh - | samtools fixmate -O bam - - | samtools sort -@ 2 - -o alignment.bam
 ```
 
@@ -184,7 +184,7 @@ If you want some extra information on the SAM format and samtools, [this](https:
 
 * Now that the alignment has run, we can get some basic stats using samtools
 
-```
+```bash
 samtools flagstat alignment.bam
 ```
 
@@ -192,7 +192,7 @@ samtools flagstat alignment.bam
 
 * Index the alignment file
 
-```
+```bash
 samtools index alignment.bam
 ```
 
@@ -229,7 +229,7 @@ Now that we have an alignment of our sequence data against a reference genome, l
 
 * Freebayes requires an indexed reference sequence
 
-```
+```bash
 samtools faidx RefSeq/NC_007384.fasta
 ```
 
@@ -237,7 +237,7 @@ samtools faidx RefSeq/NC_007384.fasta
 
 * Call variants with Freebayes
 
-```
+```bash
 freebayes -f RefSeq/NC_007384.fasta --ploidy 1 alignment.bam > alignment.vcf
 ```
 
@@ -247,7 +247,7 @@ freebayes -f RefSeq/NC_007384.fasta --ploidy 1 alignment.bam > alignment.vcf
 
 * Have a quick look at the `alignment.vcf` file
 
-```
+```bash
 more alignment.vcf
 ```
 
@@ -260,7 +260,7 @@ To increase our confidence in the putative variants we perform a series of fixed
 
 * Let's restrict our variant calls to the chromosome for now:
 
-```
+```bash
 grep '#' alignment.vcf >> chromosomeVariants.vcf && grep -v '#' alignment.vcf | awk '{if($1=="NC_007384.1") print}' >> chromosomeVariants.vcf
 ```
 
@@ -268,7 +268,7 @@ grep '#' alignment.vcf >> chromosomeVariants.vcf && grep -v '#' alignment.vcf | 
 
 * Let's apply some filter thresholds
 
-```
+```bash
 bcftools filter -g 5 -G 15 -e '%QUAL<30 | MIN(DP)<50' chromosomeVariants.vcf > chromosomeVariants.filtered.vcf
 ```
 
@@ -283,7 +283,7 @@ bcftools filter -g 5 -G 15 -e '%QUAL<30 | MIN(DP)<50' chromosomeVariants.vcf > c
 
 * Use grep and wc to quickly see how many variants we now have
 
-```
+```bash
 grep -v '#' chromosomeVariants.vcf | grep 'NC_007384.1' | wc -l
 grep -v '#' chromosomeVariants.filtered.vcf | grep 'NC_007384.1' | wc -l
 ```
@@ -317,7 +317,7 @@ You should hopefully find several gene variants that are known to confer resista
 
 * Compress and index our filtered variant call file (for use in Artemis)
 
-```
+```bash
 bgzip chromosomeVariants.filtered.vcf
 tabix -p vcf chromosomeVariants.filtered.vcf.gz
 ```
@@ -340,7 +340,7 @@ tabix -p vcf chromosomeVariants.filtered.vcf.gz
 
 You should have found a variant in the DNA gyrase subunit A! You can find out more information on this variant by looking at the variant call file:
 
-```
+```bash
 NC_007384.1	2410773	.	C	T	225
 ```
 

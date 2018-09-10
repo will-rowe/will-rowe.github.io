@@ -45,7 +45,7 @@ We will be working inside the LIFE708 Docker container. **IT HAS BEEN UPDATED SI
 
  * Once you are inside the running container, let's make all the directories we will need for the practical:
 
-```
+```bash
 mkdir /MOUNTED-VOLUME-LIFE708/RefSeq
 mkdir /MOUNTED-VOLUME-LIFE708/SEQUENCE_READS
 mkdir /MOUNTED-VOLUME-LIFE708/Velvet_assembly
@@ -63,7 +63,7 @@ For this practical we need a reference genome in order to validate the assemblie
 
 * download the reference genome sequence
 
-```
+```bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/405/GCF_000007405.1_ASM740v1/GCF_000007405.1_ASM740v1_genomic.fna.gz -O /MOUNTED-VOLUME-LIFE708/RefSeq/NC_004741.fasta.gz
 ```
 
@@ -71,13 +71,13 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/405/GCF_000007405.1_ASM7
 
 * download the reference genome annotation
 
-```
+```bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/405/GCF_000007405.1_ASM740v1/GCF_000007405.1_ASM740v1_genomic.gff.gz -O /MOUNTED-VOLUME-LIFE708/RefSeq/NC_004741.gff.gz
 ```
 
 * uncompress the downloaded files
 
-```
+```bash
 gunzip /MOUNTED-VOLUME-LIFE708/RefSeq/*.gz
 ```
 
@@ -94,7 +94,7 @@ Navigate to the sequencing run on the SRA website [here](https://trace.ncbi.nlm.
 
 * download the sequence reads from the **ERR1107833** sequencing run
 
-```
+```bash
 fastq-dump --outdir SEQUENCE_READS -read-filter pass --readids --skip-technical --split-files --gzip ERR1107833
 ```
 
@@ -119,7 +119,7 @@ Now that we have the sequencing data, we need to check the quality before we ass
 
 * run FastQC
 
-```
+```bash
 fastqc SEQUENCE_READS/*.fastq.gz
 ```
 
@@ -127,13 +127,13 @@ fastqc SEQUENCE_READS/*.fastq.gz
 
 * check the FastQC output
 
-```
+```bash
 head SEQUENCE_READS/ERR1107833_pass_*_fastqc/summary.txt
 ```
 
 There are no QC fails in the FastQC report but we do have a couple of warnings. Let's open up the full report and check the plots. Navigate to the following directory **using the GUI** and open up the report:
 
-```
+```bash
 LIFE708-WORKSHOP > SEQUENCE_READS > ERR1107833_pass_1_fastqc > fastqc_report.html
 ```
 
@@ -146,7 +146,7 @@ Quality trimming is a process by which we remove sequencing adapters and low qua
 
 * we'll use a small bash loop to trim each of our files (forward and reverse reads) and a bash sub-shell to unzip the files on the fly
 
-```
+```bash
 for file in SEQUENCE_READS/*.fastq.gz
 do
 fastq_quality_trimmer -t 30 -l 120 -i <(zcat $file) -o ${file%.fastq.gz}.all-data.trimmed.fastq
@@ -171,25 +171,25 @@ Now that we have downloaded, quality checked and trimmed our data, it is time to
 
 * Velvet requires our input paired-end data to be interleaved into a single file
 
-```
+```bash
 shuffleSequences_fasta.pl SEQUENCE_READS/ERR1107833_pass_1.trimmed.fastq SEQUENCE_READS/ERR1107833_pass_2.trimmed.fastq Velvet_assembly/input_reads.fq
 ```
 
 * To investigate the impact of varying k-mer size, we'll each get a random k-mer size and then compare our assembly results with each other
 
-```
+```bash
 KMER_SIZE=$(shuf -i 17-29 -n 1)
 ```
 
 * Change directory to the `Velvet_assembly` directory
 
-```
+```bash
 cd Velvet_assembly
 ```
 
 * Velvet has two core algorithms, **velveth** and **velvetg** - first run **velveth** to generate a hash-table of all k-mer subsequences from our input data
 
-```
+```bash
 velveth auto_$KMER_SIZE $KMER_SIZE -fastq -shortPaired1 input_reads.fq
 ```
 
@@ -197,7 +197,7 @@ velveth auto_$KMER_SIZE $KMER_SIZE -fastq -shortPaired1 input_reads.fq
 
 * run **velvetg** to build the De Bruijn graph and resolve contigs
 
-```
+```bash
 velvetg auto_$KMER_SIZE -exp_cov auto
 ```
 
@@ -205,7 +205,7 @@ velvetg auto_$KMER_SIZE -exp_cov auto
 
 * let's get a some information on how good our assemblies are
 
-```
+```bash
 assembly-stats auto_$KMER_SIZE/contigs.fa
 ```
 
@@ -224,13 +224,13 @@ We will now have a look at an assembly created using the SPAdes assembler. SPAde
 
 SPAdes will take a while on our machines (as we are limited by RAM and time) so we have provided a SPAdes assembly for our data that was run using the following command (**you don't have to / can't run this**):
 
-```
+```bash
 spades.py -1 SEQUENCE_READS/ERR1107833_pass_1.fastq.gz -2 SEQUENCE_READS/ERR1107833_pass_2.fastq.gz --careful -t 40 -o SPAdes_assembly
 ```
 
 * Let's get the SPAdes assembly and find out the assembly statistics using **assembly-stats** (we'll look at the assembly scaffolds file as this is comparable to our Velvet assembly)
 
-```
+```bash
 cp -r /opt/LIFE708/solutions/workshop2/SPAdes_assembly /MOUNTED-VOLUME-LIFE708/
 
 assembly-stats /MOUNTED-VOLUME-LIFE708/SPAdes_assembly/scaffolds.fasta
@@ -264,7 +264,7 @@ In the real-world, a general rule of thumb for selecting a good k-mer size is to
 
 * k-mer depth (KD) takes into account sequencing coverage (C) and read length (L)
 
-```
+```bash
 KD = C*(L-K+1)/L
 ```
 
@@ -291,7 +291,7 @@ Now let's focus on the **completeness** and **correctness** of our assemblies - 
 
 * First, let's rename our assemblies so that we can compare them more easily
 
-```
+```bash
 cp /MOUNTED-VOLUME-LIFE708/Velvet_assembly/auto_$KMER_SIZE/contigs.fa /MOUNTED-VOLUME-LIFE708/velvet_assembly.fa
 
 cp /MOUNTED-VOLUME-LIFE708/SPAdes_assembly/scaffolds.fasta /MOUNTED-VOLUME-LIFE708/spades_assembly.fa
@@ -324,7 +324,7 @@ However, the SPAdes assembly is still only a draft genome and hasn't completely 
 
 * To compare the assembly to the reference sequence we first need to use a program called **abacas** to order the contigs from our assembly against the reference genome
 
-```
+```bash
 cd /MOUNTED-VOLUME-LIFE708/abacas
 
 abacas.pl -r ../RefSeq/NC_004741.fasta -q ../spades_assembly.fa -p nucmer -m
@@ -371,7 +371,7 @@ You have now finished the practical - you have performed a genome assembly exper
 
  * to quickly annotate a genome, use **Prokka** (a tool for the rapid annotation of prokaryotic genomes)
 
-```
+```bash
 prokka --cpus 1 --genus Shigella --species flexneri --centre X --compliant /MOUNTED-VOLUME-LIFE708/abacas/spades_assembly.fa_NC_004741.fasta.fasta
 ```
 

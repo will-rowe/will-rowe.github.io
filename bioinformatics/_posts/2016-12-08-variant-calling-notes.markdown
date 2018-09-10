@@ -46,7 +46,7 @@ The main short read aligners used by the group are [Bowtie2][bowtie2] and [SMALT
 
 * Align reads, apply a MAPQ filter and then sort and index the bam file
 
-```
+```bash
 $ bowtie2 -x REFERENCE -1 r1.fastq -2 r2.fastq -U r0.fastq -p 40 | samtools view -@ 40 -q 10 -bS - | samtools sort  -@ 40 - -o isolate.outfile.sorted.bam && samtools index isolate.outfile.sorted.bam
 ```
 
@@ -64,14 +64,14 @@ We already applied a quality filter in the previous step (the MAPQ score) but th
 
 * If duplicates are present (e.g. if PCR was used in library prep), remove them using Samtools. Duplicates will bias variant calls or propogate PCR errors (false positives).
 
-```
+```bash
 $ samtools rmdup isolate.outfile.sorted.bam isolate.rmdup.bam
 $ samtools index isolate.rmdup.bam
 ```
 
 * Check the number of aligned reads and the genome coverage of the alignment using bedtools/R or visualise with Artemis etc. to see if we have any suspect regions in our sample (was an appropriate reference used?)
 
-```
+```bash
 $ samtools flagstat isolate.outfile.sorted.bam
 $ bedtools genomecov -ibam isolate.rmdup.bam
 $ bedtools genomecov -bg -ibam isolate.rmdup.bam | gzip > isolate.bedGraph.gz
@@ -80,28 +80,20 @@ $ bedtools genomecov -bg -ibam isolate.rmdup.bam | gzip > isolate.bedGraph.gz
 {% capture plot %}
 ### PER BASE GENOME COVERAGE
 
-samtools flagstat for quick stats on alignment
-```
+```bash
+# samtools flagstat for quick stats on alignment
 $ samtools flagstat alignment.sorted.bam
-```
 
-create a bed file for your region of interest (e.g. the chromosome)
-```
+# create a bed file for your region of interest (e.g. the chromosome)
 $ printf 'D23580_liv_chro\t1\t4879402\tD23580.chrom\t0\n' > D23580.chrom.bed
-```
 
-calculate coverage stats with bedtools
-```
+# calculate coverage stats with bedtools
 $ bedtools coverage -a D23580.chrom.bed -b alignment.sorted.bam -d | gzip > alignment.coverage.tsv.gz
-```
 
-number of bases in region of interest (CP002487.fasta)
-```
+# number of bases in region of interest (CP002487.fasta)
 $ BaseNo=`gunzip -c alignment.coverage.tsv.gz | wc -l`
-```
 
-find number of bases with coverage > 30 and calculate percentage
-```
+# find number of bases with coverage > 30 and calculate percentage
 $ Cov=`gunzip -c alignment.coverage.tsv.gz | awk '$7>30 {print}' | wc -l`
 $ bc -l<<<$Cov/$BaseNo*100
 ```
@@ -112,19 +104,17 @@ $ bc -l<<<$Cov/$BaseNo*100
 
 #### A. If you have a target/suspect region, you could try something like this:
 
-calculate coverage stats per base with bedtools
-```
+```bash
+# calculate coverage stats per base with bedtools
 $ bedtools coverage -a suspect_region.bed -b alignment.sorted.bam -d | gzip > alignment.coverage.tsv.gz
-```
 
-grab Chr, Locus and Depth
-```
+# grab Chr, Locus and Depth
 $ gunzip -c alignment.coverage.tsv.gz | cut -f 1,6,7 - > alignment.cov_4_R.tsv
 ```
 
 run example R script:
 
-```
+```R
 library(reshape)
 library(lattice, pos=10)
 chrom <- read.table("alignment.cov_4_R.tsv", header=FALSE, sep="\t", na.strings="NA", dec=".", strip.white=TRUE)
@@ -137,28 +127,24 @@ dev.off()
 
 #### B. For whole genomes, you could smooth the results by taking averages from windows of 1k bases
 
-```
+```bash
 $ bedtools makewindows -b D23580.chrom.bed -w 1000 > D23.1k.bed
 $ bedtools coverage -hist -a D23.1k.bed -b alignment.sorted.bam | grep ^all > alignment.hist.all.txt
 ```
 
 #### C. Another option is to calculate the cumulative distribution describing the fraction of targeted bases that were covered by >x reads
 
-use the bedtools coverage histogram
-```
+```bash
+# use the bedtools coverage histogram
 $ bedtools coverage -hist -a suspect_region.bed -b alignment.sorted.bam | grep ^all > alignment.hist.txt
-```
 
-use GNU parallel for multiple samples
-```
+# use GNU parallel for multiple samples
 $ find ./ -type f -name '*bam' | parallel 'bedtools coverage -hist -a D23.1k.bed -b {} | grep ^all > {}.hist.all.txt'
 ```
 
-use an R script to visualise coverage over regions of interst / whole genome
+Then use an R script to visualise coverage over regions of interst / whole genome. This example is by [Stephen Turner](http://www.gettinggeneticsdone.com/2014/03/visualize-coverage-exome-targeted-ngs-bedtools.html):
 
-this example is by [Stephen Turner](http://www.gettinggeneticsdone.com/2014/03/visualize-coverage-exome-targeted-ngs-bedtools.html)
-
-```
+```R
 # Get a list of the bedtools output files you'd like to read in
 print(files <- list.files(pattern="all.txt$"))
 print(labels <- paste("Sample-", gsub("\\.sorted.bam.hist.all.txt", "", files, perl=TRUE), sep=""))
@@ -195,7 +181,6 @@ dev.off()
 {% endcapture %}
 
 
-
 <details>
 <summary>Click to see example snippets and R code for exploring coverage stats</summary>
 
@@ -215,29 +200,25 @@ Freebayes uses the literal sequences of reads aligned to a particular target, no
 
 * Call putative variants with Freebayes
 
-```
+```bash
 $ freebayes -f ../D23580_liv_2016_chrom_4plasmids.fasta --ploidy 1 -F 0.1 isolate.rmdup.bam > isolate.vcf
-```
 
-<details>
-<summary>Click to see command explanation</summary>
-ploidy = 1	--> Indicates that the sample should be genotyped as haploid
-<br/>
-F = 0.1 	--> Require at least this fraction of observations supporting an alternate allele within a single individual in the in order to evaluate the position.
-</details><br/>
+# ploidy = 1	--> Indicates that the sample should be genotyped as haploid
+# F = 0.1 	--> Require at least this fraction of observations supporting an alternate allele within a single individual in the in order to evaluate the position.
+```
 
 > Side Note:	Bayesian inference is a method of statistical inference in which Bayes' theorem is used to update the probability for a hypothesis as more evidence or information becomes available
 
 * compress and index the VCF file
 
-```
+```bash
 $ bgzip isolate.vcf
 $ tabix -p vcf isolate.vcf.gz
 ```
 
 * alternatively, we could have used samtools / bcftools to generate VCF file
 
-```
+```bash
 $ samtools mpileup -uf ref.fa isolate.rmdup.bam | bcftools call -mv -Oz > isolate.vcf.gz
 ```
 
@@ -253,16 +234,14 @@ The DP of the VCF file is the sequencing depth for that position. A DP greater t
 
 * filter using report quality, proximity to indels, clusters of indels and depth
 
-```
+```bash
 $ bcftools filter -g3 -G10 -e '%QUAL<20 | MIN(DP)<10' isolate.vcf.gz > isolate.SNPs.filtered.vcf
+
+# g = 3		--> filter SNPs within 3 base pairs of an indel<br/>
+# G = 10		--> filter clusters of indels separated by 10 or fewer base pairs allowing only one to pass<br/>
+# e		--> exclude the expression %QUAL<20 | MIN(DP)<10 (exclude SNPs with quality score <10 and site coverage depth <10)
 ```
 
-<details>
-<summary>Click to see command explanation</summary>
-g = 3		--> filter SNPs within 3 base pairs of an indel<br/>
-G = 10		--> filter clusters of indels separated by 10 or fewer base pairs allowing only one to pass<br/>
-e		--> exclude the expression %QUAL<20 | MIN(DP)<10 (exclude SNPs with quality score <10 and site coverage depth <10)
-</details><br/>
 
 ### Interpret filtered variants
 
@@ -270,7 +249,7 @@ Now that we have applied a filter to the VCF file, we need to assess the variant
 
 * check the transition/transversion ratio (a value ~0.5 could indicate a flase positive)
 
-```
+```bash
 $ bcftools stats isolate.SNPs.filtered.vcf > isolate.SNPs.filtered.stats
 $ bcftools stats isolate.SNPs.filtered.vcf | grep TSTV
 ```

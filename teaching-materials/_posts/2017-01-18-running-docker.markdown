@@ -59,31 +59,23 @@ Docker comes with it's own set of terminology - we'll list a few of the importan
 
 ## Pulling the Docker image
 
-First, we need to pull the life708 container image from the Docker Hub:
+```bash
+# First, we need to pull the life708 container image from the Docker Hub:
+$ docker pull wpmr/life708:latest
 
-```
-docker pull wpmr/life708:latest
-```
+# Check that you can see the life708 container image:
+$ docker images
 
-Check that you can see the life708 container image:
-
-```
-docker images
-```
-
-Your output should look something like this:
-
-```
+# Your output should look something like this:
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 wpmr/life708        latest              4a5e668fbc60        3 minutes ago       3.466 GB
 ```
 
 ## Starting the container
 
-Now we have our container image, we can start the container and enter it:
-
-```
-docker run -itP --rm --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
+```bash
+# Now we have our container image, we can start the container and enter it:
+$ docker run -itP --rm --name life708-$USER -v ~/Desktop/LIFE708-WORKSHOP/:/MOUNTED-VOLUME-LIFE708 wpmr/life708:latest
 ```
 
 This command is doing quite a few things (which we don't need to worry too much about now) but we have ended up inside a running container!
@@ -104,7 +96,7 @@ This command is doing quite a few things (which we don't need to worry too much 
 
 You should now see a screen looking like this:
 
-```
+```bash
 ###################################################################
 Fri Jan 20 12:46:48 UTC 2017
 Welcome to BioDock for LIFE708 . . .
@@ -124,33 +116,19 @@ While inside our container, all files that we make in **/MOUNTED-VOLUME-LIFE708*
 
 ## Useful commands
 
-Just type **exit** to leave the container. We can re-enter the container if needed by typing:
+```bash
+# Just type `exit` to leave the container. We can re-enter the container if needed by typing:
+$ docker start life708-$USER
+$ docker exec -it life708-$USER bash
 
-```
-docker start life708-$USER
+# View all containers (both running and stopped) using:
+$ docker ps -a
 
-docker exec -it life708-$USER bash
-```
+# Stop or remove all containers:
+$ docker stop $(docker ps -aq)
+$ docker rm $(docker ps -aq)
 
-Some other useful commands (particularly if running Docker yourself later):
-
- * View all containers (both running and stopped) using:
-
-```
-docker ps -a
-```
-
- * Stop or remove all containers:
-
-```
-docker stop $(docker ps -aq)
-
-docker rm $(docker ps -aq)
-```
-
- * Delete the Docker image:
-
-```
+# Delete the Docker image:
 docker rmi [IMAGE ID]
 ```
 
