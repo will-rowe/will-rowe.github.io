@@ -196,11 +196,24 @@ transition: slide
 
 ----
 
-Update this slide:
+* [Resistome profiling]() can be difficult
+ - high similarity between reference genes
+ - microbiome data can be massive in size
+ - existing workflows are complicated
 
-Once we have identified microbiomes of interest, how can we quickly check for genes of interest?
+* Existing tools aren't ideal
+ - few tools are designed for microbiome samples
+ - reference dependent vs. independent
+ - slow and/or inaccurate
 
-> [Rowe, WPM et al. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics 2018](https://doi.org/10.1093/bioinformatics/bty387)
+* Variation graph encoding of sequences
+ - use graph traversals to identify variants
+ - collapses similar sequences
+ - improves speed and accuracy
+
+---
+
+![]({{site.url}}/slides/slide-data/host-microbe-talk-jan2017/arg-tool-timeline.jpg)
 
 ---
 
@@ -217,6 +230,8 @@ Once we have identified microbiomes of interest, how can we quickly check for ge
 * A [MinHash sketch]() is kept for each window of a graph traversal
 
 ![groot-figure-1a]({{site.url}}/slides/slide-data/iror/figure-1a.png)
+
+> [Rowe, WPM et al. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics 2018](https://doi.org/10.1093/bioinformatics/bty387)
 
 ---
 
@@ -263,9 +278,13 @@ Once we have identified microbiomes of interest, how can we quickly check for ge
 
 > $ conda install groot || [github.com/will-rowe/groot](https://github.com/will-rowe/groot)
 
+---
+
+![]({{site.url}}/slides/slide-data/host-microbe-talk-jan2017/fig5-groot.png)
+
 ----
 
-A case study: designing an analysis workflow for profiling the neonatal microbiome
+[Case study](): designing an analysis workflow for profiling the neonatal microbiome
 
 <br/>
 <div align="right">
@@ -289,15 +308,15 @@ A case study: designing an analysis workflow for profiling the neonatal microbio
   - detect changes in longitudinal samples
   - work on a laptop
 
----
+----
 
-![img]({{site.url}}/slides/slide-data/genome-science/tools-logos.png)
+<section data-background-image="{{site.url}}/slides/slide-data/genome-science/tools-logos.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
----
+----
 
-![img]({{site.url}}/slides/slide-data/genome-science/tools-workflow.png)
+<section data-background-image="{{site.url}}/slides/slide-data/genome-science/tools-workflow.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
----
+----
 
 * Histosketching with [HULK]()
   - clusters the samples
