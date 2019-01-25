@@ -2,18 +2,14 @@
 title: Will Rowe
 email: will.rowe@stfc.ac.uk
 
-description: general blog site
-baseurl: "" # the subpath of your site, e.g. /blog/
+description: personal website
+baseurl: ""
 url: "https://will-rowe.github.io" # the base hostname & protocol for your site
 
 # Social links
 twitter_username:     wil_rowe
 github_username:      will-rowe
 linkedin_username:    will-rowe-13219b136
-alternate_site:
-google_plus_username:
-facebook_username:
-dribbble_username:
 
 # Markdown
 markdown: kramdown
