@@ -243,7 +243,7 @@ View the presentation online at:
 
 ***
 
-![eulerian paths](http://math.nmsu.edu/~pmorandi/CourseMaterials/graphics/EulerPath2.gif)
+![eulerian paths](http://wfahm.com/images/euler-path-i14.gif)
 
 * graphs with Eulerian paths are termed Eulerian
 
