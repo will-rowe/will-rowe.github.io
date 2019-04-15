@@ -1,10 +1,10 @@
 ---
 layout: publication
-title:  "<strong>ROWE, W. P. M.</strong>, CARRIERI, A., ALCON-GINER, C., CAIM, S., SHAW, A., SIM, K., KROLL, J.S., HALL, L. J., PYZER-KNAPP, E. O., WINN, M. D. 2018. Streaming histogram sketching for rapid microbiome analytics. bioRxiv"
+title:  "<strong>ROWE, W. P. M.</strong>, CARRIERI, A., ALCON-GINER, C., CAIM, S., SHAW, A., SIM, K., KROLL, J.S., HALL, L. J., PYZER-KNAPP, E. O., WINN, M. D. 2019. Streaming histogram sketching for rapid microbiome analytics. Microbiome"
 author: Will Rowe
 group: publication
 permalink: /hulk-paper/
-doi: https://doi.org/10.1101/408070
+doi: https://doi.org/10.1186/s40168-019-0653-2
 ---
 
 # Streaming histogram sketching for rapid microbiome analytics
@@ -28,4 +28,4 @@ We provide our implementation, Histosketching Using Little K-mers (HULK), which 
 
 ### Availability
 
-Our implementation (HULK) is written in Go and is available at:  [github.com/will-rowe/hulk](https://github.com/will-rowe/hulk) (MIT license).
+Our implementation (HULK) is written in Go and is available at:  [github.com/will-rowe/hulk](https://github.com/will-rowe/hulk)
