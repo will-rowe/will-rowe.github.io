@@ -115,7 +115,7 @@ transition: slide
 
 ---
 
-<img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/figures/pngs/figure-1.png" width="60%">
+<img src="https://github.com/will-rowe/hulk/raw/master/paper/img/figures/pngs/figure-1.jpg" width="60%">
 
 > Rowe, WPM et al. [Streaming histogram sketching for rapid microbiome analytics. BioRxiv 2018](https://doi.org/10.1101/408070)
 
