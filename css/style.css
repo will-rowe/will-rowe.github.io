@@ -1,5 +1,11 @@
 @import url(font-awesome.min.css);
 
+:root {
+	--bg-colour: #E9DBC5;
+	--fg-colour: #F5A65B;
+	--blue-highlight: #96BDC6;
+}
+
 /*
 	Strata by HTML5 UP - edited by Will Rowe
 	html5up.net | @n33co
@@ -44,7 +50,7 @@ a {
     -o-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    color: #F5A65B;
+    color: var(--fg-colour);
     text-decoration: none;
 }
 
@@ -123,12 +129,8 @@ sup {
 
 hr {
     border: 0;
-    border-bottom: solid 4px #657b83;
-    margin: 2em 0;
-}
-
-hr.major {
-    margin: 3em 0;
+    border-bottom: solid 2px #657b83;
+    margin: 4em 0 0 0;
 }
 
 blockquote {
@@ -156,30 +158,30 @@ blockquote {
 }
 
 ::selection {
-    background-color: #F5A65B;
+    background-color: var(--fg-colour);
     color: #fff;
 }
 
 /*** Mozilla based browsers ***/
 ::-moz-selection {
-    background-color: #F5A65B;
+    background-color: var(--fg-colour);
     color: #fff;
 }
 
 /***For Other Browsers ***/
 ::-o-selection {
-    background-color: #F5A65B;
+    background-color: var(--fg-colour);
     color: #fff;
 }
 
 ::-ms-selection {
-    background-color: #F5A65B;
+    background-color: var(--fg-colour);
     color: #fff;
 }
 
 /*** For Webkit ***/
 ::-webkit-selection {
-    background-color: #F5A65B;
+    background-color: var(--fg-colour);
     color: #fff;
 }
 
@@ -265,7 +267,7 @@ input[type="password"]:focus,
 input[type="email"]:focus,
 select:focus,
 textarea:focus {
-    border-color: #F5A65B;
+    border-color: var(--fg-colour);
     border-width: 4px;
 }
 
@@ -566,7 +568,7 @@ input[type="radio"]+label:before {
 
 .image.avatar:hover {
     border-radius: 100%;
-    border: 6px solid #F5A65B;
+    border: 6px solid var(--fg-colour);
 }
 
 /* List */
@@ -828,8 +830,8 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
 .button:hover {
-    border-color: #F5A65B;
-    color: #F5A65B !important;
+    border-color: var(--fg-colour);
+    color: var(--fg-colour) !important;
     background-image: url("images/overlay.png"), url("../images/bg-will.png");
 }
 
@@ -837,8 +839,8 @@ input[type="submit"]:active,
 input[type="reset"]:active,
 input[type="button"]:active,
 .button:active {
-    border-color: #F5A65B;
-    background-color: #F5A65B;
+    border-color: var(--fg-colour);
+    background-color: var(--fg-colour);
 }
 
 input[type="submit"].icon,
@@ -892,16 +894,16 @@ input[type="submit"].special:hover,
 input[type="reset"].special:hover,
 input[type="button"].special:hover,
 .button.special:hover {
-    background-color: #F5A65B;
-    border-color: #F5A65B;
+    background-color: var(--fg-colour);
+    border-color: var(--fg-colour);
 }
 
 input[type="submit"].special:active,
 input[type="reset"].special:active,
 input[type="button"].special:active,
 .button.special:active {
-    background-color: #F5A65B;
-    border-color: #F5A65B;
+    background-color: var(--fg-colour);
+    border-color: var(--fg-colour);
 }
 
 input[type="submit"].disabled, input[type="submit"]:disabled,
@@ -911,8 +913,8 @@ input[type="button"].disabled,
 input[type="button"]:disabled,
 .button.disabled,
 .button:disabled {
-    background-color: #F5A65B !important;
-    border-color: #F5A65B !important;
+    background-color: var(--fg-colour) !important;
+    border-color: var(--fg-colour) !important;
     color: #b2b2b2 !important;
     cursor: default;
 }
@@ -973,7 +975,7 @@ input[type="button"]:disabled,
 
 #header a:hover {
 
-    color: #F5A65B !important;
+    color: var(--fg-colour) !important;
     text-decoration: none;
 }
 
@@ -1152,7 +1154,7 @@ nav li {
     -o-box-sizing: content-box;
     -ms-box-sizing: content-box;
     box-sizing: content-box;
-    -webkit-tap-highlight-color: #F5A65B;
+    -webkit-tap-highlight-color: var(--fg-colour);
     background: #fff;
     border-radius: 0.2em;
     box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.15);
@@ -1212,7 +1214,7 @@ nav li {
     -o-transition: opacity 0.2s ease-in-out;
     -ms-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
-    -webkit-tap-highlight-color: #F5A65B;
+    -webkit-tap-highlight-color: var(--fg-colour);
     background: rgba(0, 0, 0, 0.01);
     cursor: pointer;
     height: 100%;
@@ -1270,7 +1272,7 @@ nav li {
     -o-transition: opacity 0.2s ease-in-out;
     -ms-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
-    -webkit-tap-highlight-color: #F5A65B;
+    -webkit-tap-highlight-color: var(--fg-colour);
     color: #fff;
     height: 4em;
     line-height: 4em;
@@ -1299,7 +1301,7 @@ nav li {
     -ms-box-sizing: content-box;
     box-sizing: content-box;
     border-radius: 100%;
-    border: solid 3px #F5A65B;
+    border: solid 3px var(--fg-colour);
     content: '\f00d';
     display: block;
     font-size: 1em;
@@ -1435,8 +1437,8 @@ body.is-touch .poptrox-popup .closer {
     left: 0px;
     right: 0px;
     z-index: -1;
-    border: 4px solid #F5A65B;
-    border-color: transparent #F5A65B;
+    border: 4px solid var(--fg-colour);
+    border-color: transparent var(--fg-colour);
 }
 
 
@@ -1512,7 +1514,7 @@ body.is-touch .poptrox-popup .closer {
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);
-    background-color: #F5A65B;
+    background-color: var(--fg-colour);
     cursor: pointer;
 }
 
@@ -1705,3 +1707,33 @@ body.is-touch .poptrox-popup .closer {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+
+ /* The alert message box */
+ .alert {
+    padding: 20px;
+    background-color: var(--fg-colour);
+    color: white;
+    margin-bottom: 15px;
+  }
+
+  .alert a {
+    color: black;
+    cursor: pointer;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  } 
