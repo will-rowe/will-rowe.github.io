@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+    {% include header.html %}
+    
+
+
+    <br/>
+
+    {% if page.date %}
+    <sup>{{ page.date | date: '%B %d, %Y' }}</sup>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    <h4> > {{ page.tagline }}</h4>
+    <hr style="width:100%;"/>
+
+
+    {% if page.featured-image %}
+    <span class="image main">
+      <img src="{{ page.featured-image }}" alt="">
+    </span>
+    {% endif %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+  </body>
+</html>

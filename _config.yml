@@ -1,0 +1,23 @@
+# Site settings
+title: Will Rowe
+email: w.rowe@bham.ac.uk
+description: binfie  in  brum
+baseurl: ""
+url: willrowe.net
+logo-image-url: images/profile-pic.svg
+
+# Social settings
+github_username: will-rowe
+twitter_username: wil_rowe
+linkedin_username: will-rowe-13219b136
+
+# Build settings
+markdown: kramdown
+excerpt_separator: <!--more-->
+sass:
+  sass_dir: _sass
+  style: compressed
+include: ['_slides', '_software']
+collections:
+  - slides
+  - software

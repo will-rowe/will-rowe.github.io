@@ -1,0 +1,15 @@
+<nav id="menu">
+	<ul>
+		<li><a href="/">Home</a></li>
+		{% for page in site.pages %}
+			{% if page.path == "index.html" %}
+				<li><a href="{{ page.url | prepend: site.baseurl | remove: "index.html" }}">{{ page.title }}</a></li>
+			{% else %}
+				{% if page.layout == "default" %}
+				<li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title | remove: "Home" }}</a></li>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+		<li><a href="https://will-rowe.github.io/online-cv">CV</a></li>
+	</ul>
+</nav>

@@ -1,0 +1,62 @@
+rnaseq.py: 05/09/2017 10:16:38	INFO	RNA-seq pipeline started by: willr
+rnaseq.py: 05/09/2017 10:16:38	INFO	**** SETTING UP PIPELINE ****
+rnaseq.py: 05/09/2017 10:16:38	INFO	checking for required programs . . .
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * parallel found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/parallel
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * bowtie2 found: /usr/local/share/bowtie2-2.2.5/bowtie2
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * fastqc found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/fastqc
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * kraken found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/kraken
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * kraken-report found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/kraken-report
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * trimmomatic found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/trimmomatic
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * samtools found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/samtools
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * multiqc found: /pub46/willr/miniconda3/envs/python2/bin/multiqc
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * bammarkduplicates2 found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/bammarkduplicates2
+rnaseq.py: 05/09/2017 10:16:38	INFO	 * R found: /usr/local/share/R-3.2.0/bin/R
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * Rscript found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/Rscript
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * bedtools found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/bedtools
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * featureCounts found: /pub46/willr/000_HOME/0003_SOFTWARE/bin/featureCounts
+rnaseq.py: 05/09/2017 10:16:39	INFO	checking CL arguments . . .
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * input file list: v9-474.samples
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * results directory: results-v9-474
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * coverage checks not requested
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * log file: ./log.txt
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * threads for parallel steps: 60
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * keep off: intermediary files are removed
+rnaseq.py: 05/09/2017 10:16:39	INFO	checking reference . . .
+rnaseq.py: 05/09/2017 10:16:39	INFO	 * file: ./ST474-liv-chrom-3plasmids-2017.gff
+rnaseq.py: 05/09/2017 10:16:41	INFO	 * annotation file OK, extracting reference fasta
+rnaseq.py: 05/09/2017 10:16:41	INFO	 * creating bowtie2 index from reference fasta
+rnaseq.py: 05/09/2017 10:16:46	INFO	**** COLLECTING INPUT FILES ****
+rnaseq.py: 05/09/2017 10:16:46	INFO	checking file list . . .
+rnaseq.py: 05/09/2017 10:16:46	INFO	 * found 13 fastq files present in input file list
+rnaseq.py: 05/09/2017 10:16:46	INFO	**** RUNNING QC ****
+rnaseq.py: 05/09/2017 10:16:46	INFO	now running fastqc, kraken and trimmomatic . . .
+rnaseq.py: 05/09/2017 10:36:14	INFO	collecting QC results . . .
+rnaseq.py: 05/09/2017 10:36:14	WARNING	 * a sample has kraken results outside 1 SD of collective mean (results-v9-474/QC/initial_KRAKEN_results/4-74-NonSPI2-4-RC_S9_R1_001.fastq-krakenreport.txt)
+rnaseq.py: 05/09/2017 10:36:14	WARNING	 * a sample has kraken results outside 1 SD of collective mean (results-v9-474/QC/initial_KRAKEN_results/4-74-NonSPI2-3-RC_S8_R1_001.fastq-krakenreport.txt)
+rnaseq.py: 05/09/2017 10:36:14	WARNING	 * a sample has kraken results outside 1 SD of collective mean (results-v9-474/QC/initial_KRAKEN_results/4-74-NoO2-3-RC_S5_R1_001.fastq-krakenreport.txt)
+rnaseq.py: 05/09/2017 10:36:14	WARNING	 * a sample has kraken results outside 1 SD of collective mean (results-v9-474/QC/initial_KRAKEN_results/4-74-ESP-5-RC_S1_R1_001.fastq-krakenreport.txt)
+rnaseq.py: 05/09/2017 10:36:27	INFO	generating multiqc report . . .
+rnaseq.py: 05/09/2017 10:39:07	INFO	**** RUNNING ALIGNMENT ****
+rnaseq.py: 05/09/2017 10:39:07	INFO	now running bowtie2 . . .
+rnaseq.py: 05/09/2017 11:14:44	WARNING	Low number (3271134) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-NoO2-4-RC_S6_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:44	WARNING	Low number (2696154) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-ESP-7-RC_S3_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:44	WARNING	Low number (3820574) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-InSPI2-4-RC_S17_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:45	WARNING	Low number (3426961) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-ESP-6-RC_S2_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:45	WARNING	Low number (2546185) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-ESP-5-RC_S1_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:45	WARNING	Low number (2135392) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-NoO2-2-RC_S4_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:46	WARNING	Low number (2323836) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-NoO2-3-RC_S5_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:47	WARNING	Low number (1686806) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-MAC-3-WY_S20_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:47	WARNING	Low number (3327030) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-InSPI2-3-RC_S16_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:47	WARNING	Low number (4837388) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-NonSPI2-2-RC_S7_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:48	WARNING	Low number (3274489) of reads mapped for sample results-v9-474/ALIGNMENT/4-74-InSPI2-5-RC_S18_R1_001.fastq.trimmed.sorted.bam
+rnaseq.py: 05/09/2017 11:14:48	INFO	generating multiqc report . . .
+rnaseq.py: 05/09/2017 11:15:04	INFO	**** RUNNING ADDITIONAL QC ****
+rnaseq.py: 05/09/2017 11:15:04	INFO	dupRadar PCR artefact check . . .
+rnaseq.py: 05/09/2017 11:15:04	INFO	 * running biobambam2/bammarkduplicates2 . . .
+rnaseq.py: 05/09/2017 11:22:13	INFO	 * running dupRadar . . .
+rnaseq.py: 05/09/2017 11:23:05	INFO	**** RUNNING COUNTS ****
+rnaseq.py: 05/09/2017 11:23:05	INFO	 * running featureCounts . . .
+rnaseq.py: 05/09/2017 11:23:32	INFO	**** GENERATING REPORT ****
+rnaseq.py: 05/09/2017 11:23:32	INFO	setting up record . . .
+rnaseq.py: 05/09/2017 11:25:04	INFO	**** FINISHED ****
+rnaseq.py: 05/09/2017 11:25:04	INFO	pipeline completed successfully
