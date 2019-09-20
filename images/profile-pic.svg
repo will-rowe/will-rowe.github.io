@@ -1,35 +1,40 @@
 <svg style="isolation:auto" viewBox="0 0 1000 1000" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg">
 	<style>
 	.blink {
-		animation: blinking 10s infinite;
+		fill: #FFD1C1;
+		opacity: 0;
+		animation: blinking 8s infinite;
+		-webkit-animation-name: blinking;
+		-webkit-animation-duration: 8s;
+		-webkit-animation-iteration-count: infinite;
 	}
 	@-webkit-keyframes blinking {
-		0% { fill: none;} 
-		40% { fill: none;} 		
-		50% { fill: #FFD1C1;}
-		51% { fill: none;} 
-		100% { fill: none;} 
+		0% { opacity: 0;} 
+		48% { opacity: 0;} 		
+		50% { opacity: 1;}
+		52% { opacity: 0;} 
+		100% { opacity: 0;} 
 	}
 	@-moz-keyframes blinking {
-		0% { fill: none;} 
-		40% { fill: none;} 		
-		50% { fill: #FFD1C1;}
-		51% { fill: none;} 
-		100% { fill: none;} 
+		0% { opacity: 0;} 
+		48% { opacity: 0;} 		
+		50% { opacity: 1;}
+		52% { opacity: 0;} 
+		100% { opacity: 0;} 
 	}
 	@-o-keyframes blinking {
-		0% { fill: none;} 
-		40% { fill: none;} 		
-		50% { fill: #FFD1C1;}
-		51% { fill: none;} 
-		100% { fill: none;} 
+		0% { opacity: 0;} 
+		48% { opacity: 0;} 		
+		50% { opacity: 1;}
+		52% { opacity: 0;} 
+		100% { opacity: 0;} 
 	}
 	@keyframes blinking { 
-		0% { fill: none;} 
-		40% { fill: none;} 		
-		50% { fill: #FFD1C1;}
-		51% { fill: none;} 
-		100% { fill: none;} 
+		0% { opacity: 0;} 
+		48% { opacity: 0;} 		
+		50% { opacity: 1;}
+		52% { opacity: 0;} 
+		100% { opacity: 0;} 
 	}
 
 	</style>
