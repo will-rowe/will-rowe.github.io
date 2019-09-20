@@ -1,89 +1,12 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 <html>
-        {% include head.html %}
-      <body>
-      <header id="header">
-          <a href="{{ site.url }}" class="image avatar"><img src="/images/avatar-will.jpg" alt="/images/avatar.jpg" /></a>
-          <h1>I'm <strong><a href="https://will-rowe.github.io/online-cv/">Will Rowe</a></strong>,<br /> a computational biologist <br />working in microbial genomics<br />
-          at <strong><a href="https://www.ukri.org/">UKRI</a></strong>.</h1>
-      </header>
 
-        {{ content }}
+{% include head.html %}
 
-        <!-- Footer -->
-        <footer id="footer">
-            <ul class="icons">
+<body>
 
-              {% if site.github_username %}
-              <li>
-                <a href="https://github.com/{{ site.github_username }}" class="icon fa-github" target="_blank">
-                  <span class="label">GitHub</span>
-                </a>
-              </li>
-              {% endif %}
+    {% include header.html %} {{ content }} {% include footer.html %}
 
-              {% if site.twitter_username %}
-              <li>
-                <a href="https://twitter.com/{{ site.twitter_username }}" class="icon fa-twitter" target="_blank">
-                  <span class="label">Twitter</span>
-                </a>
-              </li>
-              {% endif %}
+</body>
 
-              {% if site.linkedin_username %}
-              <li>
-                <a href="https://linkedin.com/in/{{ site.linkedin_username }}" class="icon fa-linkedin" target="_blank">
-                  <span class="label">LinkedIn</span>
-                </a>
-              </li>
-              {% endif %}
-
-              {% if site.google_plus_username %}
-              <li>
-                <a href="https://plus.google.com/{{ site.google_plus_username }}" class="icon fa-google-plus">
-                  <span class="label">Google+</span>
-                </a>
-              </li>
-              {% endif %}
-
-              {% if site.facebook_username %}
-              <li>
-                <a href="https://www.facebook.com/{{ site.facebook_username }}" class="icon fa-facebook">
-                  <span class="label">Facebook</span>
-                </a>
-              </li>
-              {% endif %}
-
-              {% if site.dribbble_username %}
-              <li>
-                <a href="#" class="icon fa-dribbble">
-                  <span class="label">Dribbble</span>
-                </a>
-              </li>
-              {% endif %}
-
-              {% if site.email %}
-              <li>
-                <a href="mailto:{{ site.email }}" class="icon fa-envelope-o">
-                  <span class="label">Email</span>
-                </a>
-              </li>
-              {% endif %}
-
-              {% if site.alternate_site %}
-              <li>
-                <a href="{{ site.alternate_site }}" class="icon fa-globe">
-                  <span class="label">Site</span>
-                </a>
-              </li>
-              {% endif %}
-
-            </ul>
-            <ul class="copyright">
-                <li>&copy; Will Rowe</li>
-            </ul>
-        </footer>
-
-	</body>
 </html>

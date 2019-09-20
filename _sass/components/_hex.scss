@@ -1,0 +1,198 @@
+.hexGrid {
+    padding: 0em 2em 0em 2em;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    list-style-type: none;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+
+    .hvr-grow {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+    }
+    
+    .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+.hex {
+    margin-top: 1%;
+    position: relative;
+    visibility: hidden;
+    outline: 0;
+    display: block;
+
+    &:after {
+        content: '';
+        display: block;
+        padding-bottom: 86.602%;
+        /* =  100 / tan(60) * 1.5 */
+    }
+
+    img {
+        left: -100%;
+        right: -100%;
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+        -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -ms-transform: rotate3d(0, 0, 0, 0deg);
+        transform: rotate3d(0, 0, 0, 0deg);
+        background-color: #EDF7F6;
+    }
+
+    .hexIn {
+        position: absolute;
+        width: 96%;
+        padding-bottom: 110.851%;
+        /* =  width / sin(60) */
+        margin: 0 2%;
+        overflow: hidden;
+        visibility: hidden;
+        outline: 1px solid transparent;
+        /* fix for jagged edges in FF on hover transition */
+        -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+        -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+        transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+    }
+
+    .hexIn * {
+        position: absolute;
+        visibility: visible;
+        outline: 1px solid transparent;
+        /* fix for jagged edges in FF on hover transition */
+    }
+
+    .hexLink {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+        -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+        -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+        transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+    }
+
+}
+
+/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
+
+@media (min-width:901px) {
+
+    /* <- 4-3  hexagons per row */
+    .hexGrid {
+        padding-bottom: 10%
+    }
+
+    .hex {
+        width: 22%;
+        /* = 100 / 4 */
+    }
+
+    .hex:nth-child(7n+5) {
+        /* first hexagon of even rows */
+        margin-left: 11%;
+        /* = width of .hex / 2  to indent even rows */
+    }
+}
+
+@media (max-width: 900px) and (min-width:601px) {
+
+    /* <- 3-2  hexagons per row */
+    .hexGrid {
+        padding-bottom: 10%
+    }
+
+    .hex {
+        width: 33.333%;
+        /* = 100 / 3 */
+    }
+
+    .hex:nth-child(5n+4) {
+        /* first hexagon of even rows */
+        margin-left: 16.666%;
+        /* = width of .hex / 2  to indent even rows */
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* <- 2-1  hexagons per row */
+    .hexGrid {
+        padding-bottom: 15%
+    }
+
+    .hex {
+        width: 50%;
+        /* = 100 / 3 */
+    }
+
+    .hex:nth-child(3n+3) {
+        /* first hexagon of even rows */
+        margin-left: 25%;
+        /* = width of .hex / 2  to indent even rows */
+    }
+}
+
+@media (max-width: 200px) {
+    .hexGrid {
+        font-size: 20px;
+    }
+}
+
+@keyframes fadeIn{
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+  
+@-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+  
+@-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+  
+@-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+  
+@-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}

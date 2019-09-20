@@ -1,6 +1,7 @@
 ---
 layout: slide-deck
 title:  "Genome Science"
+date: 2018-09-05 12:00:00 -0000
 author: Will Rowe
 permalink: /genome-science/
 group: presentation

@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
-    {% include head.html %}
-	<body id="post">
-        <div>
-            <!--- button navigation --->
-            <section align="center">
-                <ul class="actions">
-                            <li><a href="javascript:history.back()" class="button" title="Back"><span class="icon fa-arrow-circle-left"></span></a></li>
-                            <li><a href="{{ site.url }}" class="button" title="Home"><span class="icon fa-home"></span></a></li>
-                            <li><a href="{{ site.url }}#contact-details" class="button" title="Contact"><span class="icon fa-envelope"></span></a></li>
-                </ul>
-                <hr/>
-            </section>
-            <!--- post --->
-            <article>
-                <header class="major">
-                    <h1 class="post-title">{{ page.title }}</h1>
-                    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-                </header>
-            <section>
-                {{ content }}
-            </section>
-            </article>
-        </div>
-	</body>
+
+  {% include head.html %}
+
+  <body>
+    {% include header.html %}
+    
+
+
+    <br/>
+
+    {% if page.date %}
+    <sup>{{ page.date | date: '%B %d, %Y' }}</sup>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    <h4> > {{ page.tagline }}</h4>
+    <hr style="width:100%;"/>
+
+
+    {% if page.featured-image %}
+    <span class="image main">
+      <img src="{{ page.featured-image }}" alt="">
+    </span>
+    {% endif %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+  </body>
 </html>

@@ -1,6 +1,7 @@
 ---
 layout: slide-deck
 title:  "Doherty Institute Seminar"
+date: 2018-11-21 12:00:00 -0000
 author: Will Rowe
 permalink: /doherty-seminar-2018/
 group: presentation

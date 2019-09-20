@@ -1,12 +1,12 @@
 ---
 layout: slide-deck
 title:  "ABPHM Bioinformatics Showcase"
+date: 2019-06-04 12:00:00 -0000
 author: Will Rowe
 permalink: /abphm19/
 group: presentation
 theme: ember
 transition: slide
-
 ---
 
 <script type="text/template">

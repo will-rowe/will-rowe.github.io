@@ -1,0 +1,12 @@
+<ul class="hexGrid">
+		{% assign sortedTools = (site.software | sort: 'date') | reverse %}
+		{% for tool in sortedTools %}
+		<li class="hex hvr-grow">
+			<div class="hexIn">
+				<a class="hexLink" href="{{ tool.github }}">
+					<img src="{{ tool.logolink }}" alt="" />
+				</a>
+			</div>
+		</li>
+		{% endfor %}
+</ul>

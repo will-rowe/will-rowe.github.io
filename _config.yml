@@ -1,23 +1,23 @@
-# Setup
+# Site settings
 title: Will Rowe
-email: will.rowe@stfc.ac.uk
-
-description: personal website
+email: w.rowe@bham.ac.uk
+description: binfie  in  brum
 baseurl: ""
-url: "https://will-rowe.github.io" # the base hostname & protocol for your site
+url: willrowe.net
+logo-image-url: images/profile-pic.svg
 
-# Social links
-twitter_username:     wil_rowe
-github_username:      will-rowe
-linkedin_username:    will-rowe-13219b136
+# Social settings
+github_username: will-rowe
+twitter_username: wil_rowe
+linkedin_username: will-rowe-13219b136
 
-# Markdown
+# Build settings
 markdown: kramdown
-kramdown:
-   syntax_highlighter_opts:
-      disable : true
-
-# Slides
-include: ['_slides']
+excerpt_separator: <!--more-->
+sass:
+  sass_dir: _sass
+  style: compressed
+include: ['_slides', '_software']
 collections:
   - slides
+  - software

@@ -1,6 +1,7 @@
 ---
 layout: slide-deck
 title:  "SMBE Kyoto Lightning Talk"
+date: 2018-11-07 12:00:00 -0000
 author: Will Rowe
 permalink: /smbe-kyoto/
 group: presentation
