@@ -3,6 +3,27 @@
 	.blink {
 		animation: blinking 10s infinite;
 	}
+	@-webkit-keyframes blinking {
+		0% { fill: none;} 
+		40% { fill: none;} 		
+		50% { fill: #FFD1C1;}
+		51% { fill: none;} 
+		100% { fill: none;} 
+	}
+	@-moz-keyframes blinking {
+		0% { fill: none;} 
+		40% { fill: none;} 		
+		50% { fill: #FFD1C1;}
+		51% { fill: none;} 
+		100% { fill: none;} 
+	}
+	@-o-keyframes blinking {
+		0% { fill: none;} 
+		40% { fill: none;} 		
+		50% { fill: #FFD1C1;}
+		51% { fill: none;} 
+		100% { fill: none;} 
+	}
 	@keyframes blinking { 
 		0% { fill: none;} 
 		40% { fill: none;} 		
