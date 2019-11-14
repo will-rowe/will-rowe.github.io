@@ -94,7 +94,9 @@ Why use WebAssembly for bioinformatics?
 
 ---
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Catch our <a href="https://twitter.com/hashtag/Ensembl2020?src=hash&amp;ref_src=twsrc%5Etfw">#Ensembl2020</a> poster at <a href="https://twitter.com/hashtag/VizBi?src=hash&amp;ref_src=twsrc%5Etfw">#VizBi</a> to see the technologies we&#39;ll be using to power our new site, and chat with the developers and designers.<a href="https://t.co/Tv2G8gxcms">https://t.co/Tv2G8gxcms</a> <a href="https://t.co/ihIqfM8WK6">pic.twitter.com/ihIqfM8WK6</a></p>&mdash; Ensembl (@ensembl) <a href="https://twitter.com/ensembl/status/1106140169575514113?ref_src=twsrc%5Etfw">March 14, 2019</a></blockquote>
+<img src="https://pbs.twimg.com/media/D1nMnxxWkAAvZcq?format=jpg&name=large" width="60%">
+
+> [ensemble, twitter](https://twitter.com/ensembl/status/1106140169575514113?ref_src=twsrc%5Etfw)
 
 ----
 
