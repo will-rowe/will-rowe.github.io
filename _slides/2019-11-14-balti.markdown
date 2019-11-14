@@ -55,13 +55,6 @@ WebAssembly is a way to take code in **any programming language** and run it **i
   * designed to maintain the versionless, feature-tested, and backwards-compatible nature of the web
   * modules will be able to call into and out of the JavaScript context and access browser functionality through the same Web APIs accessible from JavaScript
 
----
-
-it’s a standard born out of a collaboration between all major browser vendors
-
-
-When run in the sandbox, it can interact with JavaScript and shares the same permissions and security model.
-
 ----
 
 Why use WebAssembly for bioinformatics?
@@ -97,10 +90,7 @@ Why use WebAssembly for bioinformatics?
 
 <img src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/41d4b2ef-fa85-4a1f-ba23-f4abbbf44ac4/webassembly-speed-web-app6.png" width="80%">
 
-
 > Invitae ported seqtk to Wasm to improve upon their javascript FASTQ parser ([source](https://www.smashingmagazine.com/2019/04/webassembly-speed-web-app/))
-
-
 
 ---
 
@@ -142,8 +132,6 @@ GOOS=js GOARCH=wasm go build -o main.wasm
 
 ----
 
----
-
 ***
 
 ### Indexed variation graphs: [indexing]()
@@ -168,7 +156,7 @@ GOOS=js GOARCH=wasm go build -o main.wasm
 
 ***
 
-* Query reads are quality checked, trimmed and MinHashed
+* Query reads are quality checked, trimmed and sketched (KMV MinHash)
 
 * The read sketch is queried against the index using additional [Locality Sensitive Hashing]()
 
@@ -195,16 +183,85 @@ GOOS=js GOARCH=wasm go build -o main.wasm
 
 ----
 
+### Difficulties
+
+***
+
+* kept running into memory limitations
+  * index loading
+  * restricted to <1GB FASTQs
+
+* couldn't expose all functionality
+
+* more JavaScript than I would like
+
+* breaking changes from Go
+  * Wasm still experimental
+
+----
+
+<iframe src="https://giphy.com/embed/7UL2HdkAtRH8Y" width="960" height="402" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+----
+
+### Fixes
+
+***
+
+* improved memory usage
+  * swapped index serialisation (messagepack -> protobuf)
+  * found embarassing concurrency bugs (mem bound go routines -> workerpool)
+
+* changed algorithms
+  * containment search (allows longer + variable read lengths)
+  * approximate weighting of graphs, based on sketch containment
+  * replaced exact alignment with expectation maximization
+
+* more JavaScript than I would like
+  * sucked it up
+
+* breaking changes from Go
+  * Wasm still experimental
+
+----
+
+<iframe src="https://giphy.com/embed/J6VR03Q4GRO12" width="960" height="398" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+----
+
+<img src="https://raw.githubusercontent.com/will-rowe/baby-groot/master/misc/baby-groot-logo.png" width="30%">
+
+[G]()raphing [R]()esistance [O]()ut [O]()f me[T]()agenomes
+
+& the [W]()eb[AS]()sembly [P]()ort
+
+> [github.com/will-rowe/groot](https://github.com/will-rowe/baby-groot) | [willrowe.net/baby-groot](https://willrowe.net/baby-groot)
+
+----
+
 All good?
 
 ----
 
+### Conclusions so far
+
+***
+
+* not all software suited to Wasm
+
+* Wasm side of things is easier than the JavaScript
+
 * currently restricted to single threads
-  * multi threading coming?
+  * multi thread support coming?
 
 * restrictive memory limits (for Go)
 
-* Go's support is still experimental, so there may be breaking changes on the horizon
+* Go's support is still experimental, so there may be breaking changes yet to come
 
 </script>
 
+</script>
+<section>
+    <pre><code data-trim data-noescape>
+    </code></pre>
+</section>
