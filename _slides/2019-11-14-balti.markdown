@@ -1,0 +1,210 @@
+---
+layout: slide-deck
+title:  "Balti & Bioinformatics"
+date: 2019-11-14 12:00:00 -0000
+author: Will Rowe
+permalink: /bab-2019/
+group: presentation
+theme: ember
+transition: slide
+---
+
+<script type="text/template">
+
+#### Nov 2019
+
+***
+
+# GROOT & the WASP
+### WebAssembly Ports For Lightweight & Accessible Bioinformatics Apps
+
+***
+
+<br/>slides: [willrowe.net/bab-2019](https://willrowe.net/bab-2019) | twitter: [wil_rowe](https://twitter.com/wil_rowe)
+
+----
+
+What is WebAssembly?
+
+----
+
+"WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine."
+
+<br/>
+<div align="right">
+<i>webassembly.org<i/>
+<div/>
+
+---
+
+WebAssembly is a way to take code in **any programming language** and run it **in a web browser**
+
+---
+
+* Efficient and fast
+  * WebAssembly aims to execute at native speed
+
+* Safe
+  * memory-safe, sandboxed execution environment
+  * enforce the same-origin and permissions security policies of the browser
+
+* Open and debuggable
+  * designed to be pretty-printed in a textual format for debugging, testing, experimenting, optimizing, learning, teaching, and writing programs by hand
+
+* Part of the open web platform
+  * designed to maintain the versionless, feature-tested, and backwards-compatible nature of the web
+  * modules will be able to call into and out of the JavaScript context and access browser functionality through the same Web APIs accessible from JavaScript
+
+---
+
+it’s a standard born out of a collaboration between all major browser vendors
+
+
+When run in the sandbox, it can interact with JavaScript and shares the same permissions and security model.
+
+----
+
+Why use WebAssembly for bioinformatics?
+
+----
+
+* accessibility
+  * an alternative to the command line
+
+* privacy
+  * you don't have to upload your sequencing data anywhere
+
+* portability
+  * runs in any (big four) browser
+
+* maintainability
+  * don't need multiple codebases (one for web, one for CLI)
+  * no web server requirements (API, server etc.)
+
+---
+
+### Some examples
+
+***
+
+* Luiz Irber has a great [blog post](https://blog.luizirber.org/2018/08/27/sourmash-wasm/) on porting [sourmash](https://github.com/dib-lab/sourmash) to Wasm
+
+* [Chromatic](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5987889/) is a web app for visual inspection of genomic variation
+
+* a company called Invitae made a [seqtk](https://github.com/lh3/seqtk) port and wrote a [blog post](https://www.smashingmagazine.com/2019/04/webassembly-speed-web-app/)
+
+---
+
+<img src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/41d4b2ef-fa85-4a1f-ba23-f4abbbf44ac4/webassembly-speed-web-app6.png" width="80%">
+
+
+> Invitae ported seqtk to Wasm to improve upon their javascript FASTQ parser ([source](https://www.smashingmagazine.com/2019/04/webassembly-speed-web-app/))
+
+
+
+---
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Catch our <a href="https://twitter.com/hashtag/Ensembl2020?src=hash&amp;ref_src=twsrc%5Etfw">#Ensembl2020</a> poster at <a href="https://twitter.com/hashtag/VizBi?src=hash&amp;ref_src=twsrc%5Etfw">#VizBi</a> to see the technologies we&#39;ll be using to power our new site, and chat with the developers and designers.<a href="https://t.co/Tv2G8gxcms">https://t.co/Tv2G8gxcms</a> <a href="https://t.co/ihIqfM8WK6">pic.twitter.com/ihIqfM8WK6</a></p>&mdash; Ensembl (@ensembl) <a href="https://twitter.com/ensembl/status/1106140169575514113?ref_src=twsrc%5Etfw">March 14, 2019</a></blockquote> 
+
+----
+
+How....
+
+----
+
+![](https://www.sitepen.com/blog/wp-content/uploads/2018/12/go_blog3.png)
+
+> source: [sitepen](https://www.sitepen.com/blog/compiling-go-to-webassembly/)
+
+----
+
+program:
+
+```go
+package main
+ 
+import "fmt"
+ 
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+
+compile:
+
+```bash
+GOOS=js GOARCH=wasm go build -o main.wasm
+```
+
+----
+
+<section data-background-image="{{site.url}}/_slides/slide-data/melb-2018/comic-strip-2.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+
+----
+
+---
+
+***
+
+### Indexed variation graphs: [indexing]()
+
+***
+
+* A gene database is clustered, then converted to variation graphs
+
+* Graph traversals are windowed and decomposed to k-mer sets
+
+* A [MinHash sketch]() is kept for each window of a graph traversal
+
+![groot-figure-1a]({{site.url}}/_slides/slide-data/iror/figure-1a.png)
+
+> [Rowe, WPM et al. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics 2018](https://doi.org/10.1093/bioinformatics/bty387)
+
+---
+
+***
+
+### Indexed variation graphs: [seeding]()
+
+***
+
+* Query reads are quality checked, trimmed and MinHashed
+
+* The read sketch is queried against the index using additional [Locality Sensitive Hashing]()
+
+* Seeds are determined using ranked [Jaccard Similarity]() estimates
+
+![groot-figure-1b]({{site.url}}/_slides/slide-data/iror/figure-1b.png)
+
+---
+
+***
+
+### Indexed variation graphs: [aligning]()
+
+***
+
+* Assumption: majority of reads do not contain novel SNPs or errors
+
+* Hierarchical local alignment
+ - exact match > shuffled seed > gapped-end alignment
+
+* Score traversal to classify an alignment (unique, perfect etc.)
+
+![groot-figure-1c]({{site.url}}/_slides/slide-data/iror/figure-1c.png)
+
+----
+
+All good?
+
+----
+
+* currently restricted to single threads
+  * multi threading coming?
+
+* restrictive memory limits (for Go)
+
+* Go's support is still experimental, so there may be breaking changes on the horizon
+
+</script>
+
