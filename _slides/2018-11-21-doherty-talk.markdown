@@ -72,7 +72,7 @@ transition: slide
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/melb-2018/comic-strip-1.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+<section data-background-image="{{site.url}}/_slides/slide-data/melb-2018/comic-strip-1.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
 ----
 
@@ -157,7 +157,7 @@ transition: slide
 
 ---
 
-![]({{site.url}}/slides/slide-data/melb-2018/iaai19.png)
+![]({{site.url}}/_slides/slide-data/melb-2018/iaai19.png)
 
 * Multi-class and binary classification of microbiome samples
 
@@ -167,7 +167,7 @@ transition: slide
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/melb-2018/comic-strip-1.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+<section data-background-image="{{site.url}}/_slides/slide-data/melb-2018/comic-strip-1.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
 ----
 
@@ -193,7 +193,7 @@ transition: slide
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/melb-2018/comic-strip-2.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+<section data-background-image="{{site.url}}/_slides/slide-data/melb-2018/comic-strip-2.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
 ----
 
@@ -214,7 +214,7 @@ transition: slide
 
 ---
 
-![]({{site.url}}/slides/slide-data/host-microbe-talk-jan2017/arg-tool-timeline.jpg)
+![]({{site.url}}/_slides/slide-data/host-microbe-talk-jan2017/arg-tool-timeline.jpg)
 
 ---
 
@@ -230,7 +230,7 @@ transition: slide
 
 * A [MinHash sketch]() is kept for each window of a graph traversal
 
-![groot-figure-1a]({{site.url}}/slides/slide-data/iror/figure-1a.png)
+![groot-figure-1a]({{site.url}}/_slides/slide-data/iror/figure-1a.png)
 
 > [Rowe, WPM et al. Indexed variation graphs for efficient and accurate resistome profiling. Bioinformatics 2018](https://doi.org/10.1093/bioinformatics/bty387)
 
@@ -248,7 +248,7 @@ transition: slide
 
 * Seeds are determined using ranked [Jaccard Similarity]() estimates
 
-![groot-figure-1b]({{site.url}}/slides/slide-data/iror/figure-1b.png)
+![groot-figure-1b]({{site.url}}/_slides/slide-data/iror/figure-1b.png)
 
 ---
 
@@ -265,11 +265,11 @@ transition: slide
 
 * Score traversal to classify an alignment (unique, perfect etc.)
 
-![groot-figure-1c]({{site.url}}/slides/slide-data/iror/figure-1c.png)
+![groot-figure-1c]({{site.url}}/_slides/slide-data/iror/figure-1c.png)
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/melb-2018/comic-strip-2.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+<section data-background-image="{{site.url}}/_slides/slide-data/melb-2018/comic-strip-2.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
 ----
 
@@ -281,7 +281,7 @@ transition: slide
 
 ---
 
-![]({{site.url}}/slides/slide-data/host-microbe-talk-jan2017/fig5-groot.png)
+![]({{site.url}}/_slides/slide-data/host-microbe-talk-jan2017/fig5-groot.png)
 
 ----
 
@@ -311,11 +311,11 @@ transition: slide
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/genome-science/tools-logos.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+<section data-background-image="{{site.url}}/_slides/slide-data/genome-science/tools-logos.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/genome-science/tools-workflow.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
+<section data-background-image="{{site.url}}/_slides/slide-data/genome-science/tools-workflow.png" data-background-size="contain" background-repeat="no-repeat"><h2></h2></section>
 
 ----
 
@@ -334,7 +334,7 @@ transition: slide
 
 ---
 
-![img]({{site.url}}/slides/slide-data/iror/tmp.jpg)
+![img]({{site.url}}/_slides/slide-data/iror/tmp.jpg)
 
 * Single blaSHV (blaSHV-11) gene present at day 7 post initial antibiotic treatment
 
@@ -348,18 +348,18 @@ transition: slide
 
 ***
 
-| STFC | IBM Research |
-| :--: | :----------: |
-| Martyn Winn | Anna Carrieri |
-| | Edward Pyzer-Knapp |
-| | |
+|    STFC     |    IBM Research    |
+| :---------: | :----------------: |
+| Martyn Winn |   Anna Carrieri    |
+|             | Edward Pyzer-Knapp |
+|             |                    |
 
-| Quadram Institute | Imperial College London |
-| :----------------:| :---------------------: |
-| Lindsay Hall | Simon Kroll |
-| Cristina Alcon-Giner | Alex Shaw |
-| Shabhonam Caim | Kathleen Sim |
-| | |
+|  Quadram Institute   | Imperial College London |
+| :------------------: | :---------------------: |
+|     Lindsay Hall     |       Simon Kroll       |
+| Cristina Alcon-Giner |        Alex Shaw        |
+|    Shabhonam Caim    |      Kathleen Sim       |
+|                      |                         |
 
 ----
 

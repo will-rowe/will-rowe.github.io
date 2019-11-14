@@ -26,7 +26,7 @@ Will Rowe PhD
 
 ----
 
-<section data-background-image="{{site.url}}/slides/slide-data/smbe-2018/lightning-talk.png" data-background-size="contain" background-repeat="no-repeat">
+<section data-background-image="{{site.url}}/_slides/slide-data/smbe-2018/lightning-talk.png" data-background-size="contain" background-repeat="no-repeat">
 	<h2></h2>
 </section>
 

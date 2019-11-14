@@ -183,7 +183,7 @@ Once we have identified microbiomes of interest, how can we quickly check for ge
 
 * A [MinHash signature]() is kept for each window of graph traversal
 
-![groot-figure-1a]({{site.url}}/slides/slide-data/iror/figure-1a.png)
+![groot-figure-1a]({{site.url}}/_slides/slide-data/iror/figure-1a.png)
 
 ---
 
@@ -199,7 +199,7 @@ Once we have identified microbiomes of interest, how can we quickly check for ge
 
 * Seeds are determined using ranked [Jaccard Similarity]() estimates
 
-![groot-figure-1b]({{site.url}}/slides/slide-data/iror/figure-1b.png)
+![groot-figure-1b]({{site.url}}/_slides/slide-data/iror/figure-1b.png)
 
 ---
 
@@ -216,7 +216,7 @@ Once we have identified microbiomes of interest, how can we quickly check for ge
 
 * Score traversal to classify an alignment (unique, perfect etc.)
 
-![groot-figure-1c]({{site.url}}/slides/slide-data/iror/figure-1c.png)
+![groot-figure-1c]({{site.url}}/_slides/slide-data/iror/figure-1c.png)
 
 ----
 
@@ -246,11 +246,11 @@ A case study: designing an analysis workflow for profiling the neonatal microbio
 
 ---
 
-![img]({{site.url}}/slides/slide-data/genome-science/tools-logos.png)
+![img]({{site.url}}/_slides/slide-data/genome-science/tools-logos.png)
 
 ---
 
-![img]({{site.url}}/slides/slide-data/genome-science/tools-workflow.png)
+![img]({{site.url}}/_slides/slide-data/genome-science/tools-workflow.png)
 
 ---
 
@@ -269,7 +269,7 @@ A case study: designing an analysis workflow for profiling the neonatal microbio
 
 ---
 
-![img]({{site.url}}/slides/slide-data/iror/tmp.jpg)
+![img]({{site.url}}/_slides/slide-data/iror/tmp.jpg)
 
 * Single blaSHV (blaSHV-11) gene present at day 7 post initial antibiotic treatment
 
@@ -283,18 +283,18 @@ A case study: designing an analysis workflow for profiling the neonatal microbio
 
 ***
 
-| STFC | IBM Research |
-| :--: | :----------: |
-| Martyn Winn | Anna Carrieri |
-| | Edward Pyzer-Knapp |
-| | |
+|    STFC     |    IBM Research    |
+| :---------: | :----------------: |
+| Martyn Winn |   Anna Carrieri    |
+|             | Edward Pyzer-Knapp |
+|             |                    |
 
-| Quadram Institute | Imperial College London |
-| :----------------:| :---------------------: |
-| Lindsay Hall | Simon Kroll |
-| Cristina Alcon-Giner | Alex Shaw |
-| Shabhonam Caim | Kathleen Sim |
-| | |
+|  Quadram Institute   | Imperial College London |
+| :------------------: | :---------------------: |
+|     Lindsay Hall     |       Simon Kroll       |
+| Cristina Alcon-Giner |        Alex Shaw        |
+|    Shabhonam Caim    |      Kathleen Sim       |
+|                      |                         |
 
 ----
 
