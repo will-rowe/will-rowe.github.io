@@ -258,6 +258,10 @@ All good?
 
 * Go's support is still experimental, so there may be breaking changes yet to come
 
+----
+
+![]({{site.url}}/_slides/slide-data/bab-2019/balti-and-binfies-2019.png)
+
 </script>
 
 </script>
