@@ -1,0 +1,9 @@
+---
+layout: post
+title: 'STARK'
+author: Will Rowe
+group: software
+permalink: /stark/
+logolink: https://raw.githubusercontent.com/will-rowe/stark/master/docs/img/stark-badge.png
+github: https:/github.com/will-rowe/stark
+---
