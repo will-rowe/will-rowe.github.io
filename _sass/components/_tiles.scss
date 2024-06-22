@@ -25,7 +25,7 @@
 				'opacity #{$duration} #{$ease}'
 			));
 			position: relative;
-			width: calc(#{math.div(100%, 3)} - #{$gutter});
+			width: calc(100% / 3 - #{$gutter});
 			margin: $gutter 0 0 $gutter;
 
 
@@ -244,7 +244,7 @@
 			margin: ($gutter * -1) 0 0 ($gutter * -1);
 
 			article {
-				width: calc(#{math.div(100%, 3)} - #{$gutter});
+				width: calc(100% / 3 - #{$gutter});
 				margin: $gutter 0 0 $gutter;
 			}
 		}
@@ -255,7 +255,7 @@
 			margin: ($gutter * -1) 0 0 ($gutter * -1);
 
 			article {
-				width: calc(#{(100% * 0.5)} - #{$gutter * 1});
+				width: calc(100% * 0.5 - #{$gutter});
 				margin: $gutter 0 0 $gutter;
 			}
 		}
@@ -266,7 +266,7 @@
 			margin: ($gutter * -1) 0 0 ($gutter * -1);
 
 			article {
-				width: calc(#{(100% * 0.5)} - #{$gutter * 1});
+				width: calc(100% * 0.5 - #{$gutter});
 				margin: $gutter 0 0 $gutter;
 
 				&:hover {
