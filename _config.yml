@@ -1,7 +1,7 @@
 # Site settings
 title: Will Rowe
-email: w.rowe@bham.ac.uk
-description: binfie  in  brum
+email: w.p.m.rowe@gmail.com
+description: software and stuff
 baseurl: ""
 url: https://willrowe.net
 logo-image-url: images/profile-pic.svg
@@ -17,7 +17,7 @@ excerpt_separator: <!--more-->
 sass:
   sass_dir: _sass
   style: compressed
-include: ['_slides', '_software']
+include: ["_slides", "_software"]
 collections:
   - slides
   - software
